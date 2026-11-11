@@ -1,0 +1,726 @@
+COMANDO MESTRE DEFINITIVO — RÊMORA SCALPER 1.995
+
+Reconstrução controlada: remoção de Volume Profile/POC e integração objetiva da Weis Wave 1.996
+
+0. PAPEL, MISSÃO E PRINCÍPIO DE AUDITORIA
+
+Atue como desenvolvedor sênior MQL5 especializado em microestrutura de futuros da B3 (WIN/IND e WDO/DOL) e como auditor independente da própria implementação.
+
+Sua função não é provar que a estratégia funciona, mas tentar refutar sua engenharia, encontrar conflitos, preservar invariantes financeiros e corrigir os problemas reproduzíveis.
+
+Estamos REINICIANDO O TRABALHO DO ZERO, usando a Scalper 1.995 ORIGINAL como baseline. Não continue nenhum código experimental anterior e não faça merge automático de versões intermediárias.
+
+MISSÃO AUTORIZADA:
+
+1. Remover operacionalmente todo o Volume Profile/POC da Scalper 1.995.
+2. Identificar e eliminar suas dependências diretas e indiretas no processo decisório.
+3. Substituir a evidência de C1 que dependia da POC por uma classificação de esforço × resultado baseada exclusivamente na engenharia Weis Wave verificável da 1.996.
+4. Corrigir conflitos e incoerências introduzidos por essa substituição, sem alterar outros critérios da estratégia.
+5. Preservar integralmente os subsistemas financeiros e os demais critérios da 1.995.
+6. Implementar diagnósticos auditáveis para distinguir intenção, bloqueio, confirmação, tentativa de envio, aceitação e execução real.
+7. Entregar código, diferenças, testes e relatório de limitações, sem alegar homologação sem evidências.
+
+A estratégia deve continuar sendo a Scalper 1.995, com sua inteligência C1 ajustada. NÃO deve se transformar na Scalper 1.996 completa.
+
+1. IDENTIDADE DOS FONTES — OBRIGATÓRIO
+
+Fonte canônica 1.995:
+
+- Repositório: "baalfoonseca-code/Bf"
+- Branch: "main"
+- Caminho: "1995" — arquivo sem extensão ".mq5"
+- URL: https://github.com/baalfoonseca-code/Bf/blob/main/1995
+- Blob Git SHA verificado como referência: "a764baec7f716ad893ee82ae807d91e2c45f3986"
+
+Fonte Weis Wave 1.996:
+
+- Repositório: "baalfoonseca-code/Bf"
+- Branch: "codex/remora-matriz-objetiva"
+- Caminho: "include/ObjectiveMatrix.mqh"
+- URL: https://github.com/baalfoonseca-code/Bf/blob/codex/remora-matriz-objetiva/include/ObjectiveMatrix.mqh
+- Blob Git SHA verificado como referência: "e0bacb9fa1e003ddb57c658c9cc8860e208cfbfc"
+
+O novo arquivo 1.995 colocado no repositório de trabalho deve ser confrontado integralmente com a referência original. Registrar SHA-256 próprio e divergências, sem confundir SHA-256 com blob SHA do Git.
+
+Se o repositório de trabalho estiver em "baalfoonseca-code/poc", não presumir que a conexão autorize automaticamente acesso ao repositório "Bf".
+
+Tentar acesso verificável aos arquivos. Se o acesso ao módulo da 1.996 estiver indisponível, solicitar o arquivo exato ou permitir sua inclusão como referência no workspace. Não inventar a implementação das funções ausentes.
+
+Se a fonte 1.995 carregada não corresponder à original, documentar a diferença antes de modificar qualquer lógica.
+
+Nunca sobrescrever o original. Criar arquivo de saída versionado em branch de trabalho própria.
+
+2. FRONTEIRA DE ALTERAÇÕES
+
+ALTERAÇÕES PERMITIDAS:
+
+- Remoção da POC, Volume Profile, suas janelas, cálculos, caches, filtros e diagnósticos exclusivamente associados.
+- Adaptação mínima da aquisição de negócios executados necessária à Weis Wave objetiva.
+- Integração das funções de formação de ondas, baseline, esforço, eficiência e rejeição da 1.996.
+- Adequação de C1 ABS e C1 CONT.
+- Adequação mínima dos mecanismos de validação da onda viva e invalidação da tese, exclusivamente quando necessária pela troca do motor Weis.
+- Telemetria adicional, separada da contabilidade, sem acrescentar bloqueios de negociação.
+- Correções diretamente necessárias à compilação, desde que documentadas e sem alterações estratégicas não autorizadas.
+
+ALTERAÇÕES PROIBIDAS:
+
+- Trocar a VWAP Bands da 1.995 pela da 1.996.
+- Alterar o cálculo histórico de sigma, "SigmaLookbackDays", pisos de sigma ou os multiplicadores WIN/WDO.
+- Implementar sigma híbrido, adaptativo por M5, regularização histórica por horário ou bandas por percentis.
+- Alterar os períodos padrão M5/M1 ou remover o filtro macro.
+- Remover VWAP D-1, máximas/mínimas D-1, C2/C3/C4/C5, lógica BASE/TURBO ou regras de confluência.
+- Mudar requisitos de entrada, limites, stop, alvo, margem, risco, cooldown, horários, lote ou gestão progressiva, salvo dependência inevitável e demonstrada da remoção da POC.
+- Acrescentar pullback obrigatório para CONT, novo tempo de espera, nova âncora, novo trigger ou deslocamento artificial de 300 segundos.
+- Importar a matriz decisória completa, filtros de localização, sigma, tratamento de sessão ou bloqueios de dados da 1.996.
+- Alterar silenciosamente os critérios do FAR.
+- Adicionar módulos DOM, Decision, Research ou filtros não autorizados.
+- Otimizar parâmetros usando os mesmos dados utilizados para avaliar o desempenho.
+
+As discussões sobre VWAP adaptativa e relevância do M5 são HIPÓTESES DE PESQUISA, não modificações autorizadas nesta entrega.
+
+3. PRESERVAÇÃO DA ENGENHARIA ORIGINAL
+
+Manter os mecanismos existentes na 1.995:
+
+- "Inp_ContextTF = PERIOD_M5", "Inp_SignalTF = PERIOD_M1".
+- VWAP vigente, VWAP D-1, sigma histórico de cinco dias por padrão e geometria das bandas.
+- "Inp_BandMultiplier_WIN = 0.80".
+- "Inp_BandMultiplier_WDO = 1.50".
+- "Inp_VWAP_Inner_Pct", "Inp_VWAP_Outer_Pct" e região glass.
+- C2/C3/C4/C5, limites associados e regras de pontuação.
+- Classificação BASE/TURBO e BASE_CONT/TURBO_CONT.
+- "Inp_EnableMacroDirectionGate" e "Inp_EnableLateDirectionBlock", mantendo sua semântica.
+- Matriz M1 fechada e contexto M5 fechado.
+- ARMED, timeout, rompimento, margem, overshoot e validações tardias.
+- FAR em seus três modos: OFF, OBSERVAR e APLICAR.
+- Gestão financeira, break-even, progressão de proteção e encerramento EOD.
+- Stops diários, stop por perdas seguidas, quotas e sizing.
+- Magic Numbers, comentários de ordens, identificação de posição e reconciliação.
+- Proteção para netting/exchange/hedging, registros de requests, pendências financeiras e recuperação após reinício.
+- CSV e journals financeiros, inclusive compatibilidade histórica.
+
+IMPORTANTE: preservar os valores reais da fonte original e distinguir defaults do código de parâmetros eventualmente carregados em arquivos ".set". Não substituir valores só porque os logs de outra sessão mostram configuração diferente.
+
+A troca de C1 altera necessariamente algumas decisões de entrada; portanto, preservar os demais componentes não significa prometer sinais idênticos aos antigos.
+
+4. REMOÇÃO COMPLETA DA POC OPERACIONAL
+
+Localizar e mapear todas as ocorrências e dependências de:
+
+- "POCResult"
+- "ENUM_POC_STATE"
+- "ComputePOCWithTieCore"
+- "ComputePOCWithTie"
+- "Inp_POC_*"
+- "pocNow", "pocPrev"
+- "pocMove", "pocState", "contPocState"
+- "windowsValid"
+- "absPocContextOk"
+- "absDivergence"
+- "absStallStrict"
+- "absFollowingReaction"
+- "absFollowingExtension"
+- "cont_poc_ok"
+- Métricas e diagnósticos exclusivamente relacionados à POC.
+- Qualquer cálculo de deslocamento do preço que exista apenas como consequência das janelas da POC.
+
+Esses nomes representam pontos de busca, não autorização para excluir cegamente um campo compartilhado com outro subsistema.
+
+Antes de cada remoção, identificar todos os consumidores.
+
+Não manter a POC apenas como filtro oculto ou em uma revalidação tardia.
+
+Não substituir condições removidas por "true", por constantes permissivas ou por critérios inventados.
+
+Não criar uma variável fictícia de POC para satisfazer a compilação.
+
+Exceção de compatibilidade: campos legados presentes em registros financeiros ou históricos imutáveis podem permanecer, desde que demonstravelmente inativos na decisão e claramente identificados como compatibilidade.
+
+Separar os resultados em:
+
+1. POC removida da lógica.
+2. Dependência substituída por evidência Weis Wave.
+3. Referência histórica preservada sem efeito decisório.
+
+5. WEIS WAVE 1.996 — MOTOR NUMÉRICO DE REFERÊNCIA
+
+Comparar primeiro a Weis Wave original da 1.995 com a da 1.996.
+
+Não assumir equivalência.
+
+A 1.995 utiliza formação de ondas associada aos candles M1. A 1.996 incorpora um mecanismo incremental baseado em eventos de negócios executados, reversões de preço, acumulação de volume, percurso e rejeição.
+
+As funções de referência são:
+
+- "OMBaseline"
+- "OMWavePush"
+- "OMAbsEvidence"
+- "OMClassify"
+
+Utilizar exclusivamente a implementação realmente verificada da branch indicada, e não uma reconstrução aproximada.
+
+Preservar as seguintes propriedades:
+
+Formação de ondas:
+
+- Ondas identificadas causalmente.
+- Reconhecimento da direção somente quando o movimento observado satisfaz a reversão exigida.
+- Nenhum pivô pode ser reconhecido retroativamente para autorizar uma entrada passada.
+- Acumulação correta de volume.
+- Manutenção do extremo e do momento em que foi observado.
+- Encerramento da onda e criação de uma nova sem duplicação de negócios.
+
+Baseline:
+
+- Referência de esforço composta pelas ondas anteriores FECHADAS.
+- A onda ativa não pode contaminar sua própria média de referência.
+- Respeitar a quantidade mínima de ondas válidas.
+- Dados insuficientes não equivalem a esforço normal ou alto.
+
+Eficiência:
+
+Utilizar a medição de trajetória da 1.996, incluindo seu mecanismo de amostragem por eventos de preço.
+
+Preservar e documentar:
+
+- "grossPath"
+- "eventPath"
+- "eventPrice"
+- "peakNet"
+- "peakVolume"
+- "peakEvent"
+- "peakEventNet"
+- "pathEfficiency"
+
+Não substituir silenciosamente a eficiência baseada em eventos por eficiência calculada negócio a negócio. Essas métricas não são estatisticamente equivalentes e podem reagir de maneira diferente à fragmentação dos negócios.
+
+Rejeição:
+
+- Registrar o maior progresso original da tentativa.
+- Congelar esforço e eficiência no extremo relevante.
+- Verificar rejeição posterior real.
+- Não transformar falta de deslocamento, isoladamente, em absorção.
+- Não utilizar extremos futuros para aprovar sinais passados.
+
+A formação de ondas pode usar negócios executados intrabar, mas a geração original de novas intenções permanece vinculada ao fechamento causal de M1.
+
+6. PARÂMETROS WEIS — REFERÊNCIA EXPERIMENTAL
+
+Examinar os seguintes defaults existentes no módulo 1.996:
+
+- "Inp_ABS_Effort = 1.50"
+- "Inp_CONT_Effort = 1.50"
+- "Inp_WaveBaselineMin = 3"
+- "Inp_WaveReversalPts_WIN = 60.0"
+- "Inp_WaveReversalPts_WDO = 2.0"
+- "Inp_PathEventTicks = 2"
+- "Inp_CONT_MinPathEfficiency = 0.60"
+- "Inp_ABS_MaxPathEfficiency = 0.30"
+- "Inp_ABS_MinRejectionFraction = 0.35"
+
+Preservar os limites de deslocamento da 1.995 quando aplicáveis à nova medição, registrando qualquer mudança de significado causada pela nova origem da onda.
+
+Esses números são hipóteses iniciais de engenharia, NÃO parâmetros estatisticamente otimizados.
+
+Não adicionar parâmetros por preferência pessoal.
+
+Em particular, verificar na versão exata de "OMClassify" a condição de retração "drawdown < eventStep" para CONT. Não misturar implementações anteriores que tenham omitido essa condição.
+
+Apresentar diferenças semânticas entre o código de referência efetivamente consultado e quaisquer PDFs ou versões anteriores.
+
+7. C1 ABS — ESFORÇO ELEVADO COM RESULTADO INEFICIENTE E REJEIÇÃO
+
+A classificação de absorção deve exigir simultaneamente:
+
+1. Onda original reconhecida e válida.
+2. Baseline suficiente de ondas anteriores.
+3. Esforço relativo mínimo.
+4. Tentativa de deslocamento com amplitude mínima.
+5. Baixa eficiência de progresso na tentativa.
+6. Rejeição posterior do extremo, objetivamente observada.
+7. Rejeição mínima proporcional ao progresso original e, quando exigido pelo módulo, mínima de um tick.
+8. Direção final de ABS contrária à tentativa rejeitada.
+
+Não aprovar ABS quando houver apenas esforço elevado.
+
+Não aprovar ABS quando houver esforço elevado e pouca movimentação, mas nenhuma rejeição demonstrável.
+
+Não aprovar ABS usando um pico de volume que só seria identificável retrospectivamente.
+
+Manter a região VWAP e as confluências C2/C3/C4/C5 da 1.995 como critérios adicionais existentes, e não substituí-los pela localização geográfica da 1.996.
+
+8. C1 CONT — ESFORÇO ELEVADO COM DESLOCAMENTO EFICIENTE
+
+A classificação de continuação deve exigir:
+
+1. Onda reconhecida e válida.
+2. Baseline suficiente.
+3. Esforço relativo mínimo.
+4. Progresso direcional mínimo.
+5. Deslocamento eficiente no percurso de eventos.
+6. Manutenção do progresso conforme a implementação de referência.
+7. Ausência de retração que invalide o critério de CONT.
+8. Concordância entre direção da onda e direção candidata.
+
+Não classificar continuação apenas porque houve volume elevado.
+
+Não classificar continuação apenas porque o preço fechou na direção de um candle.
+
+Não permitir que uma evidência de absorção seja convertida automaticamente em continuação por falta de POC.
+
+Conservar os demais requisitos da rota CONT presentes na matriz 1.995.
+
+9. CONFLITOS ABS × CONT — CRITÉRIO OBRIGATÓRIO
+
+Corrigir o problema observado na versão experimental sem POC: quando C1 ABS recebia apenas a condição de esforço alto, sinais de continuação poderiam satisfazer simultaneamente as duas rotas e gerar conflitos artificiais.
+
+A nova implementação deve separar objetivamente:
+
+- Esforço alto + baixa eficiência + rejeição comprovada → candidato ABS.
+- Esforço alto + alta eficiência + progressão sustentada → candidato CONT.
+- Esforço alto + baixa eficiência, mas sem rejeição → nenhuma ABS confirmada.
+- Evidências insuficientes ou contraditórias → NEUTRO ou bloqueio justificado.
+
+Preservar "ROUTE_CONFLICT_BLOCK" quando duas rotas efetivamente satisfizerem os critérios finais.
+
+Não atribuir prioridade arbitrária a ABS ou CONT.
+
+Não eliminar o bloqueio de conflitos para aumentar o número de entradas.
+
+Diferenciar nos registros:
+
+- Conflito interno de classificação Weis.
+- Conflito entre rotas da matriz.
+- Discordância com o macrocontexto M5.
+- Invalidação posterior de uma tese já armada.
+
+Uma redução artificial de conflitos não comprova melhoria; apresentar contagens e exemplos reproduzíveis.
+
+10. MICRO M1 E MACRO M5 — PRESERVAÇÃO E AUDITORIA
+
+Manter os dois timeframes existentes.
+
+M1: reconhecimento da tese na matriz e captura do sinal em candle fechado.
+
+M5: contexto direcional calculado pela posição do último fechamento M5 em relação às bandas da VWAP, conforme a 1.995.
+
+Não descrever o macro M5 como leitura avançada de tendência estrutural: a implementação original utiliza principalmente posição relativa à VWAP Bands.
+
+Preservar o filtro macro e os critérios originais de concordância das rotas.
+
+Não importar o snapshot M5 da 1.996 como substituto, pois não exerce necessariamente a mesma função.
+
+Adicionar apenas diagnóstico não invasivo para medir:
+
+- Quantos candidatos M1 o macro aprova.
+- Quantos candidatos M1 o macro rejeita.
+- Direção macro e micro no momento da decisão.
+- Idade da referência M5.
+- Motivos de indisponibilidade.
+
+Não desligar nem alterar o macro M5 nesta implementação.
+
+Uma futura ablação M1 versus M1+M5 deverá ocorrer em experimento separado.
+
+11. STAGE 2 — REVALIDAÇÃO DA ONDA VIVA
+
+A integração da Weis Wave também deve revisar os pontos em que a 1.995 consulta o mecanismo antigo de onda viva.
+
+Não deixar a nova classificação C1 funcionando no Stage 1 enquanto o Stage 2 exige uma onda antiga incompatível com o novo método.
+
+Mapear:
+
+- "RebuildWeisCache"
+- "ComputeLiveWaveO1"
+- Validação direcional da onda viva.
+- "LATE_WEIS_BLOCK"
+- Revalidação antes de rompimento.
+- Revalidação antes de "SendOrder".
+
+Substituir exclusivamente o mecanismo de evidência que ficou incompatível, mantendo:
+
+- Timeout original.
+- Gatilho original.
+- Margem de rompimento.
+- Overshoot.
+- Filtro tardio de direção.
+- Filtros VWAP.
+- Spread.
+- FAR.
+- Regras de posição, exposição e risco.
+
+Não introduzir a política completa de invalidação da 1.996 se ela acrescentar critérios não autorizados à 1.995. Toda diferença de comportamento deve ser demonstrada.
+
+A revalidação deve utilizar evidência posterior ao sinal de maneira causal, sem reconstruir sua origem ou modificar o gatilho congelado.
+
+12. INTEGRIDADE DOS NEGÓCIOS EXECUTADOS
+
+A nova Weis exige dados confiáveis.
+
+Validar:
+
+- Preço positivo, finito e compatível com a grade real de negociação.
+- Volume positivo e consistente.
+- Fonte "volume_real" ou volume inteiro de negócios, sem mistura silenciosa.
+- Timestamps em milissegundos.
+- Negócios distintos registrados no mesmo milissegundo.
+- Ausência de duplicação nas fronteiras de "CopyTicksRange".
+- Tratamento correto de lacunas, indisponibilidade e reconexão.
+- Reinício no meio do pregão.
+- Sequência temporal sem look-ahead.
+- Não confundir atualizações de Bid/Ask com novos negócios executados.
+
+Usar processamento incremental e em lotes limitados quando necessário.
+
+Não executar reconstrução pesada de todo o histórico a cada tick.
+
+A proteção de posições já abertas, break-even, EOD e reconciliação financeira não pode ficar subordinada à prontidão do motor Weis.
+
+Se faltarem dados indispensáveis à evidência de entrada, não fabricar confirmação.
+
+Entretanto, não importar automaticamente todos os gates experimentais de dados da 1.996. Toda nova condição de indisponibilidade precisa estar ligada a uma impossibilidade técnica real de verificar a evidência necessária e ser documentada.
+
+13. FAR — PRESERVAÇÃO FUNCIONAL
+
+Preservar os modos:
+
+- "FAR_OFF"
+- "FAR_OBSERVAR"
+- "FAR_APLICAR"
+
+Preservar as regras existentes de contradição objetiva, pressão agressora contrária, janela de referência e validação temporal.
+
+Não usar os dados da POC removida como substitutos da agressão.
+
+Não interpretar ausência de flags de agressor como agressão favorável ou contrária.
+
+Não utilizar o FAR para inventar uma confirmação adicional obrigatória de ABS ou CONT.
+
+Preservar os extremos de região eventualmente necessários ao FAR, mesmo que a POC seja removida. Não confundir região de referência para proteção com região de gatilho para entrada.
+
+Testar sua convivência com a Weis Wave nova, especialmente quando uma tese é invalidada após ser armada.
+
+14. EXECUÇÃO FINANCEIRA — ZONA PROTEGIDA
+
+Preservar literalmente, sempre que possível, o protocolo financeiro da 1.995.
+
+Inclui:
+
+- "HasOpenPosition" e controles de exposição.
+- Identificação de posições próprias.
+- Account mode e proteção para netting/exchange/hedging.
+- "ComputeLotsForEntry".
+- Validação de margem.
+- "SendOrder".
+- Confirmação de negócios.
+- "OnTradeTransaction".
+- Persistência dos estados de execução.
+- Journals e recuperação financeira.
+- Break-even e escada progressiva.
+- Gestão de posição e EOD.
+- Controle de ordens pendentes e identidade de requests.
+- Mecanismos de falha fechada.
+- Proteção contra envios duplicados.
+
+Não modificar defaults financeiros ou os identificadores existentes.
+
+Não mudar "Inp_ExitMode", "Inp_MaxProtectedR", SL/TP, multiplicadores de lote ou lógica BASE/TURBO.
+
+Não usar testes simplificados para substituir o protocolo financeiro real.
+
+Defeito preexistente a investigar separadamente:
+
+Na fonte original, "PersistEconomicMarker()" contém a escrita:
+
+"FileWriteString(h,"S1995_ECONOMIC_OBLIGATION\r\n")"
+
+seguida pela checagem "written==25".
+
+Verificar as unidades de retorno de "FileWriteString" e o tamanho efetivamente escrito. O literal possui 27 caracteres incluindo CRLF, levantando suspeita concreta de inconsistência.
+
+Se confirmado, documentar como defeito preexistente, demonstrar impacto e produzir correção mínima em commit isolado, acompanhada de teste de escrita, flush, reinício e recuperação.
+
+Não misturar correções financeiras com o diff estratégico. Não ignorar um defeito crítico confirmado nem declarar homologação enquanto ele permanecer sem resolução.
+
+15. TELEMETRIA — EVITAR OS PONTOS CEGOS DOS RELATÓRIOS
+
+Nos relatórios anteriores, foram identificadas intenções "ARMED" sem desfecho registrado e eventos "DISPARO_ABS" sem confirmação financeira correspondente.
+
+Corrigir a rastreabilidade sem alterar a estratégia.
+
+Cada intenção precisa de identidade única e correlação entre:
+
+- "SIGNAL_CANDIDATE"
+- "SIGNAL_REJECTED"
+- "SIGNAL_DETECTED"
+- "ARMED"
+- "THESIS_REVALIDATION"
+- "THESIS_INVALIDATED"
+- "ROUTE_CONFLICT_BLOCK"
+- "MACRO_DIRECTION_BLOCK"
+- "FAR_CANCEL"
+- "TIMEOUT_ARMED"
+- "TRIGGER_CONFIRMED"
+- "DISPATCH_GUARD"
+- "SEND_ATTEMPT"
+- "REQUEST_ACCEPTED"
+- "REQUEST_REJECTED"
+- "DEAL_CONFIRMED"
+- "ORDER_FAILED"
+- "SIGNAL_ENDED"
+
+São categorias desejadas de diagnóstico; adaptar os nomes aos eventos existentes, evitando duplicação ou divergência semântica.
+
+Para cada evento registrar, quando disponível:
+
+- Timestamp completo, inclusive milissegundos.
+- Ativo e Magic Number.
+- Identificador da intenção.
+- Direção BUY/SELL.
+- Rota ABS/CONT.
+- Modo BASE/TURBO.
+- Evidência Weis: esforço, eficiência, progressão, rejeição e ID da onda.
+- Direção do M1 e do macro M5.
+- Gatilho congelado.
+- Preço Last efetivamente observado.
+- Bid/Ask quando relevantes.
+- Motivo exato de bloqueio ou invalidação.
+- Retcode, request ID, order ID, deal ID, preço e volume executados quando existirem.
+
+REGRA CENTRAL: "ARMED" não significa ordem enviada; "DISPARO" não significa ordem executada; "REQUEST_ACCEPTED" não é necessariamente fill.
+
+Não criar preenchimentos fictícios.
+
+Não registrar "0.00 lots" em um evento inicial como prova de falha de sizing se a quantidade só é calculada posteriormente.
+
+Para cada intenção que terminou sem operação, permitir identificar o desfecho real ou documentar expressamente que o desfecho não foi observado.
+
+Registrar os diagnósticos em arquivo analítico separado, sem alterar o esquema financeiro histórico.
+
+Não adicionar escrita pesada nem "FileFlush" a cada negócio.
+
+16. PERFORMANCE E SEGURANÇA DE EXECUÇÃO
+
+A nova leitura de negócios não pode comprometer o processamento de eventos financeiros.
+
+Medir:
+
+- Latência do cálculo Weis.
+- Custo de recuperação do histórico.
+- Tempo do Stage 1.
+- Tempo da revalidação Stage 2.
+- Defasagem do último negócio processado.
+- Tempo entre tese, armamento, confirmação, despacho e fill.
+- p95, p99 e máximo dos custos relevantes quando houver amostras suficientes.
+
+Não assumir que todo negócio executado gera um callback "OnTick" separado.
+
+Evitar loops sem limites, consultas integrais repetidas de histórico e operações de disco no caminho crítico do envio.
+
+Se ocorrer falha de processamento analítico, manter o gerenciamento de posições e o protocolo financeiro funcionando.
+
+17. TESTES DE REFUTAÇÃO OBRIGATÓRIOS
+
+Criar testes determinísticos e, quando possível, replay com dados reais adequados.
+
+A. ABS:
+
+1. Esforço alto, baixa eficiência e rejeição suficiente → candidato ABS.
+2. Esforço alto e preço parado sem rejeição → ABS não confirmada.
+3. Esforço alto e preço avançando eficientemente → não classificar como ABS apenas pelo volume.
+4. Rejeição com volume insuficiente → C1 ABS não confirmado.
+5. Rejeição atribuída a um extremo identificado somente depois do sinal → rejeitar por look-ahead.
+
+B. CONT:
+
+1. Esforço alto, deslocamento eficiente e progresso mantido → candidato CONT.
+2. Esforço alto sem progresso suficiente → não confirmar CONT.
+3. Continuação com retração acima do limite da referência 1.996 → bloquear quando a condição realmente fizer parte da versão verificada.
+4. Onda revertida ou evidência substituída → revalidar sem criar uma segunda tese fictícia.
+5. CONT sem baseline suficiente → não confirmar C1.
+
+C. Conflitos:
+
+1. ABS e CONT simultaneamente aprovadas → bloquear com motivo inequívoco.
+2. Esforço alto com evidência insuficiente para ambas → NEUTRO.
+3. Discordância M1/M5 → preservar filtro macro.
+4. Mudança da classificação depois de armado → não renovar timeout nem reposicionar trigger silenciosamente.
+5. Onda de ABS original encerrada → preservar corretamente a evidência congelada, sem retroagir o reconhecimento.
+
+D. POC:
+
+1. Nenhuma função operacional de POC influencia C1.
+2. Nenhuma janela de POC executa consultas desnecessárias.
+3. Nenhuma condição removida foi substituída por "true".
+4. Nenhuma variável de POC permaneceu como dependência oculta.
+5. Campos históricos preservados não exercem poder decisório.
+
+E. Dados:
+
+1. Dois ou mais negócios no mesmo milissegundo.
+2. Lacuna entre lotes.
+3. Reconnect.
+4. Reinício durante sessão.
+5. Volume indisponível.
+6. Volume inteiro versus real.
+7. Mudança de contrato.
+8. Nova sessão.
+9. Feed com os mesmos preços, mas fragmentação distinta dos negócios.
+10. Nenhum sinal retroativo após reconstrução.
+
+F. Estratégia preservada:
+
+1. VWAP Bands igual à original sob as mesmas entradas.
+2. Sigma histórico igual.
+3. C2/C3/C4/C5 iguais.
+4. Macro M5 igual.
+5. BASE/TURBO preservados.
+6. Gatilhos, margens e overshoot preservados.
+7. FAR preservado.
+8. Stops, sizing, break-even e progressão preservados.
+
+G. Financeiro:
+
+1. Ordem aceita e fill confirmado.
+2. Ordem rejeitada.
+3. Request com resultado incerto.
+4. Ordem parcialmente executada.
+5. Reinício após envio.
+6. Posição existente com BE pendente.
+7. Posição estrangeira no mesmo ativo.
+8. Falha de journal.
+9. EOD com posição aberta.
+10. Histórico financeiro temporariamente indisponível.
+11. Ausência de duplicação de ordens.
+
+Não tratar testes unitários com dados inventados como comprovação de vantagem operacional.
+
+18. COMPARAÇÃO CONTROLADA
+
+Construir uma matriz de comparação distinguindo:
+
+Original 1.995: POC presente e C1 antigo.
+
+Nova 1.995: sem POC, com C1 Weis Wave 1.996.
+
+Separar os efeitos em:
+
+- Sinais candidatos.
+- C1 aprovados.
+- C1 rejeitados.
+- Conflitos ABS/CONT.
+- Candidatos rejeitados por C2/C3/C4/C5.
+- Bloqueios macro.
+- Bloqueios FAR.
+- Intenções armadas.
+- Intenções expiradas.
+- Gatilhos efetivamente confirmados.
+- Tentativas de ordem.
+- Ordens aceitas.
+- Negócios executados.
+
+Não exigir que os sinais das duas versões sejam idênticos, porque a substituição de C1 altera o comportamento por definição.
+
+Exigir equivalência verificável nas regiões não autorizadas à mudança.
+
+Quando houver amostra suficiente, apresentar resultados líquidos, custos, expectativa em R, drawdown e análise fora da amostra, separados por WIN/WDO e ABS/CONT.
+
+Não otimizar parâmetros durante o teste de equivalência.
+
+Não declarar aumento de acurácia, frequência ou lucratividade sem resultados adequados.
+
+19. ENTREGÁVEIS OBRIGATÓRIOS
+
+Entregar no repositório:
+
+1. Fonte MQL5 corrigida
+
+Arquivo novo, identificado como derivado da 1.995 original, sem alterar o original.
+
+2. "AUDITORIA_PREVIA.md"
+
+Inventário de dependências, riscos e fronteiras antes da edição.
+
+3. "POC_REMOVAL_MAP.md"
+
+Mapa de todas as funções, inputs, variáveis e filtros da POC, com destino de cada referência.
+
+4. "WEIS_INTEGRATION.md"
+
+Comparação da Weis 1.995 e 1.996, fórmulas efetivamente utilizadas, origem dos negócios, condições ABS/CONT e limitações.
+
+5. "INPUTS_DIFF.md"
+
+Lista completa de inputs inalterados, removidos, adicionados e respectivos motivos. Destacar qualquer alteração de default como violação de escopo, salvo autorização explícita.
+
+6. "REGRESSION_STRATEGY.md"
+
+Provas de preservação da VWAP Bands, macro M5, C2/C3/C4/C5, BASE/TURBO, FAR, Stage 2, gatilhos e limites.
+
+7. "REGRESSION_FINANCE.md"
+
+Resultados de testes do protocolo financeiro, execução, recuperação, BE, EOD, sizing e journaling.
+
+8. "SIGNAL_LIFECYCLE_AUDIT.md"
+
+Exemplos rastreáveis desde o candidato até o encerramento de cada intenção, com diferenciação entre disparo e execução.
+
+9. "TEST_RESULTS.md"
+
+Testes executados, aprovados, reprovados e pendentes. Incluir casos que refutaram a implementação.
+
+10. "CHANGELOG_CIRURGICO.md"
+
+Diff exato e justificativa de cada mudança; registrar também o que foi deliberadamente preservado.
+
+11. Relatório de compilação
+
+Compilar nativamente no MetaEditor, quando o ambiente permitir, exigindo zero erros e apresentando warnings reais.
+
+Se MetaEditor ou MT5 não estiverem disponíveis, declarar:
+
+"COMPILACAO_NATIVA_NAO_VERIFICADA"
+
+Se não houver teste de replay ou execução:
+
+"REPLAY_NAO_VERIFICADO"
+
+Não escrever “pronto para produção” sem evidência.
+
+20. ORDEM DE EXECUÇÃO E CRITÉRIO FINAL
+
+Trabalhar na sequência:
+
+1. Verificar identidade e integridade das fontes.
+2. Inventariar dependências e áreas financeiras protegidas.
+3. Registrar baseline e hashes.
+4. Remover POC operacional.
+5. Integrar Weis Wave 1.996 exclusivamente no domínio autorizado.
+6. Adaptar C1 ABS/CONT.
+7. Ajustar apenas a revalidação viva incompatível com o novo motor.
+8. Verificar ausência de alterações indevidas na matriz restante.
+9. Acrescentar rastreabilidade não invasiva.
+10. Executar testes determinísticos e regressão.
+11. Compilar nativamente quando possível.
+12. Auditar o diff completo.
+13. Entregar arquivos, relatório e limitações.
+
+PROIBIDO:
+
+- Declarar equivalência sem testes.
+- Declarar compilação sem MetaEditor.
+- Declarar vantagem estatística sem dados.
+- Inventar parâmetros, filtros, prioridade entre rotas ou histórico.
+- Deixar dependência oculta de POC.
+- Corrigir silenciosamente código financeiro fora do escopo.
+- Reduzir proteções para aumentar entradas.
+- Substituir a 1.995 pela arquitetura integral da 1.996.
+- Alterar VWAP Bands ou timeframes nesta entrega.
+
+CRITÉRIO DE ACEITE:
+
+A nova versão deve preservar a arquitetura operacional e financeira da Scalper 1.995, remover completamente o POC de suas decisões e distinguir absorção e continuação por evidência objetiva de esforço, eficiência, progresso e rejeição da Weis Wave 1.996.
+
+Se uma condição não puder ser demonstrada, identificar o impedimento e deixar seu status como não verificado. Não preencher lacunas com confiança artificial.
+
+RESULTADO ESPERADO: código reconstruído a partir da 1.995 original, alterações restritas, comparação auditável, sem POC operacional, Weis Wave causal corretamente integrada e nenhuma regressão financeira conhecida. NÃO HOMOLOGAR automaticamente.
