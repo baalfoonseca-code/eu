@@ -1,0 +1,39 @@
+{
+  "eu1995": {
+    "path": "/workspace/eu/eu1995",
+    "bytes": 378497,
+    "sha256": "2479ed8e5c9189438d787be1e804abbd95f9e1c06e01042e560251e64ef67fc5",
+    "git_blob": "a764baec7f716ad893ee82ae807d91e2c45f3986"
+  },
+  "comando para a atualização do código": {
+    "path": "/workspace/eu/comando para a atualização do código",
+    "bytes": 30817,
+    "sha256": "460617a86e17b32816458e7eea299469b01daaef0e30af277da094098e43db7a"
+  },
+  "RemoraScalper1995_Weis1996.mq5": {
+    "path": "/workspace/eu/RemoraScalper1995_Weis1996.mq5",
+    "bytes": 371234,
+    "sha256": "081090159ffa1296e15d6077fdf6775909eadb300fc77ed1a552925fab2e1837"
+  },
+  "references/ObjectiveMatrix.e0bacb9.mqh": {
+    "path": "/workspace/eu/references/ObjectiveMatrix.e0bacb9.mqh",
+    "bytes": 37384,
+    "sha256": "9bd44f13e61845be3c490a802035667da5ff0cb491f9b5a6bb127722b09a1b08",
+    "git_blob": "e0bacb9fa1e003ddb57c658c9cc8860e208cfbfc"
+  },
+  "include/SignalLifecycle1995.mqh": {
+    "path": "/workspace/eu/include/SignalLifecycle1995.mqh",
+    "bytes": 10052,
+    "sha256": "500338661e5f731dbecfd31ecc1194e0cdfd89105afcfd6ea12a318acd097504"
+  },
+  "include/Weis1996Engine.mqh": {
+    "path": "/workspace/eu/include/Weis1996Engine.mqh",
+    "bytes": 14704,
+    "sha256": "357bfb526d023ec5c43b3358f416400099f183e34e8d584e59803f19986d3f3c"
+  },
+  "include/Weis1996Kernel.mqh": {
+    "path": "/workspace/eu/include/Weis1996Kernel.mqh",
+    "bytes": 6552,
+    "sha256": "8aaef7aebe183a21537f64c2a4031ecaaaf88e5a2d79a075143f1d1a4337470e"
+  }
+}

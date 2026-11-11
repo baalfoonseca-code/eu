@@ -1,0 +1,790 @@
+[
+  {
+    "line": 76,
+    "text": "enum ENUM_POC_STATE"
+  },
+  {
+    "line": 78,
+    "text": "POCS_INVALID = 0,"
+  },
+  {
+    "line": 79,
+    "text": "POCS_NO_DISPLACEMENT,"
+  },
+  {
+    "line": 80,
+    "text": "POCS_FOLLOWING,"
+  },
+  {
+    "line": 81,
+    "text": "POCS_DIVERGENT"
+  },
+  {
+    "line": 161,
+    "text": "//--- POC M1"
+  },
+  {
+    "line": 162,
+    "text": "input int Inp_POC_WindowSec = 300; // authorized POC window, seconds"
+  },
+  {
+    "line": 163,
+    "text": "input double Inp_POC_FollowRatio = 0.40; // Razão POC segue preço"
+  },
+  {
+    "line": 164,
+    "text": "input bool Inp_RejectPOCTies = false; // Ablation only; baseline keeps canonical POC"
+  },
+  {
+    "line": 234,
+    "text": "struct POCResult"
+  },
+  {
+    "line": 237,
+    "text": "double poc;"
+  },
+  {
+    "line": 268,
+    "text": "// POC"
+  },
+  {
+    "line": 269,
+    "text": "POCResult pocNow, pocPrev;"
+  },
+  {
+    "line": 270,
+    "text": "bool      windowsValid;"
+  },
+  {
+    "line": 271,
+    "text": "double priceMove, pocMove;"
+  },
+  {
+    "line": 274,
+    "text": "ENUM_POC_STATE pocState;"
+  },
+  {
+    "line": 277,
+    "text": "ENUM_POC_STATE contPocState;"
+  },
+  {
+    "line": 290,
+    "text": "bool      absDivergence, absStallStrict, absFollowingReaction, absFollowingExtension;"
+  },
+  {
+    "line": 291,
+    "text": "bool      absPocContextOk, c1;"
+  },
+  {
+    "line": 293,
+    "text": "bool      cont_effort_ok, cont_displacement_ok, cont_poc_ok;"
+  },
+  {
+    "line": 1004,
+    "text": "PerfStat perfPOC; // cost of the original 300-second POC queries"
+  },
+  {
+    "line": 1296,
+    "text": "string PocStateStr(ENUM_POC_STATE st)"
+  },
+  {
+    "line": 1300,
+    "text": "case POCS_NO_DISPLACEMENT: return \"POC_NO_DISPLACEMENT\";"
+  },
+  {
+    "line": 1301,
+    "text": "case POCS_FOLLOWING:            return \"POC_FOLLOWING\";"
+  },
+  {
+    "line": 1302,
+    "text": "case POCS_DIVERGENT:           return \"POC_DIVERGENT\";"
+  },
+  {
+    "line": 1303,
+    "text": "default: return \"POC_INVALID\";"
+  },
+  {
+    "line": 1560,
+    "text": "void ResetPOCResult(POCResult &r)"
+  },
+  {
+    "line": 1562,
+    "text": "r.ok = false; r.poc = 0; r.totalVolume = 0; r.lastValidPrice = 0;"
+  },
+  {
+    "line": 1579,
+    "text": "ResetPOCResult(s.pocNow);"
+  },
+  {
+    "line": 1580,
+    "text": "ResetPOCResult(s.pocPrev);"
+  },
+  {
+    "line": 1581,
+    "text": "s.windowsValid=false;"
+  },
+  {
+    "line": 1582,
+    "text": "s.priceMove=0;s.pocMove=0;s.displacementOk=false;s.moveDir=0;"
+  },
+  {
+    "line": 1583,
+    "text": "s.pocState=POCS_INVALID;"
+  },
+  {
+    "line": 1584,
+    "text": "s.contDisplacementOk=false;s.contMoveDir=0;s.contPocState=POCS_INVALID;"
+  },
+  {
+    "line": 1590,
+    "text": "s.absDivergence=false;s.absStallStrict=false;"
+  },
+  {
+    "line": 1591,
+    "text": "s.absFollowingReaction=false;s.absFollowingExtension=false;"
+  },
+  {
+    "line": 1592,
+    "text": "s.absPocContextOk=false;s.c1=false;"
+  },
+  {
+    "line": 1593,
+    "text": "s.cont_effort_ok=false;s.cont_displacement_ok=false;s.cont_poc_ok=false;"
+  },
+  {
+    "line": 1719,
+    "text": "// POC M1 COM DETECÇÃO DE EMPATE"
+  },
+  {
+    "line": 1720,
+    "text": "// Preserva o princípio do ComputePOCWindow da 2.44."
+  },
+  {
+    "line": 1723,
+    "text": "bool ComputePOCWithTieCore(ulong from_msc, ulong to_msc, POCResult &res)"
+  },
+  {
+    "line": 1725,
+    "text": "ResetPOCResult(res);"
+  },
+  {
+    "line": 1789,
+    "text": "res.poc = pmin + best*ts;"
+  },
+  {
+    "line": 1790,
+    "text": "res.top1Price = res.poc;"
+  },
+  {
+    "line": 1813,
+    "text": "// Timing wrapper only; POC core and requested windows are unchanged."
+  },
+  {
+    "line": 1814,
+    "text": "bool ComputePOCWithTie(ulong from_msc,ulong to_msc,POCResult &res)"
+  },
+  {
+    "line": 1817,
+    "text": "bool ok=ComputePOCWithTieCore(from_msc,to_msc,res);"
+  },
+  {
+    "line": 1818,
+    "text": "RecordPerf(perfPOC,(double)(GetMicrosecondCount()-begin));"
+  },
+  {
+    "line": 2096,
+    "text": "// Preserva todas as fórmulas da v2.44 (C2/C3/C4/C5/WW/POC/ABS/CONT)."
+  },
+  {
+    "line": 2101,
+    "text": "// - POC: janela 60s, com detecção de empate"
+  },
+  {
+    "line": 2177,
+    "text": "// POC — janelas Inp_POC_WindowSec referenciadas ao início do sinal atual (causal)"
+  },
+  {
+    "line": 2181,
+    "text": "ulong win_msc=(ulong)Inp_POC_WindowSec*1000;"
+  },
+  {
+    "line": 2189,
+    "text": "ComputePOCWithTie(fromNow, toNow, s.pocNow);"
+  },
+  {
+    "line": 2190,
+    "text": "ComputePOCWithTie(fromPrev, toPrev, s.pocPrev);"
+  },
+  {
+    "line": 2192,
+    "text": "// Optional tie rejection; baseline false preserves canonical deterministic POC"
+  },
+  {
+    "line": 2194,
+    "text": "if(Inp_RejectPOCTies)"
+  },
+  {
+    "line": 2196,
+    "text": "if(s.pocNow.ok && s.pocNow.hasTie) s.pocNow.ok = false;"
+  },
+  {
+    "line": 2197,
+    "text": "if(s.pocPrev.ok && s.pocPrev.hasTie) s.pocPrev.ok = false;"
+  },
+  {
+    "line": 2200,
+    "text": "s.windowsValid=(s.pocNow.ok&&s.pocPrev.ok);"
+  },
+  {
+    "line": 2202,
+    "text": "// Movimento de preço e POC"
+  },
+  {
+    "line": 2203,
+    "text": "if(s.windowsValid)"
+  },
+  {
+    "line": 2205,
+    "text": "s.priceMove=s.pocNow.lastValidPrice-s.pocPrev.lastValidPrice;"
+  },
+  {
+    "line": 2206,
+    "text": "s.pocMove =s.pocNow.poc-s.pocPrev.poc;"
+  },
+  {
+    "line": 2210,
+    "text": "s.displacementOk=s.windowsValid && MathAbs(s.priceMove)>=s.minDispl;"
+  },
+  {
+    "line": 2212,
+    "text": "s.pocState=POCS_INVALID;"
+  },
+  {
+    "line": 2213,
+    "text": "if(s.windowsValid)"
+  },
+  {
+    "line": 2218,
+    "text": "bool follows=(s.pocMove*s.priceMove>0) &&"
+  },
+  {
+    "line": 2219,
+    "text": "MathAbs(s.pocMove)>=MathAbs(s.priceMove)*Inp_POC_FollowRatio;"
+  },
+  {
+    "line": 2220,
+    "text": "s.pocState=follows?POCS_FOLLOWING:POCS_DIVERGENT;"
+  },
+  {
+    "line": 2222,
+    "text": "else s.pocState=POCS_NO_DISPLACEMENT;"
+  },
+  {
+    "line": 2224,
+    "text": "s.contDisplacementOk=s.windowsValid && MathAbs(s.priceMove)>=s.contMinDispl;"
+  },
+  {
+    "line": 2226,
+    "text": "s.contPocState=POCS_INVALID;"
+  },
+  {
+    "line": 2227,
+    "text": "if(s.windowsValid)"
+  },
+  {
+    "line": 2232,
+    "text": "bool follows=(s.pocMove*s.priceMove>0) &&"
+  },
+  {
+    "line": 2233,
+    "text": "MathAbs(s.pocMove)>=MathAbs(s.priceMove)*Inp_POC_FollowRatio;"
+  },
+  {
+    "line": 2234,
+    "text": "s.contPocState=follows?POCS_FOLLOWING:POCS_DIVERGENT;"
+  },
+  {
+    "line": 2236,
+    "text": "else s.contPocState=POCS_NO_DISPLACEMENT;"
+  },
+  {
+    "line": 2261,
+    "text": "// Contextos POC ABS"
+  },
+  {
+    "line": 2263,
+    "text": "s.absDivergence =s.windowsValid&&(s.pocState==POCS_DIVERGENT);"
+  },
+  {
+    "line": 2265,
+    "text": "s.absStallStrict"
+  },
+  {
+    "line": 2266,
+    "text": "=s.windowsValid&&(s.pocState==POCS_NO_DISPLACEMENT)&&s.c1_body_ok;"
+  },
+  {
+    "line": 2268,
+    "text": "// FOLLOWING_REACTION: POC segue, preço na direção ABS, com displacement"
+  },
+  {
+    "line": 2269,
+    "text": "s.absFollowingReaction =s.windowsValid&&(s.pocState==POCS_FOLLOWING)&&"
+  },
+  {
+    "line": 2271,
+    "text": "// FOLLOWING_EXTENSION: POC segue, preço contra ABS — NÃO valida ABS"
+  },
+  {
+    "line": 2272,
+    "text": "s.absFollowingExtension =s.windowsValid&&(s.pocState==POCS_FOLLOWING)&&"
+  },
+  {
+    "line": 2274,
+    "text": "s.absPocContextOk=s.absDivergence||s.absStallStrict||s.absFollowingReaction;"
+  },
+  {
+    "line": 2276,
+    "text": "s.c1=s.c1_effort_ok&&s.absPocContextOk;"
+  },
+  {
+    "line": 2281,
+    "text": "s.cont_poc_ok"
+  },
+  {
+    "line": 2282,
+    "text": "=s.windowsValid&&s.contDisplacementOk&&(s.contPocState==POCS_FOLLOWING);"
+  },
+  {
+    "line": 2289,
+    "text": "s.c1Cont=s.cont_effort_ok&&s.cont_displacement_ok&&s.cont_poc_ok&&"
+  },
+  {
+    "line": 2649,
+    "text": "CsvAdd(line,\"REJECT_POC_TIES\");"
+  },
+  {
+    "line": 2660,
+    "text": "CsvAdd(line,BStr(Inp_RejectPOCTies)); // REJECT_POC_TIES"
+  },
+  {
+    "line": 2749,
+    "text": "CsvAdd(line,\"ABS_POC_STATE\");"
+  },
+  {
+    "line": 2750,
+    "text": "CsvAdd(line,\"CONT_POC_STATE\");"
+  },
+  {
+    "line": 2763,
+    "text": "CsvAdd(line,\"CONT_POC_OK\");"
+  },
+  {
+    "line": 2768,
+    "text": "CsvAdd(line,\"POC_MOVE\");"
+  },
+  {
+    "line": 2771,
+    "text": "CsvAdd(line,\"POC_NOW\");"
+  },
+  {
+    "line": 2772,
+    "text": "CsvAdd(line,\"POC_NOW_VOLUME\");"
+  },
+  {
+    "line": 2773,
+    "text": "CsvAdd(line,\"POC_NOW_WINDOW_STATE\");"
+  },
+  {
+    "line": 2774,
+    "text": "CsvAdd(line,\"POC_NOW_TIE\");"
+  },
+  {
+    "line": 2775,
+    "text": "CsvAdd(line,\"POC_NOW_TRADE_COUNT\");"
+  },
+  {
+    "line": 2776,
+    "text": "CsvAdd(line,\"POC_NOW_LEVELS\");"
+  },
+  {
+    "line": 2777,
+    "text": "CsvAdd(line,\"POC_NOW_LAST_PRICE\");"
+  },
+  {
+    "line": 2778,
+    "text": "CsvAdd(line,\"POC_NOW_TOP1_PRICE\");"
+  },
+  {
+    "line": 2779,
+    "text": "CsvAdd(line,\"POC_NOW_TOP1_VOL\");"
+  },
+  {
+    "line": 2780,
+    "text": "CsvAdd(line,\"POC_NOW_TOP2_PRICE\");"
+  },
+  {
+    "line": 2781,
+    "text": "CsvAdd(line,\"POC_NOW_TOP2_VOL\");"
+  },
+  {
+    "line": 2782,
+    "text": "CsvAdd(line,\"POC_NOW_DOMINANCE\");"
+  },
+  {
+    "line": 2789,
+    "text": "CsvAdd(line,\"POC_PREV\");"
+  },
+  {
+    "line": 2790,
+    "text": "CsvAdd(line,\"POC_PREV_VOLUME\");"
+  },
+  {
+    "line": 2791,
+    "text": "CsvAdd(line,\"POC_PREV_WINDOW_STATE\");"
+  },
+  {
+    "line": 2792,
+    "text": "CsvAdd(line,\"POC_PREV_TIE\");"
+  },
+  {
+    "line": 2793,
+    "text": "CsvAdd(line,\"POC_PREV_TRADE_COUNT\");"
+  },
+  {
+    "line": 2794,
+    "text": "CsvAdd(line,\"POC_PREV_LEVELS\");"
+  },
+  {
+    "line": 2795,
+    "text": "CsvAdd(line,\"POC_PREV_LAST_PRICE\");"
+  },
+  {
+    "line": 2796,
+    "text": "CsvAdd(line,\"POC_PREV_TOP1_PRICE\");"
+  },
+  {
+    "line": 2797,
+    "text": "CsvAdd(line,\"POC_PREV_TOP1_VOL\");"
+  },
+  {
+    "line": 2798,
+    "text": "CsvAdd(line,\"POC_PREV_TOP2_PRICE\");"
+  },
+  {
+    "line": 2799,
+    "text": "CsvAdd(line,\"POC_PREV_TOP2_VOL\");"
+  },
+  {
+    "line": 2800,
+    "text": "CsvAdd(line,\"POC_PREV_DOMINANCE\");"
+  },
+  {
+    "line": 2810,
+    "text": "CsvAdd(line,\"POC_RESPONSE\");"
+  },
+  {
+    "line": 2887,
+    "text": "CsvAdd(line,available ? (BStr(s.windowsValid)) : \"\"); // WINDOWS_VALID"
+  },
+  {
+    "line": 2888,
+    "text": "CsvAdd(line,available ? (PocStateStr(s.pocState)) : \"\"); // ABS_POC_STATE"
+  },
+  {
+    "line": 2889,
+    "text": "CsvAdd(line,available ? (PocStateStr(s.contPocState)) : \"\"); // CONT_POC_STATE"
+  },
+  {
+    "line": 2896,
+    "text": "CsvAdd(line,available ? (BStr(s.absDivergence)) : \"\"); // ABS_DIVERGENCE"
+  },
+  {
+    "line": 2897,
+    "text": "CsvAdd(line,available ? (BStr(s.absStallStrict)) : \"\"); // ABS_STALL_STRICT"
+  },
+  {
+    "line": 2899,
+    "text": "CsvAdd(line,available ? (BStr(s.absFollowingReaction)) : \"\"); //"
+  },
+  {
+    "line": 2901,
+    "text": "CsvAdd(line,available ? (BStr(s.absFollowingExtension)) : \"\"); //"
+  },
+  {
+    "line": 2905,
+    "text": "CsvAdd(line,available ? (BStr(s.cont_poc_ok)) : \"\"); // CONT_POC_OK"
+  },
+  {
+    "line": 2910,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocMove)) : \"\"); // POC_MOVE"
+  },
+  {
+    "line": 2913,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.poc)) : \"\"); // POC_NOW"
+  },
+  {
+    "line": 2914,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.totalVolume)) : \"\"); // POC_NOW_VOLUME"
+  },
+  {
+    "line": 2915,
+    "text": "CsvAdd(line,available ? (s.pocNow.ok ? \"VALID\" : \"INVALID\") : \"\"); //"
+  },
+  {
+    "line": 2916,
+    "text": "// POC_NOW_WINDOW_STATE"
+  },
+  {
+    "line": 2917,
+    "text": "CsvAdd(line,available ? (BStr(s.pocNow.hasTie)) : \"\"); // POC_NOW_TIE"
+  },
+  {
+    "line": 2918,
+    "text": "CsvAdd(line,available ? (IntegerToString(s.pocNow.tradeCount)) : \"\"); //"
+  },
+  {
+    "line": 2919,
+    "text": "// POC_NOW_TRADE_COUNT"
+  },
+  {
+    "line": 2920,
+    "text": "CsvAdd(line,available ? (IntegerToString(s.pocNow.levels)) : \"\"); // POC_NOW_LEVELS"
+  },
+  {
+    "line": 2921,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.lastValidPrice)) : \"\"); // POC_NOW_LAST_PRICE"
+  },
+  {
+    "line": 2922,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.top1Price)) : \"\"); // POC_NOW_TOP1_PRICE"
+  },
+  {
+    "line": 2923,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.top1Vol)) : \"\"); // POC_NOW_TOP1_VOL"
+  },
+  {
+    "line": 2924,
+    "text": "CsvAdd(line,available ? (s.pocNow.levels >= 2 ? CsvD(s.pocNow.top2Price) : \"\") : \"\"); //"
+  },
+  {
+    "line": 2925,
+    "text": "// POC_NOW_TOP2_PRICE"
+  },
+  {
+    "line": 2926,
+    "text": "CsvAdd(line,available ? (s.pocNow.levels >= 2 ? CsvD(s.pocNow.top2Vol) : \"\") : \"\"); //"
+  },
+  {
+    "line": 2927,
+    "text": "// POC_NOW_TOP2_VOL"
+  },
+  {
+    "line": 2928,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.dominance)) : \"\"); // POC_NOW_DOMINANCE"
+  },
+  {
+    "line": 2929,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.buyVol)) : \"\"); // AGG_BUY_NOW"
+  },
+  {
+    "line": 2930,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.sellVol)) : \"\"); // AGG_SELL_NOW"
+  },
+  {
+    "line": 2931,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.unkVol)) : \"\"); // AGG_UNKNOWN_NOW"
+  },
+  {
+    "line": 2932,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocNow.buyVol - s.pocNow.sellVol)) : \"\"); //"
+  },
+  {
+    "line": 2934,
+    "text": "CsvAdd(line,available ? ((s.pocNow.buyVol + s.pocNow.sellVol > 0.0) ?"
+  },
+  {
+    "line": 2935,
+    "text": "CsvD((s.pocNow.buyVol - s.pocNow.sellVol)/(s.pocNow.buyVol + s.pocNow.sellVol)) : \"\") : \"\");"
+  },
+  {
+    "line": 2937,
+    "text": "CsvAdd(line,available ? ((s.pocNow.buyVol + s.pocNow.sellVol + s.pocNow.unkVol > 0.0) ?"
+  },
+  {
+    "line": 2938,
+    "text": "CsvD((s.pocNow.buyVol + s.pocNow.sellVol)/(s.pocNow.buyVol + s.pocNow.sellVol +"
+  },
+  {
+    "line": 2939,
+    "text": "s.pocNow.unkVol)) : \"\") : \"\"); // AGG_KNOWN_PCT_NOW"
+  },
+  {
+    "line": 2940,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.poc)) : \"\"); // POC_PREV"
+  },
+  {
+    "line": 2941,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.totalVolume)) : \"\"); // POC_PREV_VOLUME"
+  },
+  {
+    "line": 2942,
+    "text": "CsvAdd(line,available ? (s.pocPrev.ok ? \"VALID\" : \"INVALID\") : \"\"); //"
+  },
+  {
+    "line": 2943,
+    "text": "// POC_PREV_WINDOW_STATE"
+  },
+  {
+    "line": 2944,
+    "text": "CsvAdd(line,available ? (BStr(s.pocPrev.hasTie)) : \"\"); // POC_PREV_TIE"
+  },
+  {
+    "line": 2945,
+    "text": "CsvAdd(line,available ? (IntegerToString(s.pocPrev.tradeCount)) : \"\"); //"
+  },
+  {
+    "line": 2946,
+    "text": "// POC_PREV_TRADE_COUNT"
+  },
+  {
+    "line": 2947,
+    "text": "CsvAdd(line,available ? (IntegerToString(s.pocPrev.levels)) : \"\"); // POC_PREV_LEVELS"
+  },
+  {
+    "line": 2948,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.lastValidPrice)) : \"\"); //"
+  },
+  {
+    "line": 2949,
+    "text": "// POC_PREV_LAST_PRICE"
+  },
+  {
+    "line": 2950,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.top1Price)) : \"\"); // POC_PREV_TOP1_PRICE"
+  },
+  {
+    "line": 2951,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.top1Vol)) : \"\"); // POC_PREV_TOP1_VOL"
+  },
+  {
+    "line": 2952,
+    "text": "CsvAdd(line,available ? (s.pocPrev.levels >= 2 ? CsvD(s.pocPrev.top2Price) : \"\") : \"\"); //"
+  },
+  {
+    "line": 2953,
+    "text": "// POC_PREV_TOP2_PRICE"
+  },
+  {
+    "line": 2954,
+    "text": "CsvAdd(line,available ? (s.pocPrev.levels >= 2 ? CsvD(s.pocPrev.top2Vol) : \"\") : \"\"); //"
+  },
+  {
+    "line": 2955,
+    "text": "// POC_PREV_TOP2_VOL"
+  },
+  {
+    "line": 2956,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.dominance)) : \"\"); // POC_PREV_DOMINANCE"
+  },
+  {
+    "line": 2957,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.buyVol)) : \"\"); // AGG_BUY_PREV"
+  },
+  {
+    "line": 2958,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.sellVol)) : \"\"); // AGG_SELL_PREV"
+  },
+  {
+    "line": 2959,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.unkVol)) : \"\"); // AGG_UNKNOWN_PREV"
+  },
+  {
+    "line": 2960,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.buyVol - s.pocPrev.sellVol)) : \"\"); //"
+  },
+  {
+    "line": 2962,
+    "text": "CsvAdd(line,available ? ((s.pocPrev.buyVol + s.pocPrev.sellVol > 0.0) ?"
+  },
+  {
+    "line": 2963,
+    "text": "CsvD((s.pocPrev.buyVol - s.pocPrev.sellVol)/(s.pocPrev.buyVol + s.pocPrev.sellVol)) : \"\") :"
+  },
+  {
+    "line": 2965,
+    "text": "CsvAdd(line,available ? ((s.pocPrev.buyVol + s.pocPrev.sellVol + s.pocPrev.unkVol > 0.0) ?"
+  },
+  {
+    "line": 2966,
+    "text": "CsvD((s.pocPrev.buyVol + s.pocPrev.sellVol)/(s.pocPrev.buyVol + s.pocPrev.sellVol +"
+  },
+  {
+    "line": 2967,
+    "text": "s.pocPrev.unkVol)) : \"\") : \"\"); // AGG_KNOWN_PCT_PREV"
+  },
+  {
+    "line": 2969,
+    "text": "CsvAdd(line,available ? (CsvD(s.pocPrev.totalVolume > 0.0 ?"
+  },
+  {
+    "line": 2970,
+    "text": "s.pocNow.totalVolume/s.pocPrev.totalVolume : 0.0)) : \"\"); // VOL_RATIO"
+  },
+  {
+    "line": 2974,
+    "text": "MathAbs(s.pocMove)/MathAbs(s.priceMove) : 0.0)) : \"\"); // POC_RESPONSE"
+  },
+  {
+    "line": 3499,
+    "text": "if(Inp_EnableAbsorption&&s.absFollowingExtension)"
+  },
+  {
+    "line": 3500,
+    "text": "PrintFormat(\"[SCALPER][ABS_FOLLOWING_EXTENSION_BLOCK] Dir=%s PriceMove=%.4f PocMove=%.4f FLOW=extension\","
+  },
+  {
+    "line": 3501,
+    "text": "DirStr(s.dir),s.priceMove,s.pocMove);"
+  },
+  {
+    "line": 3506,
+    "text": "DirStr(s.dir),PocStateStr(s.pocState),DirStr(s.dirCont));"
+  },
+  {
+    "line": 3965,
+    "text": "ResetPerfStat(perfMacro); ResetPerfStat(perfMicro); ResetPerfStat(perfStage2); ResetPerfStat(perfPOC);"
+  },
+  {
+    "line": 4006,
+    "text": "if(Inp_POC_WindowSec<=0 || Inp_ArmedTimeoutSec<=0 || Inp_Region_Candles<1 ||"
+  },
+  {
+    "line": 4022,
+    "text": "gC3Min>gC3Max || gC3Max>=gC2 || !Positive(Inp_POC_FollowRatio)) return false;"
+  },
+  {
+    "line": 4170,
+    "text": "ResetPerfStat(perfMacro); ResetPerfStat(perfMicro); ResetPerfStat(perfStage2); ResetPerfStat(perfPOC);"
+  },
+  {
+    "line": 4214,
+    "text": "BStr(Inp_EnableMacroDirectionGate),BStr(Inp_EnableLateDirectionBlock),BStr(Inp_RejectPOCTies));"
+  },
+  {
+    "line": 4215,
+    "text": "PrintFormat(\"[Scalper 1995][EFFECTIVE] %s magic=%d SL=%.8f TP=%.8f exit=%s spread=%.8f deviation=%d SYMBOL_POINT=%.8f tick=%.8f breakout=%.8f overshoot=%.8f ABSmove=%.8f ABSbody=%.8f CONTmove=%.8f C2=%.8f C3min=%.8f C3max=%.8f sigmaFloor=%.8f bands=%.8f sigmaDays=%d POCsec=%d context=%s signal=%s\","
+  },
+  {
+    "line": 4220,
+    "text": "SigmaLookbackDays,Inp_POC_WindowSec,EnumToString(Inp_ContextTF),EnumToString(Inp_SignalTF));"
+  },
+  {
+    "line": 4406,
+    "text": "PrintFormat(\"[Scalper 1995][PERF_EXTRA] POC count=%I64d mean_us=%.1f max_us=%.1f FAR count=%I64u mean_us=%.1f max_us=%I64u\","
+  },
+  {
+    "line": 4407,
+    "text": "perfPOC.count,perfPOC.count>0?perfPOC.sumUs/perfPOC.count:0,perfPOC.maxUs,"
+  }
+]

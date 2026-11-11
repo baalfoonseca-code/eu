@@ -1,0 +1,387 @@
+[
+  {
+    "name": "Inp_Magic_WIN",
+    "type": "int",
+    "default": "60001"
+  },
+  {
+    "name": "Inp_Magic_WDO",
+    "type": "int",
+    "default": "60002"
+  },
+  {
+    "name": "CSVFileName",
+    "type": "string",
+    "default": "\"Scalper1995\""
+  },
+  {
+    "name": "BacktestStart",
+    "type": "datetime",
+    "default": "D'2025.01.01'"
+  },
+  {
+    "name": "Inp_ContextTF",
+    "type": "ENUM_TIMEFRAMES",
+    "default": "PERIOD_M5"
+  },
+  {
+    "name": "Inp_SignalTF",
+    "type": "ENUM_TIMEFRAMES",
+    "default": "PERIOD_M1"
+  },
+  {
+    "name": "Inp_StartHHMM",
+    "type": "int",
+    "default": "900"
+  },
+  {
+    "name": "Inp_StopEntryHHMM",
+    "type": "int",
+    "default": "1530"
+  },
+  {
+    "name": "Inp_EOD_CloseHHMM",
+    "type": "int",
+    "default": "1750"
+  },
+  {
+    "name": "Inp_SizingMode",
+    "type": "SIZING_MODE",
+    "default": "SIZING_FIXED"
+  },
+  {
+    "name": "Inp_FixedLots",
+    "type": "double",
+    "default": "1.0"
+  },
+  {
+    "name": "Inp_RiskPerTradePct",
+    "type": "double",
+    "default": "0.15"
+  },
+  {
+    "name": "Inp_MaxLots",
+    "type": "double",
+    "default": "2.0"
+  },
+  {
+    "name": "Inp_SL_Pts_WIN",
+    "type": "double",
+    "default": "400.0"
+  },
+  {
+    "name": "Inp_TP_Pts_WIN",
+    "type": "double",
+    "default": "2000.0"
+  },
+  {
+    "name": "Inp_SL_Pts_WDO",
+    "type": "double",
+    "default": "10.0"
+  },
+  {
+    "name": "Inp_TP_Pts_WDO",
+    "type": "double",
+    "default": "25.0"
+  },
+  {
+    "name": "Inp_SpreadMaxPts_WIN",
+    "type": "double",
+    "default": "30.0"
+  },
+  {
+    "name": "Inp_SpreadMaxPts_WDO",
+    "type": "double",
+    "default": "2.0"
+  },
+  {
+    "name": "Inp_EnableBreakEven",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_EnableDailyRiskStop",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_MaxDailyLossR",
+    "type": "double",
+    "default": "3.0"
+  },
+  {
+    "name": "Inp_EnableConsecutiveLossStop",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_MaxConsecutiveLosses",
+    "type": "int",
+    "default": "3"
+  },
+  {
+    "name": "Inp_MaxTradesDay",
+    "type": "int",
+    "default": "10"
+  },
+  {
+    "name": "Inp_CooldownSec",
+    "type": "int",
+    "default": "0"
+  },
+  {
+    "name": "Inp_LossCooldownSec",
+    "type": "int",
+    "default": "0"
+  },
+  {
+    "name": "Inp_ArmedTimeoutSec",
+    "type": "int",
+    "default": "300"
+  },
+  {
+    "name": "Inp_ABSTriggerReference",
+    "type": "ABS_TRIGGER_REFERENCE",
+    "default": "ABS_TRIGGER_SIGNAL_CLOSE"
+  },
+  {
+    "name": "Inp_Region_Candles",
+    "type": "int",
+    "default": "2"
+  },
+  {
+    "name": "Inp_BreakoutMargin_WIN",
+    "type": "double",
+    "default": "175.0"
+  },
+  {
+    "name": "Inp_BreakoutMargin_WDO",
+    "type": "double",
+    "default": "3.5"
+  },
+  {
+    "name": "Inp_MaxOvershoot_WIN",
+    "type": "double",
+    "default": "100.0"
+  },
+  {
+    "name": "Inp_MaxOvershoot_WDO",
+    "type": "double",
+    "default": "2.5"
+  },
+  {
+    "name": "Inp_ABS_Effort",
+    "type": "double",
+    "default": "1.50"
+  },
+  {
+    "name": "Inp_CONT_Effort",
+    "type": "double",
+    "default": "1.50"
+  },
+  {
+    "name": "Inp_ABS_BreakoutEffort",
+    "type": "double",
+    "default": "1.50"
+  },
+  {
+    "name": "Inp_CONT_BreakoutEffort",
+    "type": "double",
+    "default": "1.50"
+  },
+  {
+    "name": "Inp_ABS_MinPriceMovePts_WIN",
+    "type": "double",
+    "default": "60.0"
+  },
+  {
+    "name": "Inp_ABS_MaxBodyPts_WIN",
+    "type": "double",
+    "default": "60.0"
+  },
+  {
+    "name": "Inp_ABS_MinPriceMovePts_WDO",
+    "type": "double",
+    "default": "2.0"
+  },
+  {
+    "name": "Inp_ABS_MaxBodyPts_WDO",
+    "type": "double",
+    "default": "2.0"
+  },
+  {
+    "name": "Inp_CONT_MinPriceMovePts_WIN",
+    "type": "double",
+    "default": "50.0"
+  },
+  {
+    "name": "Inp_CONT_MinPriceMovePts_WDO",
+    "type": "double",
+    "default": "1.5"
+  },
+  {
+    "name": "Inp_Cont_RequireCandleDirection",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_BandMultiplier_WIN",
+    "type": "double",
+    "default": "0.80"
+  },
+  {
+    "name": "Inp_BandMultiplier_WDO",
+    "type": "double",
+    "default": "1.50"
+  },
+  {
+    "name": "Inp_VWAP_Inner_Pct",
+    "type": "double",
+    "default": "0.60"
+  },
+  {
+    "name": "Inp_VWAP_Outer_Pct",
+    "type": "double",
+    "default": "1.50"
+  },
+  {
+    "name": "Inp_Rule_40_60",
+    "type": "double",
+    "default": "0.40"
+  },
+  {
+    "name": "Inp_C2_WIN",
+    "type": "double",
+    "default": "700.0"
+  },
+  {
+    "name": "Inp_C3_Min_WIN",
+    "type": "double",
+    "default": "125.0"
+  },
+  {
+    "name": "Inp_C3_Max_WIN",
+    "type": "double",
+    "default": "400.0"
+  },
+  {
+    "name": "Inp_C2_WDO",
+    "type": "double",
+    "default": "25.0"
+  },
+  {
+    "name": "Inp_C3_Min_WDO",
+    "type": "double",
+    "default": "5.0"
+  },
+  {
+    "name": "Inp_C3_Max_WDO",
+    "type": "double",
+    "default": "15.0"
+  },
+  {
+    "name": "SigmaLookbackDays",
+    "type": "int",
+    "default": "5"
+  },
+  {
+    "name": "Inp_SigmaFloor_WIN",
+    "type": "double",
+    "default": "200.0"
+  },
+  {
+    "name": "Inp_SigmaFloor_WDO",
+    "type": "double",
+    "default": "7.0"
+  },
+  {
+    "name": "Inp_MaxDeviationPts_WIN",
+    "type": "int",
+    "default": "100"
+  },
+  {
+    "name": "Inp_MaxDeviationPts_WDO",
+    "type": "int",
+    "default": "2"
+  },
+  {
+    "name": "Inp_EnableMacroDirectionGate",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_EnableLateDirectionBlock",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_EnableAbsorption",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_EnableContinuation",
+    "type": "bool",
+    "default": "true"
+  },
+  {
+    "name": "Inp_TurboLotsMultiplier",
+    "type": "double",
+    "default": "2.0"
+  },
+  {
+    "name": "Inp_ExitMode",
+    "type": "EXIT_MODE",
+    "default": "PROGRESSIVE_NO_TP"
+  },
+  {
+    "name": "Inp_MaxProtectedR",
+    "type": "int",
+    "default": "5"
+  },
+  {
+    "name": "Inp_AggressionFilterMode",
+    "type": "FAR_MODE",
+    "default": "FAR_APLICAR"
+  },
+  {
+    "name": "Inp_AggressionThresholdPct",
+    "type": "double",
+    "default": "60.0"
+  },
+  {
+    "name": "Inp_WaveBaselineMin",
+    "type": "int",
+    "default": "3"
+  },
+  {
+    "name": "Inp_WaveReversalPts_WIN",
+    "type": "double",
+    "default": "60.0"
+  },
+  {
+    "name": "Inp_WaveReversalPts_WDO",
+    "type": "double",
+    "default": "2.0"
+  },
+  {
+    "name": "Inp_PathEventTicks",
+    "type": "int",
+    "default": "2"
+  },
+  {
+    "name": "Inp_CONT_MinPathEfficiency",
+    "type": "double",
+    "default": "0.60"
+  },
+  {
+    "name": "Inp_ABS_MaxPathEfficiency",
+    "type": "double",
+    "default": "0.30"
+  },
+  {
+    "name": "Inp_ABS_MinRejectionFraction",
+    "type": "double",
+    "default": "0.35"
+  }
+]

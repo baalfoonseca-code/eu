@@ -1,0 +1,1874 @@
+[
+  {
+    "name": "FARClearEvidence",
+    "line": 696,
+    "end_line": 703,
+    "sha256": "26b60c7903153d672e86bfa9162fc08afb0b06283002de402955b5b546695033"
+  },
+  {
+    "name": "FARPriceValid",
+    "line": 704,
+    "end_line": 708,
+    "sha256": "ca54087c86d498832006951cbfcff7a3fb433ae9be8d9809301bbc4c9cfee368"
+  },
+  {
+    "name": "FARRollingRead",
+    "line": 712,
+    "end_line": 767,
+    "sha256": "30d73f1943b32db0e878c11596ecdea48ed183ace214fa9178af9336ed2ace53"
+  },
+  {
+    "name": "FARBuildWindow",
+    "line": 768,
+    "end_line": 822,
+    "sha256": "13dcd9939f4007a7ecacb57c92d484f8a3e94100927d2b2bf64f2d2abf623b02"
+  },
+  {
+    "name": "FARReadContext",
+    "line": 823,
+    "end_line": 831,
+    "sha256": "57e515d9793f7dae6701a6e9226979d48c5d9d3a585cac6ec312a4f97d4883be"
+  },
+  {
+    "name": "FARCaptureArm",
+    "line": 832,
+    "end_line": 852,
+    "sha256": "c9a622536f5c34ee9b2fdc0c747370af6268d4281ae9ba36f9a7b19f3e263b5e"
+  },
+  {
+    "name": "FARPct",
+    "line": 853,
+    "end_line": 854,
+    "sha256": "71bc08035c82a391391135731ce00cef48419fd32c2034e367eeefdf03587151"
+  },
+  {
+    "name": "FAROppositePct",
+    "line": 855,
+    "end_line": 860,
+    "sha256": "c5a94583be657bf7a6423ba5147af568d8a9449e68ab77bc129fd628be1cea1c"
+  },
+  {
+    "name": "FAREvaluate",
+    "line": 861,
+    "end_line": 917,
+    "sha256": "08cb405d5defbdd443eca765688658e4f06bc44bb87e35f0b90352692f59d8f0"
+  },
+  {
+    "name": "FARBeforeDecision",
+    "line": 918,
+    "end_line": 946,
+    "sha256": "e83276461b9b0967be364bcbf1da941d9ce4a6755d6e81274579fee1320a6ece"
+  },
+  {
+    "name": "FARHeader",
+    "line": 947,
+    "end_line": 952,
+    "sha256": "a09f2339c9eaa37d1d4209d4e9f535b39c6a7aa42c4df19cdb5edeffb2c41310"
+  },
+  {
+    "name": "FARRow",
+    "line": 953,
+    "end_line": 991,
+    "sha256": "8ea2e9bf8bdcf1bb1424982795e2ba77cf953839f497911f2c69126173fde58a"
+  },
+  {
+    "name": "FARAuditSchemaCompatible",
+    "line": 992,
+    "end_line": 1002,
+    "sha256": "443a585b701383ca5c55208d1d25faf741326c8ae5c4608290a406992db381e3"
+  },
+  {
+    "name": "NewEntrySignalID",
+    "line": 1024,
+    "end_line": 1028,
+    "sha256": "ae521a6de97dece890da99718f1ec92aae6a6fc208a2fac43d4e2cc4c2e9ff08"
+  },
+  {
+    "name": "EntryDiagnosticHeader",
+    "line": 1030,
+    "end_line": 1037,
+    "sha256": "452a78b2fc3b077a306d9c3744061b7f7f5d6824c50c2f1d0a8b650e94d3fdbf"
+  },
+  {
+    "name": "EntryDiagnosticsInit",
+    "line": 1039,
+    "end_line": 1067,
+    "sha256": "8eceecfffe17113955bcdb8c525499231efe810e94a46381b03136fb70d61475"
+  },
+  {
+    "name": "EntryDiagnosticsClose",
+    "line": 1069,
+    "end_line": 1076,
+    "sha256": "9c5476eb0736883f86d28775864cd4d06f56fa4e6fa8ab2078fbd5958877a86f"
+  },
+  {
+    "name": "WriteEntryDiagnostic",
+    "line": 1078,
+    "end_line": 1145,
+    "sha256": "178d6b6e8bc7f0a7e5896b5877650b9543b7f3f23414ac3bfaaf7e8cd9fafb7f"
+  },
+  {
+    "name": "RememberEntryDispatch",
+    "line": 1147,
+    "end_line": 1160,
+    "sha256": "8215b98e0c267e81371706e60dce0d8cdb1648e0cbfaa599801c7e7827e157fa"
+  },
+  {
+    "name": "EntryDealAlreadyObserved",
+    "line": 1162,
+    "end_line": 1167,
+    "sha256": "9442a4528753b419d2d1e935e8f07a2a1e9a6efbc187433250345d409452d0d7"
+  },
+  {
+    "name": "EntryObserveDeal",
+    "line": 1169,
+    "end_line": 1205,
+    "sha256": "9e7c994222d1876bf6210e9f5e072cccd362ab470ba65d5907588101fb3cb42a"
+  },
+  {
+    "name": "BindEntryDispatch",
+    "line": 1207,
+    "end_line": 1219,
+    "sha256": "8903a344a61541ffa188431861b4fb6d754d8eca042f696b7eaf5222d4a1c794"
+  },
+  {
+    "name": "EntryObserveFill",
+    "line": 1221,
+    "end_line": 1246,
+    "sha256": "1e3f4d94eae61e90c06f105a1a0b4c0688f8ffc086c56c9f60d7e0692aeb0a6a"
+  },
+  {
+    "name": "EntryObserveRequest",
+    "line": 1252,
+    "end_line": 1290,
+    "sha256": "7d4f3d2273a2b14abf57a5fad73d23e477185a6ed552fe8f5a6cec881fcacee3"
+  },
+  {
+    "name": "DirStr",
+    "line": 1293,
+    "end_line": 1293,
+    "sha256": "d67b05e9aa0b036cfe31ebdc5881c5df2118357b51b9b4ee6464b585685ed134"
+  },
+  {
+    "name": "BStr",
+    "line": 1294,
+    "end_line": 1294,
+    "sha256": "bf447531794d72bd96f2818eecc50398d6467bc5574376f5bf3b5b6510e2565e"
+  },
+  {
+    "name": "PocStateStr",
+    "line": 1296,
+    "end_line": 1305,
+    "sha256": "d0e33c94bfd64d3bd3094011488c9310c6ef45861ff809882c40bbcde914c702"
+  },
+  {
+    "name": "MacroStatusStr",
+    "line": 1306,
+    "end_line": 1317,
+    "sha256": "71144e593f2c88b4ecc9e19a34951a317d892f384cfea35429c0a1817e4524cc"
+  },
+  {
+    "name": "MssStr",
+    "line": 1319,
+    "end_line": 1332,
+    "sha256": "e697c475084a86dc3f0ba42fd6f46af2b678ebf2e9be63499498a4548f31a3f9"
+  },
+  {
+    "name": "GetD1SessionEndHHMM",
+    "line": 1334,
+    "end_line": 1337,
+    "sha256": "5f49e3a1152658c1e0ffdceca5df6589fb8756dfb28fb807a42e773b082ccad6"
+  },
+  {
+    "name": "NormPriceDigits",
+    "line": 1338,
+    "end_line": 1341,
+    "sha256": "39559de445a93f39158c9e1e9edb0054967ca132405bb354c63b99fdc17f9f1a"
+  },
+  {
+    "name": "RoundUpTick",
+    "line": 1343,
+    "end_line": 1349,
+    "sha256": "66592bc0cf64ae27d69671754e85a9b2dd78901ac8f7ccfb634bbb29ca01245f"
+  },
+  {
+    "name": "RoundDownTick",
+    "line": 1351,
+    "end_line": 1357,
+    "sha256": "f9d36ea72cc19718ac295bc5886c198b8c2ff52006e1dbb08ea2532223e87ff7"
+  },
+  {
+    "name": "EntryGridValid",
+    "line": 1360,
+    "end_line": 1365,
+    "sha256": "efff6b1406f379b1e620a60c3dcc4518ef53394a096d41023f63b733d19cb257"
+  },
+  {
+    "name": "EntryTimeoutExpired",
+    "line": 1366,
+    "end_line": 1369,
+    "sha256": "bdc7c53286b550dea4bcfa01f49be78e9ecbb3cf86866d9fcc9325ff9cca4583"
+  },
+  {
+    "name": "InitSignalCloseTrigger",
+    "line": 1370,
+    "end_line": 1382,
+    "sha256": "1fed52a25dc97ac3ac72432a1e8835446aaaeaf915e53e88277dbb72cbbb0a31"
+  },
+  {
+    "name": "EntryRealTrade",
+    "line": 1383,
+    "end_line": 1390,
+    "sha256": "dcc34b23055e8be086599ebb8ba34250d88c4911f24b04b2259bc28932ceb819"
+  },
+  {
+    "name": "ObserveEntryTrade",
+    "line": 1393,
+    "end_line": 1404,
+    "sha256": "b64d354bc87c8d4ade4ce89ef73c98cbc793fe9eea4d47077b7c7f3eb8121538"
+  },
+  {
+    "name": "ValidateEntryDispatch",
+    "line": 1405,
+    "end_line": 1430,
+    "sha256": "f4af52cb61ae0209b34aae414e3768b8a6a2732b3eef0981f33c747652ba5c4e"
+  },
+  {
+    "name": "ClaimEntryDispatch",
+    "line": 1431,
+    "end_line": 1435,
+    "sha256": "02176e7e4c045e6f3048de85d0ae030326f1b35c6ceeb7abb90e941bc6de9206"
+  },
+  {
+    "name": "NormEntrySL",
+    "line": 1438,
+    "end_line": 1439,
+    "sha256": "0468955e004d27dded8dad02ce0fd0d692853f855381201893a2f704459a46cc"
+  },
+  {
+    "name": "NormEntryTP",
+    "line": 1441,
+    "end_line": 1442,
+    "sha256": "d23bad9f4ff95108956da3277f41937429039d2a7f94557fd03065784dbe8e6c"
+  },
+  {
+    "name": "TickIndex",
+    "line": 1444,
+    "end_line": 1444,
+    "sha256": "024d34ab4b6b7fb2ecc3019b517fd83ae6ecc115ec31ed57db788caa988f00cb"
+  },
+  {
+    "name": "ComputeTrigger",
+    "line": 1446,
+    "end_line": 1450,
+    "sha256": "9fd8b86e7824e1246dab51fc24f230262db81cfb66e986ad77f10e426f591a7b"
+  },
+  {
+    "name": "ArmedTriggerReady",
+    "line": 1452,
+    "end_line": 1456,
+    "sha256": "3df48dd2a0a4add82957192e13cdeaf7ee1bc7601af7a840209f505f8037179f"
+  },
+  {
+    "name": "ArmedTriggerPrice",
+    "line": 1457,
+    "end_line": 1462,
+    "sha256": "9ae9910a0c204f1a2464413bb3e8de0f357cbdcab00322ff12f69cd137da0770"
+  },
+  {
+    "name": "ArmedTriggerCell",
+    "line": 1463,
+    "end_line": 1466,
+    "sha256": "625469a151c21a95e3a06141ba3379b25d9f5c4c2edf0d2783c164d6f83adc1e"
+  },
+  {
+    "name": "EntryDispatchGuard",
+    "line": 1470,
+    "end_line": 1525,
+    "sha256": "a17d9ecff62ae7df1265160291b908b8e0dd05c1079edbd35f5cfad768b76870"
+  },
+  {
+    "name": "IsFokSupported",
+    "line": 1527,
+    "end_line": 1537,
+    "sha256": "6989c3888d85816eec6647d89f0f2fa1304b2b6edbc1c80461ab10bc3ec8f31b"
+  },
+  {
+    "name": "ResetPerfStat",
+    "line": 1538,
+    "end_line": 1538,
+    "sha256": "0edb21832fbc1c08761004320d5ba89cc4df9700aa8b450d0541394bb777e6a0"
+  },
+  {
+    "name": "RecordPerf",
+    "line": 1539,
+    "end_line": 1544,
+    "sha256": "71e0df1f0338c3d08fc870de1e761e85059c14b0751f78cf2344d109f50ed73d"
+  },
+  {
+    "name": "ResetMacroContext",
+    "line": 1546,
+    "end_line": 1558,
+    "sha256": "36bc88cfb3c82da957d6a073a0845b6e485c0fea82497d9ca19af7668e4374f4"
+  },
+  {
+    "name": "ResetPOCResult",
+    "line": 1560,
+    "end_line": 1566,
+    "sha256": "9acbfd695a398e4900e9e9d48057248f222e6c62773a6109d6cb3dd884af2858"
+  },
+  {
+    "name": "ResetMatrixSnapshot",
+    "line": 1568,
+    "end_line": 1601,
+    "sha256": "e67a85b597b2859b5107ff778c97c9111d8bee34cd7a9d2f261091a4511b334c"
+  },
+  {
+    "name": "ResetArmedSignal",
+    "line": 1603,
+    "end_line": 1622,
+    "sha256": "183fa69a2284753d743e080b7f70435952e498b33b107c8abe08c6007cc0a22e"
+  },
+  {
+    "name": "ResetOpenPos",
+    "line": 1624,
+    "end_line": 1630,
+    "sha256": "4f728320fd71b2e5031b6834635b97b5cc48cdef4f3e19fc0335dc0b3142842f"
+  },
+  {
+    "name": "CopyTradeTicksStrict",
+    "line": 1635,
+    "end_line": 1643,
+    "sha256": "b1d4657f7c4faf5c5c9354b820d5cb005a67dfb0c78aaea231edaddf0085779e"
+  },
+  {
+    "name": "ResetVwapCache",
+    "line": 1648,
+    "end_line": 1652,
+    "sha256": "fc1085b97abe614ee5b682835f8d91d084d3eab1f70c78b1fc8477f294e50202"
+  },
+  {
+    "name": "UpdateVwapIncremental",
+    "line": 1654,
+    "end_line": 1697,
+    "sha256": "8c0e863e0fe5ca13d7c67bcd112f08a2ccf953e41994ce95ec3cedbd5d03114f"
+  },
+  {
+    "name": "GetLiveVwapSnapshot",
+    "line": 1699,
+    "end_line": 1716,
+    "sha256": "fc15657b95927c6538193e3cb93b52e5d167a85644ac6fb8c7fa827a1990065a"
+  },
+  {
+    "name": "ComputePOCWithTieCore",
+    "line": 1723,
+    "end_line": 1805,
+    "sha256": "5132a694330873a143cc9990cee522bb18de51228f3ccfae0eb63e3c7fbbc8bc"
+  },
+  {
+    "name": "ComputePOCWithTie",
+    "line": 1814,
+    "end_line": 1820,
+    "sha256": "8d2cf856c57768ce55e1274c6a11ccb43df8c0df7ba2b3906a2121d818c6206f"
+  },
+  {
+    "name": "RebuildWeisCache",
+    "line": 1822,
+    "end_line": 1876,
+    "sha256": "edcc3c3b57a5935233d9a39eee1e319d83ff1182e6d2866a914e64fbf44b89b6"
+  },
+  {
+    "name": "ComputeLiveWaveO1",
+    "line": 1879,
+    "end_line": 1892,
+    "sha256": "84672acefefd46dd6efcba57fa903e34919a759bb59a3e388dc981f625739ee5"
+  },
+  {
+    "name": "CalcD1Structure",
+    "line": 1897,
+    "end_line": 1957,
+    "sha256": "9b5e35524692cf64906ed2b5ac69027179a4f7a88e939a3288e11c89e6f8e7b0"
+  },
+  {
+    "name": "CalcSigmaHistory",
+    "line": 1962,
+    "end_line": 2043,
+    "sha256": "acbdc55163b6b63625e7b930d024bc6d72d2dab5e8fd8fb3c40c3dee793c73c9"
+  },
+  {
+    "name": "TryCalcD1",
+    "line": 2045,
+    "end_line": 2051,
+    "sha256": "f5d3f59ed3a8c22a95a85a066514553bc46e3f98f055581c551ca6d0944cc2b3"
+  },
+  {
+    "name": "ComputeMacroContext",
+    "line": 2058,
+    "end_line": 2092,
+    "sha256": "3c329067ec77f973cb6df8e669bebb7204e5c5410df3fcbbbaf81342de9b73f4"
+  },
+  {
+    "name": "ComputeMatrixSnapshot",
+    "line": 2104,
+    "end_line": 2318,
+    "sha256": "8fe0b15040b7a8b42cd4b98dcb6c2cc1e63b7638c10f98423fbb519713f96a67"
+  },
+  {
+    "name": "HasHardDirectionalContradiction",
+    "line": 2323,
+    "end_line": 2328,
+    "sha256": "8ab5003206dc30c8d67caea527b35e3668f1cd1a6144d5721b20d66958e299b0"
+  },
+  {
+    "name": "ComputeLotsForEntry",
+    "line": 2333,
+    "end_line": 2378,
+    "sha256": "dc09c448fe794d24285dbe3477955d9674b3229ca7866d2f5d2f8aeb74df19bf"
+  },
+  {
+    "name": "MarginOk",
+    "line": 2379,
+    "end_line": 2387,
+    "sha256": "2c25349c2a7253a5b00923eed0845bb9b745e593c69d48b7fef00adc05161c54"
+  },
+  {
+    "name": "SpreadOk",
+    "line": 2392,
+    "end_line": 2398,
+    "sha256": "575fdba0c8fc7f9c559a31c1f91fbe679aea610d4922232038bc6a0db2c79387"
+  },
+  {
+    "name": "HasOpenPosition",
+    "line": 2402,
+    "end_line": 2412,
+    "sha256": "e4c7df5fe4f4922b504ff8cd5123b6569c8c4ccfb612de7a3b2b0dec6663667b"
+  },
+  {
+    "name": "HasOwnPositionStrict",
+    "line": 2414,
+    "end_line": 2423,
+    "sha256": "8497b639049585b418c8bd657edfaf1084a37791cf4ec4e5fe80757a94a959ce"
+  },
+  {
+    "name": "UpdateMAEMFE",
+    "line": 2429,
+    "end_line": 2440,
+    "sha256": "7491e19a0660c2c1afff60339b05235ede3d64f43b0f9c0fb0e9e38d50ee9fba"
+  },
+  {
+    "name": "CsvCell",
+    "line": 2446,
+    "end_line": 2454,
+    "sha256": "fbb0bc64c4fc1f1c7d85bb21dc2809d3c1378f1a1cb9613af46c1ec041808add"
+  },
+  {
+    "name": "CsvAdd",
+    "line": 2456,
+    "end_line": 2460,
+    "sha256": "b93cd58de98a08cfdc0f4494ef5b3219b42d7070e698ab904d6f186ede60ac90"
+  },
+  {
+    "name": "CsvD",
+    "line": 2462,
+    "end_line": 2466,
+    "sha256": "c71d3ca224fb31510c7023fab02cbfe9fdab470f59bcd47208f735911d143c90"
+  },
+  {
+    "name": "CsvTime",
+    "line": 2468,
+    "end_line": 2471,
+    "sha256": "7e9997e6116a54917c3be36fc76269d796ba562959b978fad8e5d3380a064856"
+  },
+  {
+    "name": "TradeCsvContainsPID",
+    "line": 2472,
+    "end_line": 2477,
+    "sha256": "c451bce343d4d55caa4a5dc674e5f66b2eb0e87cf69b2a42ca2791a2aedd8af7"
+  },
+  {
+    "name": "TradeCsvAddPID",
+    "line": 2479,
+    "end_line": 2486,
+    "sha256": "845b62ce2051313ad37ad0448a022019b673f152f9490a515b76082673110862"
+  },
+  {
+    "name": "CsvParsePID",
+    "line": 2488,
+    "end_line": 2502,
+    "sha256": "95ab51db57c4ee9e9f726580122233b7f8c33e65890d46c81d25800b84cfa05d"
+  },
+  {
+    "name": "CsvParseRecord",
+    "line": 2506,
+    "end_line": 2547,
+    "sha256": "272c764480429fa8e96057c17d3bbfb3046f0902b68a355e5c6cca636ef61c61"
+  },
+  {
+    "name": "CsvColumnIndex",
+    "line": 2549,
+    "end_line": 2553,
+    "sha256": "ae7cc3956fdd9d20088c20c5051613ffba0f6912e5ed0a7cbd87646ea0c37119"
+  },
+  {
+    "name": "InitializeTradeCsvIndex",
+    "line": 2557,
+    "end_line": 2642,
+    "sha256": "a7fba5a2afd32943031190502d5f1b0a63ad041fe9951838d8cc436295d29051"
+  },
+  {
+    "name": "CsvConfigHeader",
+    "line": 2644,
+    "end_line": 2652,
+    "sha256": "6fec8dc4e21930e5b6330dad27bceda110872d500fa3f328b23e6334265a6a51"
+  },
+  {
+    "name": "CsvConfigRow",
+    "line": 2654,
+    "end_line": 2663,
+    "sha256": "d55bb906d5c9a41cedb13fe47e77e430a182762ce150d8ea9bdb44977f043c05"
+  },
+  {
+    "name": "CsvMacroHeader",
+    "line": 2665,
+    "end_line": 2677,
+    "sha256": "066bb7ee54591b3dbf21373f0aebc2930e63abdc4beba4552ecfa7b2f076ec1f"
+  },
+  {
+    "name": "CsvMacroRow",
+    "line": 2679,
+    "end_line": 2691,
+    "sha256": "6c3a9f6f3f068460e43f851949bb6556b8500275ca8e36ff8c15c0132152fe5e"
+  },
+  {
+    "name": "CsvMatrixHeader",
+    "line": 2693,
+    "end_line": 2811,
+    "sha256": "26980d937189a5a6c25c4f8b951ce7aed7159029ae93a49cda1b0b2413583af3"
+  },
+  {
+    "name": "CsvMatrixRow",
+    "line": 2813,
+    "end_line": 2975,
+    "sha256": "1b77debde09bea657394917d9c21d0423344c98e443f04b1d2d0ba7775cbbaa7"
+  },
+  {
+    "name": "CsvArmedHeader",
+    "line": 2977,
+    "end_line": 2993,
+    "sha256": "1b2cc6a68390331dc4316be2ea67b58d6e9f7d78a856ffa11fd9cf1b60d0270e"
+  },
+  {
+    "name": "CsvArmedRow",
+    "line": 2995,
+    "end_line": 3018,
+    "sha256": "99638b7263316969d8120304264fc02c38f66a2ae25429f4ccedb829d42bb518"
+  },
+  {
+    "name": "CsvExecutionHeader",
+    "line": 3020,
+    "end_line": 3041,
+    "sha256": "28236f4e4819116f69b7248b58272465a89411a2e6774ed70d2597c5446a35fd"
+  },
+  {
+    "name": "CsvExecutionRow",
+    "line": 3043,
+    "end_line": 3080,
+    "sha256": "b38a31ab4f650a913b2337debe8774c263aa4e3fca96a7b12b8aa7ab905e3c78"
+  },
+  {
+    "name": "CsvTradeHeader",
+    "line": 3082,
+    "end_line": 3130,
+    "sha256": "9ccbbc18dde976610d39d2a8929859257c2ccfb4630b8d488bbed4d2da0d2fff"
+  },
+  {
+    "name": "CsvTradeRow",
+    "line": 3132,
+    "end_line": 3189,
+    "sha256": "497ca77ac320dc335b732fef078268812f3635a7d86c25cd99879f72d2240d03"
+  },
+  {
+    "name": "WriteAuditHeader",
+    "line": 3190,
+    "end_line": 3201,
+    "sha256": "05050ab1e911152cb49381718b4ece55085258a8b871321318055b563fef4d97"
+  },
+  {
+    "name": "WriteAuditRow",
+    "line": 3203,
+    "end_line": 3219,
+    "sha256": "27f7b9c0bf422d9cabff2118e9e6f90768e84d04d783f81e9c7d266e12708018"
+  },
+  {
+    "name": "WriteShadowHeader",
+    "line": 3220,
+    "end_line": 3229,
+    "sha256": "1ab1fa2f8dca1f1fc38eded1e655e53d5b5e44d5a8ba822a363695ed6e603852"
+  },
+  {
+    "name": "WriteShadowRow",
+    "line": 3231,
+    "end_line": 3242,
+    "sha256": "741aa038dd9f44317b7ed472ee923608a53a2a5797c2bef25b10252558b2972f"
+  },
+  {
+    "name": "WriteTradeHeader",
+    "line": 3244,
+    "end_line": 3251,
+    "sha256": "a14fccafb3e7ee019530236cadf35e7c4b71f403f61082b7dbdc2aa9ff7ea699"
+  },
+  {
+    "name": "WriteTradeRow",
+    "line": 3253,
+    "end_line": 3277,
+    "sha256": "30c06798af8bb9ccb50b1dbc3aac650979e2bedf1b1987230bee51e2ec0c0ed9"
+  },
+  {
+    "name": "SendOrder",
+    "line": 3280,
+    "end_line": 3445,
+    "sha256": "cc93afdeedd72d1bf0a6a975aa782a634317a2d46b956cdbdb19b3d2a9da4baf"
+  },
+  {
+    "name": "SnapshotForSignal",
+    "line": 3450,
+    "end_line": 3469,
+    "sha256": "195d515cd774f6d23f906e3b5eefaed2657da8b986ed7686a98401c77b615ec3"
+  },
+  {
+    "name": "EvaluateMatrix",
+    "line": 3471,
+    "end_line": 3640,
+    "sha256": "a24e0863b50ea2fda4afb41da1db867e254f7c20b33b69539f7b41e9e8362800"
+  },
+  {
+    "name": "ProcessArmedSignal",
+    "line": 3647,
+    "end_line": 3850,
+    "sha256": "31dffd0cd4a520ebd362e19b38151f21bff7284b79e6346b3d1c9b8550dd76f5"
+  },
+  {
+    "name": "ProcessEOD",
+    "line": 3862,
+    "end_line": 3947,
+    "sha256": "df323f403c6d2ce01e518047649bbd696c43c1020fff6ddd4bcaebfbe9af5c38"
+  },
+  {
+    "name": "DailyReset",
+    "line": 3952,
+    "end_line": 3970,
+    "sha256": "58eed01d7b4a3830e7e5fb3616ca6e7e5767a4acfde642ce6de2b09e48295878"
+  },
+  {
+    "name": "Positive",
+    "line": 3975,
+    "end_line": 3976,
+    "sha256": "052aa02f4812ba2f6fd6041a78c0af072471f460deb2b94d926d7d634066f38b"
+  },
+  {
+    "name": "OnPriceGrid",
+    "line": 3977,
+    "end_line": 3978,
+    "sha256": "6a6d9ab5aab5a370d8f508660c0e877761cae18c9a330df193fbc3e6905a3694"
+  },
+  {
+    "name": "ValidHHMM",
+    "line": 3979,
+    "end_line": 3980,
+    "sha256": "2c79668e90eff34a23b518b9d350759584819124b4948356b8f2904791959def"
+  },
+  {
+    "name": "OnVolumeGrid",
+    "line": 3981,
+    "end_line": 3982,
+    "sha256": "db9f382aada1d53cedd76e3893089e5f522b1bd4c6b89cf2fba2875d718f0b0a"
+  },
+  {
+    "name": "EntryTPValid",
+    "line": 3983,
+    "end_line": 3987,
+    "sha256": "7c75b31e4ce432763593d25f6105ae20d569a7550c7317f25713d182a316f42f"
+  },
+  {
+    "name": "Validate1995Inputs",
+    "line": 3989,
+    "end_line": 4045,
+    "sha256": "ff88cad987f7e0c384ded0876db7f8d8510c4d9958e65b5617ca0e5d65c0d4c3"
+  },
+  {
+    "name": "BootstrapCachesNoTrade",
+    "line": 4046,
+    "end_line": 4075,
+    "sha256": "664c965c90abf901267a3a17a8fcaa3db4d2c6dcdc16be5bdac99af3b19ee478"
+  },
+  {
+    "name": "InitializeAccountMode",
+    "line": 4079,
+    "end_line": 4099,
+    "sha256": "b27d35f205bd57347ca5de8f91d4d654097af3c737aa4f2450986bcb83038cf3"
+  },
+  {
+    "name": "OperationalAccountModeSupported",
+    "line": 4101,
+    "end_line": 4107,
+    "sha256": "067883717438006a9030ad4a71babd3f9351361ba8914ba53075436a6847bc50"
+  },
+  {
+    "name": "OnInit",
+    "line": 4109,
+    "end_line": 4225,
+    "sha256": "160d012b5e58b24b0a9e83e7ca60b0a1e79c48f64a9d233b871196b51ca5547b"
+  },
+  {
+    "name": "OnDeinit",
+    "line": 4230,
+    "end_line": 4241,
+    "sha256": "dd7b37239c1989c0f681fdba1cd63c978c651bbc680ff0a83a418c60a2228186"
+  },
+  {
+    "name": "ObserveAccountingBlockedMatrix",
+    "line": 4248,
+    "end_line": 4275,
+    "sha256": "912558b3ee6460db1166b5df65c4b9ac2792e3fe4ddaf56976b88de069298dc2"
+  },
+  {
+    "name": "OnTick",
+    "line": 4277,
+    "end_line": 4369,
+    "sha256": "0484287141be8577b032b0870d5a20279e092a154c170f87482266d5ea1b1025"
+  },
+  {
+    "name": "OnTimer",
+    "line": 4374,
+    "end_line": 4411,
+    "sha256": "da5b47b6aea63cb9ca11fa72dfa22234546e4d10d5b6ae6767c5c78ddc9585de"
+  },
+  {
+    "name": "BEPrice",
+    "line": 4428,
+    "end_line": 4429,
+    "sha256": "275bff07bdf7f53dc1268ee12d0611070af965871128ec0e55cd8de8afc66449"
+  },
+  {
+    "name": "ProtectionPrice",
+    "line": 4432,
+    "end_line": 4440,
+    "sha256": "d13ec599d290f16cf69aabcf5892e9e6ff0264fe13063fb34b776560f8181751"
+  },
+  {
+    "name": "ProtectionEligibleLevel",
+    "line": 4444,
+    "end_line": 4463,
+    "sha256": "d9cb42b63d35982f41781065249134abae2af8ad4bc59a8284c0f4ea1ed82f45"
+  },
+  {
+    "name": "BEPriceEqual",
+    "line": 4466,
+    "end_line": 4468,
+    "sha256": "89b7e75d53916b0cb789d9be6f51d0820d40b39bba7a2f9f03b4563e837fd4ea"
+  },
+  {
+    "name": "BERiskPoints",
+    "line": 4470,
+    "end_line": 4471,
+    "sha256": "35c3898ece9e2e268e15c6d3ecf67eb954eeb12dcda5dc0dbb8263be6dd09fc2"
+  },
+  {
+    "name": "BEReferenceValid",
+    "line": 4473,
+    "end_line": 4490,
+    "sha256": "eddec77c6850a55f46766eedbc8e5b2583fd60b57c80ce1d55dba4dc3f1772fe"
+  },
+  {
+    "name": "BETriggerReached",
+    "line": 4493,
+    "end_line": 4498,
+    "sha256": "615611170127db5e16a262237878c29d8e755d55fb3c76166af76e2a9ff5ab7f"
+  },
+  {
+    "name": "BELog",
+    "line": 4501,
+    "end_line": 4508,
+    "sha256": "0bbe830eae4a76627dbbd3aefeac8497f75b0b05c81587aa2e9dd443f99dc4d0"
+  },
+  {
+    "name": "BEFailure",
+    "line": 4510,
+    "end_line": 4515,
+    "sha256": "99820dbc1f33942976f66666906863f506900105b300e605fe68eef563a80ceb"
+  },
+  {
+    "name": "BEJournalPath",
+    "line": 4517,
+    "end_line": 4518,
+    "sha256": "2ffee4ec76c14862134e2d9f528d661c7c4b1bda6bcd17b660cbb4bfb07c4c47"
+  },
+  {
+    "name": "BEChecksum",
+    "line": 4520,
+    "end_line": 4526,
+    "sha256": "d88866a1919bb9bb11ad945d583f052256834de6c7f3422fdbf44467810a837c"
+  },
+  {
+    "name": "BEJournalRow",
+    "line": 4528,
+    "end_line": 4541,
+    "sha256": "ac42c8ed26ac7db2891f9433b80eb9bb3e6f321972d586e79cd356387fc94689"
+  },
+  {
+    "name": "BEParseRow",
+    "line": 4544,
+    "end_line": 4590,
+    "sha256": "c2f44cc1138440dd2f30afd30ab110e8564d6cf731a14f1e8bf8e8a2415a0341"
+  },
+  {
+    "name": "ProtectionStateFollows",
+    "line": 4592,
+    "end_line": 4601,
+    "sha256": "6b36b8162e1580ca84f782bb91916a5c96ae1158628a4ec4c989bffa11ac6b01"
+  },
+  {
+    "name": "BEReadJournal",
+    "line": 4604,
+    "end_line": 4647,
+    "sha256": "be631544f6c48b0cef9ac7f01e81035b4d08521c19f89eb4b1d81806544cbc31"
+  },
+  {
+    "name": "BEPersist",
+    "line": 4650,
+    "end_line": 4672,
+    "sha256": "dfb84ff64638a5ccca53245d55e20be88c8b6da8382dca59fb154a07d329e2dc"
+  },
+  {
+    "name": "BELoad",
+    "line": 4674,
+    "end_line": 4683,
+    "sha256": "75107590d97aabc7b5a246b80d2606d81a0f2579386e3cc8d0f39dceed80b082"
+  },
+  {
+    "name": "BESelectOwn",
+    "line": 4685,
+    "end_line": 4699,
+    "sha256": "2618fac7c8617771dd5650c7b1d8b8a05f5d04d61cc1865f3e1a74023ed00f6b"
+  },
+  {
+    "name": "BEEntryComplete",
+    "line": 4701,
+    "end_line": 4716,
+    "sha256": "88b0270c25f0ab179208a6453dfa3d010c7dd5371214cf103cfc32f1cd7d1c31"
+  },
+  {
+    "name": "BEStopsValid",
+    "line": 4718,
+    "end_line": 4741,
+    "sha256": "0b3658509ddfd699168952d4d237dd1b28284ae5c9532857de83c9a6a5e86867"
+  },
+  {
+    "name": "BEExitAtProtectedLevel",
+    "line": 4745,
+    "end_line": 4756,
+    "sha256": "ea2436363fb09690a03d47002bb5cc45d59ae834a7e8851aed668a0a34457916"
+  },
+  {
+    "name": "BERequestedExitAtTarget",
+    "line": 4760,
+    "end_line": 4770,
+    "sha256": "37e58df8dc88e70e48d9cf32321a8bf8fc6761d7d72818f65b8f7e6083b1bc86"
+  },
+  {
+    "name": "BEProtectedDeal",
+    "line": 4773,
+    "end_line": 4782,
+    "sha256": "26dacd7122a167ceea41b897a7a711474a4292417403deabca9644c3b3d2c3f1"
+  },
+  {
+    "name": "BEReadProtectionCertificates",
+    "line": 4786,
+    "end_line": 4820,
+    "sha256": "aed373d0b52c586293382ffa44a0161ea4da6afdff4077c06e779e9057e2015c"
+  },
+  {
+    "name": "BEConfirm",
+    "line": 4823,
+    "end_line": 4842,
+    "sha256": "9bfc8cf98baa25d3251478a4bbad2f30e2c39aa398fb001f4cb3d7173f367d10"
+  },
+  {
+    "name": "ClassifyProtectionExits",
+    "line": 4846,
+    "end_line": 4895,
+    "sha256": "f55a9fb62e55fededda166c7c5891fc841b5c260057305a1d557326aa8f4820b"
+  },
+  {
+    "name": "BEManagerLoss",
+    "line": 4899,
+    "end_line": 4900,
+    "sha256": "df36734b7d3cee62ddabed1d7dba187f9b510379211de8782054f8aed072b88c"
+  },
+  {
+    "name": "BEAcceptResult",
+    "line": 4902,
+    "end_line": 4936,
+    "sha256": "30f18fb1b6137a9104327db15396fdc637b1f60718e875a25d21ef05e43fa152"
+  },
+  {
+    "name": "BEHandleTransaction",
+    "line": 4938,
+    "end_line": 4948,
+    "sha256": "44b9af3f5cdb2fa45deb628c3b92299fcd9957f4200a9db95f1cd4151fc88675"
+  },
+  {
+    "name": "ReconcileBreakEvenProofs",
+    "line": 4950,
+    "end_line": 4960,
+    "sha256": "9a58c4c1099eb1477b0c7c15cb1e333218c0a9fb0360b0b8a2fcb72ecc829ea4"
+  },
+  {
+    "name": "ManageBreakEven",
+    "line": 4962,
+    "end_line": 5051,
+    "sha256": "2a6332e033f94e3190936c792b4706643d4b1e257c8861125124423dde300baf"
+  },
+  {
+    "name": "ResetTradeRecord",
+    "line": 5055,
+    "end_line": 5077,
+    "sha256": "6b13e7bf03446111a6b12e1dc66b9c2b5ebfad3da40e3bb5ab546bfce6dca993"
+  },
+  {
+    "name": "ResetPendingExec",
+    "line": 5078,
+    "end_line": 5090,
+    "sha256": "90fcaec4008c3e3b0834505be8c38f7153745e0e9930954884dd01145b7b2bc2"
+  },
+  {
+    "name": "BeginExitIntent",
+    "line": 5092,
+    "end_line": 5100,
+    "sha256": "9020f307f61a630f4db26520d64e1b2c99f6bbacb620dc5b6f1b796a72e3261e"
+  },
+  {
+    "name": "ClearPendingExitIntent",
+    "line": 5102,
+    "end_line": 5110,
+    "sha256": "153f6618fb8502f4cefb53672f03538870fef3d245b927146096ee8d591cf9eb"
+  },
+  {
+    "name": "FailExitIntent",
+    "line": 5112,
+    "end_line": 5119,
+    "sha256": "9d54916912b06a86f9f12c24fa92958ac5c3747a2369bcf5cd943c7035d9d685"
+  },
+  {
+    "name": "AccountingDayStart",
+    "line": 5121,
+    "end_line": 5126,
+    "sha256": "0c19510b3861310779ff6cec9c651bc9b0dfafba76ed3778908a7acdf40bbe2b"
+  },
+  {
+    "name": "HasOwnPendingOrder",
+    "line": 5128,
+    "end_line": 5138,
+    "sha256": "b950efc2c5f9079c7aa2f89b5970c4729e9c098d32d902194194cb5a3956949f"
+  },
+  {
+    "name": "HasOwnPendingOrderToday",
+    "line": 5140,
+    "end_line": 5152,
+    "sha256": "f9ba9f5a0dfbf2c5271df1cdcf2590c4cc38965e06ae36166165fbe2c37942ec"
+  },
+  {
+    "name": "HasExecutionInFlight",
+    "line": 5153,
+    "end_line": 5169,
+    "sha256": "8b68204cbf4f38af3582fd3b4cbb38ef6257be8d323aa3a29c52fe2cf5945e63"
+  },
+  {
+    "name": "PreparePendingExec",
+    "line": 5171,
+    "end_line": 5190,
+    "sha256": "faf8dbf8d1c642a807b8a2bff1b5ac0a10e5f92fcbb7e317b04fd9daaac406d3"
+  },
+  {
+    "name": "IsAcceptedRetcode",
+    "line": 5192,
+    "end_line": 5196,
+    "sha256": "2c8db7d7c5694d02e4c83e55bbcf36b5fa0c38cba9654357d9099255dd363f67"
+  },
+  {
+    "name": "IsUncertainRetcode",
+    "line": 5197,
+    "end_line": 5198,
+    "sha256": "e857f8885b02bb28ba14ab46420fa1d64a538bcd69a4b61dfce7300947c1aed9"
+  },
+  {
+    "name": "CompletePendingExec",
+    "line": 5200,
+    "end_line": 5219,
+    "sha256": "1a9055038d347018a49f9917c9c2827ed3342ff286aa0fcffd090e40e056b18a"
+  },
+  {
+    "name": "AccountingVolumeTolerance",
+    "line": 5221,
+    "end_line": 5225,
+    "sha256": "450c98370075eb004ce7728cb7872b7b838e70c05083ebb3943c68349dce2065"
+  },
+  {
+    "name": "CalcInitialRiskMoney",
+    "line": 5227,
+    "end_line": 5237,
+    "sha256": "7fbcddf34a5bb48317e526052ae293c3c70b227bc57a926a992fc614a6a427f2"
+  },
+  {
+    "name": "FindTrackedTrade",
+    "line": 5239,
+    "end_line": 5244,
+    "sha256": "fc0d87d4d0eddf7dbd86c1c2df6fd90d6cf0ff79d9a20c6bdbb9254a9c509150"
+  },
+  {
+    "name": "Identify1995EntryDeal",
+    "line": 5247,
+    "end_line": 5280,
+    "sha256": "29aefc2a25473fef2619734a5f8ead0d5a5e99bcacf106b18757e56ba9aea810"
+  },
+  {
+    "name": "Is1995EntryDeal",
+    "line": 5282,
+    "end_line": 5287,
+    "sha256": "3d72ef5ade16ec8e0f8afb90695a4acfe149fa0897668f48502be8a22a2182b8"
+  },
+  {
+    "name": "HasOwnEntryHistory",
+    "line": 5289,
+    "end_line": 5298,
+    "sha256": "c32ffafb84d7e46e1e81ab3a136162e0f3a896f10b55b4a611759b2f831bef90"
+  },
+  {
+    "name": "NewTrackedTrade",
+    "line": 5300,
+    "end_line": 5324,
+    "sha256": "d558f65e1b2bc80f742de45035f40aa7c1cd4b15e4b67b961bb86c8beb43f73c"
+  },
+  {
+    "name": "PositionStateByID",
+    "line": 5326,
+    "end_line": 5341,
+    "sha256": "39fc46c8bfcc1f9588a113c3dcb007ed791b82a390a61bc2b92449de189d2720"
+  },
+  {
+    "name": "ParseScalperComment",
+    "line": 5342,
+    "end_line": 5354,
+    "sha256": "50d41ff917d1c9aa6cd7a4e70537050337d8346af1f1903efb3be29271075573"
+  },
+  {
+    "name": "GvDateToday",
+    "line": 5356,
+    "end_line": 5360,
+    "sha256": "35358deec1feb71b0f0ed5c8beda9e4160b4a86d016b3aa6a5a81d034048919d"
+  },
+  {
+    "name": "AccountingKey",
+    "line": 5362,
+    "end_line": 5367,
+    "sha256": "942258c1e16ea403b4139a4a57b056fdb5c969c2343ce3b0595fe63d105a2df2"
+  },
+  {
+    "name": "GvKeyShots",
+    "line": 5368,
+    "end_line": 5368,
+    "sha256": "b7fdab75bc72c7999b64b41213a26148057f1380482e809da37c7567492aec9f"
+  },
+  {
+    "name": "GvKeyDailyBlock",
+    "line": 5369,
+    "end_line": 5369,
+    "sha256": "72427bccea880b7cb874e9e5d680423812718a880104924f31e61d47797ebc64"
+  },
+  {
+    "name": "GvKeyConsecLoss",
+    "line": 5370,
+    "end_line": 5370,
+    "sha256": "60b2e2847675b7d1a78e8657af1a7c3acf43cc89e1cbf6912b0ef1a6469ab36b"
+  },
+  {
+    "name": "GvKeyDailyPnL",
+    "line": 5371,
+    "end_line": 5371,
+    "sha256": "6b0d23bbf1de92f61d1dc7af2c3bc007f824d3212292b3715206d304eaa61b6f"
+  },
+  {
+    "name": "GvKeyDailyPnLR",
+    "line": 5372,
+    "end_line": 5372,
+    "sha256": "b67dc48d35cbbbe9789eb0064d7c044a115744d02090aa24b2d25adaf0dd81e3"
+  },
+  {
+    "name": "PersistShotCount",
+    "line": 5374,
+    "end_line": 5380,
+    "sha256": "701b474893180d5ee6cb7b680cbbec98eff48a154f3db54fa31975f913abdb4f"
+  },
+  {
+    "name": "PersistDailyAccounting",
+    "line": 5382,
+    "end_line": 5402,
+    "sha256": "05ce3e324d2bd1e9ec1ccd67e587940f76faea69351a5d40caabf3c37a0b7b36"
+  },
+  {
+    "name": "PersistDailyBlock",
+    "line": 5403,
+    "end_line": 5403,
+    "sha256": "f920226b4b4541261e5e0625c5541ae86fc502947bd9dc05a62afc977a903330"
+  },
+  {
+    "name": "PersistConsecLoss",
+    "line": 5404,
+    "end_line": 5404,
+    "sha256": "656b3b5fc2d7ca07f3895c3fe23ca446780e073356534c65ea146779254edcd5"
+  },
+  {
+    "name": "PersistDailyPnL",
+    "line": 5405,
+    "end_line": 5405,
+    "sha256": "732576e6cb93f6c6aafbb61859341d9cad4245816042e28ce5d65f24386fa888"
+  },
+  {
+    "name": "TradeMetaPath",
+    "line": 5407,
+    "end_line": 5411,
+    "sha256": "0e502a4b346ab831d9a2a18d89e70efac66fe30963869b1bd0403e74aacb0e7d"
+  },
+  {
+    "name": "SaveTradeMetadata",
+    "line": 5413,
+    "end_line": 5427,
+    "sha256": "f2c616c43cd3880e3ff9a050fe91db113a6f749fa10423a1511291ecbe7f6cd1"
+  },
+  {
+    "name": "LoadTradeMetadata",
+    "line": 5429,
+    "end_line": 5483,
+    "sha256": "03c3a97a87d0cba3c89c0cfaf7fe59525fd4e390b472d64b951e03c977e668e5"
+  },
+  {
+    "name": "IsConfirmedToday",
+    "line": 5485,
+    "end_line": 5490,
+    "sha256": "a590b40e2a65af3cd798203e5f56bfeb521c944ca60e6c176439c83c26103abb"
+  },
+  {
+    "name": "AddConfirmedToday",
+    "line": 5491,
+    "end_line": 5500,
+    "sha256": "eb10729a6ac381cb8e397cc421dd95ca5d93236678b046a4bf0c296c4d09cb4c"
+  },
+  {
+    "name": "CountTodayTrades",
+    "line": 5502,
+    "end_line": 5551,
+    "sha256": "0da29200c950f08e345d28a5162601d2926980141a4def63b488b971496c033e"
+  },
+  {
+    "name": "DealExitReason",
+    "line": 5553,
+    "end_line": 5579,
+    "sha256": "9fb56f1a8d513158a2f6e493f90e0f8b2eb8bcaef47477abd7ac7b2c8b6a4710"
+  },
+  {
+    "name": "PendingMatchesDeal",
+    "line": 5581,
+    "end_line": 5590,
+    "sha256": "06a4b6f622e305f29f0f4e196bfe0d851a9a903e1dd807fdd1764c0216740abe"
+  },
+  {
+    "name": "AttachPendingToRecord",
+    "line": 5592,
+    "end_line": 5610,
+    "sha256": "7f3ae4c3979ec5aea3288d75fc74ab61d8c67de4cca40e47d2e49082ce3263c6"
+  },
+  {
+    "name": "OwnPositionSafe",
+    "line": 5612,
+    "end_line": 5631,
+    "sha256": "9f768cf1e2e5816b8a989891f773bd8a95749a14a3ec574c8534bbb98c6212f6"
+  },
+  {
+    "name": "RebuildTrackedHistory",
+    "line": 5635,
+    "end_line": 5862,
+    "sha256": "c9fffec8161d1d33989356463fdcd97d1aaa777d652662e84d412eaab5359e62"
+  },
+  {
+    "name": "SyncOpenPositionFromRecord",
+    "line": 5864,
+    "end_line": 5882,
+    "sha256": "b9ef3905a58e775ad1c4517eb9d0793ad1945d07787bb147a5632d73f02e9e82"
+  },
+  {
+    "name": "CanIgnoreForeignResidual",
+    "line": 5884,
+    "end_line": 5890,
+    "sha256": "8d23075455cdb61d2a36e7e893ecddbfa1738f86f41bf3477f0077bffb4154c2"
+  },
+  {
+    "name": "MayFinalizeTrackedCycle",
+    "line": 5892,
+    "end_line": 5898,
+    "sha256": "177a83ca01d41e363ef6c18dface82565983bb55081580c8c2f833a56e855396"
+  },
+  {
+    "name": "IsTrackedVolumeCycleComplete",
+    "line": 5900,
+    "end_line": 5940,
+    "sha256": "f8eda0bafc4a4e3ae5a005278ffdc011f6035eca4fa4c8162cb868960d957cbb"
+  },
+  {
+    "name": "TryFinalizeTrackedTrade",
+    "line": 5942,
+    "end_line": 5998,
+    "sha256": "b7855230b8766f5ca46bf3ab0a830f9bd303c63d06809f17d3b56b71df024bc7"
+  },
+  {
+    "name": "FindUnresolvedOrder",
+    "line": 6000,
+    "end_line": 6005,
+    "sha256": "af34399f9e9f3d9118142719072a53eb877fcd8042e3e1a1bede3f8ca8770307"
+  },
+  {
+    "name": "RememberUnresolvedOrder",
+    "line": 6007,
+    "end_line": 6069,
+    "sha256": "b19090c8135b99379941124bb40d3b4306a2d5b9341dab01adce58215ffe24a4"
+  },
+  {
+    "name": "ReadOwnOrder",
+    "line": 6071,
+    "end_line": 6101,
+    "sha256": "ba4f47a1be54c574d0ca840bdc1d97db98ec2c0cd2973c06676871e1ff9a20ea"
+  },
+  {
+    "name": "PendingOrderFillEvidence",
+    "line": 6103,
+    "end_line": 6160,
+    "sha256": "54baa83fbaef1a159f596e966a14db0420feb5f22be4b9fdc451c3ebcd44d269"
+  },
+  {
+    "name": "TerminalOrder",
+    "line": 6162,
+    "end_line": 6166,
+    "sha256": "16ab2870409b9da981e3e53dec190d0e772a95d3f77d850f7d04d8c4dd0c7738"
+  },
+  {
+    "name": "ProvenOrderFillComplete",
+    "line": 6168,
+    "end_line": 6175,
+    "sha256": "91da69d7330365ff1abb9b6f9e2ec8f3f0bc254a9b41cb3f5db8e3b7d01c2010"
+  },
+  {
+    "name": "AdoptLiveEntry",
+    "line": 6177,
+    "end_line": 6204,
+    "sha256": "e231ea409257aaef814e84bbc09c9f4b090e75bc0e9ec718b65af0ba085f7464"
+  },
+  {
+    "name": "AdoptLiveExit",
+    "line": 6206,
+    "end_line": 6218,
+    "sha256": "48f2185e8081a38fc85eb14b3afc7e14a1b163849cbc8fd2daa39949774fd81d"
+  },
+  {
+    "name": "RestorePendingOrder",
+    "line": 6220,
+    "end_line": 6248,
+    "sha256": "b9ac1ded6fe13bb6992754940613fafbae769259dd31e8d91827c538e8e2582c"
+  },
+  {
+    "name": "ReconcileUnresolvedOrders",
+    "line": 6250,
+    "end_line": 6361,
+    "sha256": "6f3b3433a834357b96ebf5905811dd0b8dc0a51ffdef7d6738bff255aaba432c"
+  },
+  {
+    "name": "MatchesUnidentifiedEntryOrder",
+    "line": 6363,
+    "end_line": 6378,
+    "sha256": "669e4cb3a99991d60d9b8151734dcfa6f5c3b15b56542332d64f52f390292901"
+  },
+  {
+    "name": "RecoverUnidentifiedEntryOrder",
+    "line": 6380,
+    "end_line": 6421,
+    "sha256": "1ee8f65842a909f2a792b6b6bc01868395136f628a56c68a8f7b845e3baca64e"
+  },
+  {
+    "name": "ReconcilePendingExecution",
+    "line": 6423,
+    "end_line": 6438,
+    "sha256": "0d623495a4852a031ec7a8a43322c24049b3830e0bb7cdc70c61b881c6161386"
+  },
+  {
+    "name": "ReconcilePendingExitIntent",
+    "line": 6440,
+    "end_line": 6488,
+    "sha256": "9c11d97249d3b4ac2815645926f95d3a4c5773f8e52840d928d59682ff23ef56"
+  },
+  {
+    "name": "ReconstructOpenPosition",
+    "line": 6491,
+    "end_line": 6558,
+    "sha256": "e9cc0e5cb1a54a972732bdb8c6bfde1250e47271725d6aaa75e74d4ebd554bd4"
+  },
+  {
+    "name": "RestoreDailyEconomicsFromHistory",
+    "line": 6560,
+    "end_line": 6715,
+    "sha256": "1712f8182e02a7a3af37dc92521623bce50d4e1e5247083903d17636f44aef0d"
+  },
+  {
+    "name": "RestoreDailyPersistence",
+    "line": 6717,
+    "end_line": 6752,
+    "sha256": "1cb910714d92b38a1dd443e40f56b1fb2abe117738a7d848f798bb56df8278c1"
+  },
+  {
+    "name": "RememberDeferredAccountingPID",
+    "line": 6755,
+    "end_line": 6779,
+    "sha256": "c632d7db95dfa85099ffe128529113fe8131c600b58adb0e0b646a1483284608"
+  },
+  {
+    "name": "ForgetDeferredAccountingPID",
+    "line": 6781,
+    "end_line": 6802,
+    "sha256": "40d29e92a2c68890cbaabfce8db40f1fe9a5b5406fb08aebfad2a19990896f69"
+  },
+  {
+    "name": "IsFinalRejectedRetcode",
+    "line": 6804,
+    "end_line": 6831,
+    "sha256": "663d9cac80c64924b343354386e0d9b7212c9540679ee588ecc837c1b54257de"
+  },
+  {
+    "name": "CompletePendingExit",
+    "line": 6833,
+    "end_line": 6848,
+    "sha256": "6a543f841187efe12b808ba4aa24d65ddd09e39dfb818b61ad3c909d21e08600"
+  },
+  {
+    "name": "MatchesExitRequest",
+    "line": 6850,
+    "end_line": 6859,
+    "sha256": "bd89cfcad0b68009cd49929fa3bf5a3e8c342f274ae22f9283cf1be44a6154f9"
+  },
+  {
+    "name": "SyncAccountingState",
+    "line": 6860,
+    "end_line": 6899,
+    "sha256": "b21b6bd2d53535c8a3a8f0e24ebce0810712de407bade1cf9b47cb6cd8660038"
+  },
+  {
+    "name": "RecomputeAccountingBlock",
+    "line": 6901,
+    "end_line": 6933,
+    "sha256": "d35bca402b07710a7fbbd1620308d1cc63f7b6dce0cf2a63d3473c42019ead1b"
+  },
+  {
+    "name": "RecomputeDailyRiskBlock",
+    "line": 6935,
+    "end_line": 6948,
+    "sha256": "f6b67ab5550739c7967e4928a4f8103fd6ffbc384d7fe6b138cbb1b1b1eb96b6"
+  },
+  {
+    "name": "RecoverAccountingInfrastructure",
+    "line": 6950,
+    "end_line": 7040,
+    "sha256": "1da08dd81c8c0a50525a1ac0fa1aa88b3803f34c6722a0205d9a2e1369e674d2"
+  },
+  {
+    "name": "RecoverTradeCsvInfrastructure",
+    "line": 7042,
+    "end_line": 7071,
+    "sha256": "7d851039520ef36327848de184f5b1aabd7dffc2f8b696814a1a765403698336"
+  },
+  {
+    "name": "MarkTemporaryAccountingHistory",
+    "line": 7073,
+    "end_line": 7079,
+    "sha256": "1402516ad1e21e336718e45e81bfcc2de3252667e169a635ff8a473bbf21c906"
+  },
+  {
+    "name": "ProcessAccountingDeal",
+    "line": 7081,
+    "end_line": 7124,
+    "sha256": "7344f2e577b46e84588db9ad02148f5fa1433f9af8ac860cae18c72e67f32206"
+  },
+  {
+    "name": "RememberDeferredDeal",
+    "line": 7126,
+    "end_line": 7141,
+    "sha256": "8c849a62ed504b76bf26640a7b39e339004d7fa8d0c69cf012d4f9528d822014"
+  },
+  {
+    "name": "ReconcileDeferredDeals",
+    "line": 7143,
+    "end_line": 7159,
+    "sha256": "619476b9305b2732c28550bd9fa9c00bf54f064ac228cdbdd2d5d30c3b3812a2"
+  },
+  {
+    "name": "EconomicMarkerPrefix",
+    "line": 7161,
+    "end_line": 7165,
+    "sha256": "3daf963c61b32cd15c6e8d45e72236cdf572c1c151acb294a1149f6b4dbd1b7b"
+  },
+  {
+    "name": "EconomicMarkerPath",
+    "line": 7167,
+    "end_line": 7168,
+    "sha256": "5d93a0e5888eec1f6c9c8502b291ca6112ef2961498659b9108053857a2f032c"
+  },
+  {
+    "name": "IdentityLossMarkerPath",
+    "line": 7170,
+    "end_line": 7171,
+    "sha256": "c70f8009a6bdfdead899506e2808f36529da5b9f86fe1efd4675695013ae936e"
+  },
+  {
+    "name": "PersistInfrastructureIdentityLoss",
+    "line": 7173,
+    "end_line": 7188,
+    "sha256": "754e82c651bbf9a19e1f77e43bb8bd4305c89ce79dca20b61124d40299387a28"
+  },
+  {
+    "name": "MarkInfrastructureIdentityLoss",
+    "line": 7190,
+    "end_line": 7196,
+    "sha256": "19cc4f6dc6c423c9eea739a8bb11a4241efb5b1b7eebc1cbdb3279ae3829df16"
+  },
+  {
+    "name": "PersistEconomicMarker",
+    "line": 7198,
+    "end_line": 7213,
+    "sha256": "13889495b662b12bed2f9fd4e5a5e618130d7a6937fc39c5cc5753c48bedaf0c"
+  },
+  {
+    "name": "RestoreUnresolvedEconomicMarkers",
+    "line": 7215,
+    "end_line": 7268,
+    "sha256": "1f0cb6d8b73fe3b259aaf6a310daeadc1b97e9e5c2fa7c1c4da04180405af31e"
+  },
+  {
+    "name": "SyncEconomicMarker",
+    "line": 7270,
+    "end_line": 7329,
+    "sha256": "bcdf19ab823e08d5f6492293835856764d6301deb26820fcbe008f60fd02d8c4"
+  },
+  {
+    "name": "RecoverEconomicMarkers",
+    "line": 7331,
+    "end_line": 7344,
+    "sha256": "4ea70c32b4fd6f2aaefb98849c0f104fda5169eedf7fae5ed4836911007b08ed"
+  },
+  {
+    "name": "EMRDealI",
+    "line": 7366,
+    "end_line": 7370,
+    "sha256": "4ee859fd8a7a97a063e3484e6f6131a5133867c772e2fb483112fe3ec72ab7e9"
+  },
+  {
+    "name": "EMRDealD",
+    "line": 7371,
+    "end_line": 7376,
+    "sha256": "e4025b1bd05b2e127d5ff6ced2b03f238dd21041a387ac0fbe167c8f1a6bb3e5"
+  },
+  {
+    "name": "EMRDealS",
+    "line": 7377,
+    "end_line": 7381,
+    "sha256": "b870cfdb6f51ac432c31fe6c6f5bb7ff91b737e4c3aaa383b29f96e9b9b80d3e"
+  },
+  {
+    "name": "EMROrderI",
+    "line": 7382,
+    "end_line": 7386,
+    "sha256": "733c53cfeaefb9d2fadb382d246037e5bca092036de278035a5349de2a143cc8"
+  },
+  {
+    "name": "EMROrderD",
+    "line": 7387,
+    "end_line": 7392,
+    "sha256": "c79a1bd8c58abe8b7a374ddbb72fe886c7dae16605ed6b88068e3782e63a8345"
+  },
+  {
+    "name": "EMROrderS",
+    "line": 7393,
+    "end_line": 7397,
+    "sha256": "2d685252ce29551c700c26ae93be9c931c00b2ffc4be90af1a17699811d5e956"
+  },
+  {
+    "name": "EMRFinite",
+    "line": 7398,
+    "end_line": 7399,
+    "sha256": "96697bdf6a36f84e454a52254139cc5cbec91a9cf60c38a517bf6f8772a06219"
+  },
+  {
+    "name": "EMRNear",
+    "line": 7400,
+    "end_line": 7405,
+    "sha256": "956ac6e16ab15b406fd314f1d4662a25d0cd6d4323d0777c5fd2cbc25f04f7a0"
+  },
+  {
+    "name": "EMRD",
+    "line": 7406,
+    "end_line": 7406,
+    "sha256": "cb5ae5c2d964325873f89ce96ddc7cb38758c4295f8acce671c6f2f20b71bf0e"
+  },
+  {
+    "name": "EMRReadDeal",
+    "line": 7408,
+    "end_line": 7432,
+    "sha256": "04167b5628651ad7b790072c6bc15310aaeb0c5554e2b8535011e69fdb552b56"
+  },
+  {
+    "name": "EMRDealEvidence",
+    "line": 7434,
+    "end_line": 7440,
+    "sha256": "374c299ec04bc676677877f5f1ccfa0176fce7b7190381f5f82df2873b519b69"
+  },
+  {
+    "name": "EMRReadOrder",
+    "line": 7442,
+    "end_line": 7466,
+    "sha256": "b5ed9f3d69197da8b41cb6b488ec441cd6b378c18a6f489cc6b49dde8b49fc07"
+  },
+  {
+    "name": "EMROrderEvidence",
+    "line": 7468,
+    "end_line": 7474,
+    "sha256": "d0ebcba08a6c710a5f30ceadc8065f4e6be995ed53347ef327286ad85f2da783"
+  },
+  {
+    "name": "EMRConnected",
+    "line": 7476,
+    "end_line": 7481,
+    "sha256": "63eb3f1324fa22dcf1f1c8ae30a661783f888e7a1e9fc43b39587441c9a004c8"
+  },
+  {
+    "name": "EMRStrictLiveSnapshot",
+    "line": 7485,
+    "end_line": 7546,
+    "sha256": "74f3529ccc7240ac12515f2a20c74c3e824a4bfe8c0ea68958ad06b4ae657b4a"
+  },
+  {
+    "name": "EMRStrictSnapshot",
+    "line": 7548,
+    "end_line": 7755,
+    "sha256": "38bff06d2c917ce3e28a3440911f75bf9a28707d68626cd5080ca5ebe8c35172"
+  },
+  {
+    "name": "EMRResolutionPath",
+    "line": 7758,
+    "end_line": 7759,
+    "sha256": "27d3fd0fd085bb32429b2013f723ab82fdbf27f4f60def531afec8f64c25bbd3"
+  },
+  {
+    "name": "EMRHasSuffix",
+    "line": 7761,
+    "end_line": 7765,
+    "sha256": "03d481e28c6466833c9c451938f51632337d51fea353114503de1d318b7ddd45"
+  },
+  {
+    "name": "EMRNamePID",
+    "line": 7767,
+    "end_line": 7774,
+    "sha256": "b4aed0958b80f6d8234fd20dbcc6188c04b694d7f97f8817a11b608577b8cf77"
+  },
+  {
+    "name": "EMRProbeMarker",
+    "line": 7778,
+    "end_line": 7809,
+    "sha256": "712f17de3b09f5ab5442ea8f38e031c30e4052994ffceb2dd38053caf7508160"
+  },
+  {
+    "name": "EMRInspectFiles",
+    "line": 7811,
+    "end_line": 7853,
+    "sha256": "52ce89f2acd411427348d4897396b2ad9012e83d24551bd5952621035bd65fb9"
+  },
+  {
+    "name": "EMRPayloadBytes",
+    "line": 7855,
+    "end_line": 7868,
+    "sha256": "e1fb8a871eb574b0365620f2098e6218df2dba74fdd7f2a31b692160612677c4"
+  },
+  {
+    "name": "EMRReadExact",
+    "line": 7870,
+    "end_line": 7897,
+    "sha256": "a78ca2a8600383741ee8beb814502adf8982bfd3f580f9df0f505cc007351ad8"
+  },
+  {
+    "name": "EMRConfirmExisting",
+    "line": 7899,
+    "end_line": 7911,
+    "sha256": "cb74c3b591cd53f2ebf1d8b0545e30065a2e5d61df1d5cc5f2d820a8c5fe4ed6"
+  },
+  {
+    "name": "EMRCommitResolution",
+    "line": 7913,
+    "end_line": 7957,
+    "sha256": "ed1407bffdaea155da29495b5a7f73227b731ebcc20ecf5e981d7c126838a3cc"
+  },
+  {
+    "name": "EMRReady",
+    "line": 7960,
+    "end_line": 7983,
+    "sha256": "557da06a02581fb90cc45855e28c40dee72ece293ce7f003ff700d4789cb51f5"
+  },
+  {
+    "name": "EMRBreakEvenEvidence",
+    "line": 7985,
+    "end_line": 8033,
+    "sha256": "3ffaa58e8eecc33b5bec9723267024caf93e641bb7fbca63dea7d373d29d6fde"
+  },
+  {
+    "name": "EMRRecoverRecord",
+    "line": 8035,
+    "end_line": 8066,
+    "sha256": "749fc58a5158b303dbc1c724d01e75d207527f0923d5273f1d409de2260badae"
+  },
+  {
+    "name": "EMRMaintainArchivedCleanup",
+    "line": 8070,
+    "end_line": 8123,
+    "sha256": "b52d187cfc847e2e7e6aac030ffa88b321485926a18f6698a69f3a713d384968"
+  },
+  {
+    "name": "EMRReleaseArchivedRecord",
+    "line": 8125,
+    "end_line": 8145,
+    "sha256": "c711aa0685a002051ab6dba93297b6f4bd66f64022c43333b4063c2e8989dd6b"
+  },
+  {
+    "name": "EMRReleaseArchivedRecords",
+    "line": 8147,
+    "end_line": 8151,
+    "sha256": "bd39471784dfa5455dd20d9ffcd3001aad7019d01e41bd73bd41082d975a36c9"
+  },
+  {
+    "name": "EMRInvalidateTransaction",
+    "line": 8153,
+    "end_line": 8188,
+    "sha256": "c36a3e75071054062cf70d5a72e1ca11654a2e35967dc9086321e67a5604b9b6"
+  },
+  {
+    "name": "RecomputeRequestJournalFlags",
+    "line": 8192,
+    "end_line": 8196,
+    "sha256": "f6bdb74e7c019537d8500596bdcdef239f5d2cbee589f165b0066486e3b6e174"
+  },
+  {
+    "name": "RequestJournalPath",
+    "line": 8198,
+    "end_line": 8199,
+    "sha256": "493a2a1df24ebb1cb1e643e8c4300a4e7f951ce8b8266ebae9b0c83f3d7c8a7c"
+  },
+  {
+    "name": "RJUnsigned",
+    "line": 8201,
+    "end_line": 8205,
+    "sha256": "b08d9f626ce5239a4ffe0668aa5d35844d211e5c0ddc1792b3b4dd577ad89df6"
+  },
+  {
+    "name": "RJBoolean",
+    "line": 8207,
+    "end_line": 8211,
+    "sha256": "bc4ca377fdd665ad1372d51e8c1e9bde76eefadc889e15ce221bb9c3939d76f2"
+  },
+  {
+    "name": "RJDouble",
+    "line": 8213,
+    "end_line": 8226,
+    "sha256": "de826ea3ccee2a0fdd971285174405fc2d8b92ea7d8c0da8098eb29323b6823a"
+  },
+  {
+    "name": "RJEncode",
+    "line": 8228,
+    "end_line": 8234,
+    "sha256": "ac923e7f8d337d12e4b548d2120b8191321d26dfe0a3df770b29e55986c197a8"
+  },
+  {
+    "name": "RJDecode",
+    "line": 8235,
+    "end_line": 8254,
+    "sha256": "940831a559f503dba561e17e0f93081e3309b4d203249a56eced57b5c937483c"
+  },
+  {
+    "name": "RJRoute",
+    "line": 8256,
+    "end_line": 8261,
+    "sha256": "e0c96c986b2b454c1e2095dc50377000d6934a4ae23b16d10f373e943d32fe70"
+  },
+  {
+    "name": "RJChecksum",
+    "line": 8263,
+    "end_line": 8270,
+    "sha256": "3e5c22a5baf13736e50565b2d4d3c414038921e4d58f1ec0e1fca7ece79c025e"
+  },
+  {
+    "name": "RJParse",
+    "line": 8272,
+    "end_line": 8360,
+    "sha256": "2e0b853d9c26e398f110cdd87d0018f1237c3b2c55d0a63573beafe0b7ffd96f"
+  },
+  {
+    "name": "RJRow",
+    "line": 8362,
+    "end_line": 8404,
+    "sha256": "64b1ff3b092a11cd401434185b85e00b4af0b2cef9865faa7ac70bd669202f27"
+  },
+  {
+    "name": "PersistRequestJournal",
+    "line": 8405,
+    "end_line": 8440,
+    "sha256": "d55064ecdb0557e53c6af5a3300d21eb8a306c21aeea36a808b37bc2f0ea1b03"
+  },
+  {
+    "name": "MarkRequestDispatchPossible",
+    "line": 8442,
+    "end_line": 8458,
+    "sha256": "1d42e31373f0ddc0c3989418c4c37232aa3015194dd4d2402d2af41c201747a8"
+  },
+  {
+    "name": "ResolveRequestJournal",
+    "line": 8460,
+    "end_line": 8482,
+    "sha256": "5d211bf52191d2dd0a1a5ae64401643bcff66ea39efe63a8686953306a1af686"
+  },
+  {
+    "name": "ReleasePreparedRequest",
+    "line": 8484,
+    "end_line": 8505,
+    "sha256": "55832a79f7b8a93bdf419c90f7a6c8eb66a8bde4cee501800ce442a08d611bbc"
+  },
+  {
+    "name": "RJRead",
+    "line": 8507,
+    "end_line": 8570,
+    "sha256": "5fbae0792cff86fe397d2038e46f39dc65678d745e0720aea7ea99cf681ed4ca"
+  },
+  {
+    "name": "RJCompatibleEntry",
+    "line": 8571,
+    "end_line": 8582,
+    "sha256": "0bb413df822969cef948ed1c48576fa4bc1185423652cd8b8b10876e5c2a29b2"
+  },
+  {
+    "name": "RJCompatibleExit",
+    "line": 8584,
+    "end_line": 8592,
+    "sha256": "703725372f554e817d6c220e6203bf5d58a029bf1e2bc84ccf62208ab5f0f061"
+  },
+  {
+    "name": "RestoreRequestJournals",
+    "line": 8594,
+    "end_line": 8652,
+    "sha256": "49b1ed2dc05141a70cf662763abfacd8d07a8040d5388f40b020fca84e277ad0"
+  },
+  {
+    "name": "RecoverRequestJournals",
+    "line": 8654,
+    "end_line": 8678,
+    "sha256": "d6b33cafdca150dde3147d9882d63cb3219b4308df49b7dbfd9e6f5032679119"
+  },
+  {
+    "name": "OrderObligationPath",
+    "line": 8681,
+    "end_line": 8684,
+    "sha256": "1a64455589248da149f71735312de1beee5fe099e8f570b13b61362a96c37a96"
+  },
+  {
+    "name": "UnknownOrderObligationContext",
+    "line": 8686,
+    "end_line": 8696,
+    "sha256": "2f281f25939ef975bbd7058b14137ed2afe63bbb82a15e371e9d93727ce058ec"
+  },
+  {
+    "name": "EnsureOrderObligationIdentity",
+    "line": 8698,
+    "end_line": 8713,
+    "sha256": "a93c0b2db242a7659a5331e363e436a7dca7918f06b5c7ac2322b9508c7b1be0"
+  },
+  {
+    "name": "OrderObligationOptionalEnum",
+    "line": 8714,
+    "end_line": 8721,
+    "sha256": "b07bd7de14f46f2cfd1db692e7b366971a49c1b152f03318876fd9e76b12922a"
+  },
+  {
+    "name": "ParseOrderObligationSnapshot",
+    "line": 8723,
+    "end_line": 8756,
+    "sha256": "571d865794593d0659e11cfa0ef2dbe02bad533f8f3e72fd6a8a341d7c341c54"
+  },
+  {
+    "name": "OrderObligationSnapshot",
+    "line": 8758,
+    "end_line": 8779,
+    "sha256": "9d10bca957c956c47d48f5267958c7d253a073c24045f9fec6858c6effeeae55"
+  },
+  {
+    "name": "PersistOrderObligationSnapshot",
+    "line": 8781,
+    "end_line": 8808,
+    "sha256": "3b29bd3b52efb38bc14d29d11109da715d697003d51fe1f8cd9fb039cea8fe9c"
+  },
+  {
+    "name": "ReadOrderObligationSnapshot",
+    "line": 8809,
+    "end_line": 8854,
+    "sha256": "4570630d09064c1616b20e75cd8b79b403dcd0c1b0574f3f1e9cd2a610fa0c56"
+  },
+  {
+    "name": "ReleaseOrderObligation",
+    "line": 8855,
+    "end_line": 8872,
+    "sha256": "23a74429bbc5b7901f6444e23690d5e0c9cd3384d3b20aa53943d50ed7bf7efe"
+  },
+  {
+    "name": "StoreOrderObligationContext",
+    "line": 8874,
+    "end_line": 8884,
+    "sha256": "b8c8ddd537706ca8e297ea54f5e6d300da09516617b76db5d5fa6373c0b0d7bb"
+  },
+  {
+    "name": "RestoreOrderObligations",
+    "line": 8886,
+    "end_line": 8948,
+    "sha256": "242f1f0ca4637d1b1894db418261a06065fbd0e72f424b7777850aaf6d4183ef"
+  },
+  {
+    "name": "InitializeAccounting",
+    "line": 8950,
+    "end_line": 8991,
+    "sha256": "3425771038c4c3b6a3f5b9c265d2b9b889da66d0ff1e5ebcd5e626feaeaf477e"
+  },
+  {
+    "name": "ResetAccountingDay",
+    "line": 8993,
+    "end_line": 9012,
+    "sha256": "04b0d17a9d3b7995ee38682da23d60fc0f847c6adbe83336f38d505214ad1828"
+  },
+  {
+    "name": "OnTradeTransaction",
+    "line": 9014,
+    "end_line": 9057,
+    "sha256": "7580cd3e6573cbdf935886989edd58120b68121e243d131159b94862cc432787"
+  },
+  {
+    "name": "OnTester",
+    "line": 9060,
+    "end_line": 9060,
+    "sha256": "0d5715db73c088030eaef96a3c9ba76e72ae18b931bdcc1cebf34634b344ca3c"
+  }
+]

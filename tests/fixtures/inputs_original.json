@@ -1,0 +1,440 @@
+[
+  {
+    "name": "Inp_Magic_WIN",
+    "type": "int",
+    "default": "60001",
+    "line": 98
+  },
+  {
+    "name": "Inp_Magic_WDO",
+    "type": "int",
+    "default": "60002",
+    "line": 99
+  },
+  {
+    "name": "CSVFileName",
+    "type": "string",
+    "default": "\"Scalper1995\"",
+    "line": 100
+  },
+  {
+    "name": "BacktestStart",
+    "type": "datetime",
+    "default": "D'2025.01.01'",
+    "line": 101
+  },
+  {
+    "name": "Inp_ContextTF",
+    "type": "ENUM_TIMEFRAMES",
+    "default": "PERIOD_M5",
+    "line": 104
+  },
+  {
+    "name": "Inp_SignalTF",
+    "type": "ENUM_TIMEFRAMES",
+    "default": "PERIOD_M1",
+    "line": 105
+  },
+  {
+    "name": "Inp_StartHHMM",
+    "type": "int",
+    "default": "900",
+    "line": 108
+  },
+  {
+    "name": "Inp_StopEntryHHMM",
+    "type": "int",
+    "default": "1530",
+    "line": 109
+  },
+  {
+    "name": "Inp_EOD_CloseHHMM",
+    "type": "int",
+    "default": "1750",
+    "line": 110
+  },
+  {
+    "name": "Inp_SizingMode",
+    "type": "SIZING_MODE",
+    "default": "SIZING_FIXED",
+    "line": 112
+  },
+  {
+    "name": "Inp_FixedLots",
+    "type": "double",
+    "default": "1.0",
+    "line": 113
+  },
+  {
+    "name": "Inp_RiskPerTradePct",
+    "type": "double",
+    "default": "0.15",
+    "line": 114
+  },
+  {
+    "name": "Inp_MaxLots",
+    "type": "double",
+    "default": "2.0",
+    "line": 115
+  },
+  {
+    "name": "Inp_SL_Pts_WIN",
+    "type": "double",
+    "default": "400.0",
+    "line": 118
+  },
+  {
+    "name": "Inp_TP_Pts_WIN",
+    "type": "double",
+    "default": "2000.0",
+    "line": 119
+  },
+  {
+    "name": "Inp_SL_Pts_WDO",
+    "type": "double",
+    "default": "10.0",
+    "line": 120
+  },
+  {
+    "name": "Inp_TP_Pts_WDO",
+    "type": "double",
+    "default": "25.0",
+    "line": 121
+  },
+  {
+    "name": "Inp_SpreadMaxPts_WIN",
+    "type": "double",
+    "default": "30.0",
+    "line": 124
+  },
+  {
+    "name": "Inp_SpreadMaxPts_WDO",
+    "type": "double",
+    "default": "2.0",
+    "line": 125
+  },
+  {
+    "name": "Inp_EnableBreakEven",
+    "type": "bool",
+    "default": "true",
+    "line": 128
+  },
+  {
+    "name": "Inp_EnableDailyRiskStop",
+    "type": "bool",
+    "default": "true",
+    "line": 131
+  },
+  {
+    "name": "Inp_MaxDailyLossR",
+    "type": "double",
+    "default": "3.0",
+    "line": 132
+  },
+  {
+    "name": "Inp_EnableConsecutiveLossStop",
+    "type": "bool",
+    "default": "true",
+    "line": 133
+  },
+  {
+    "name": "Inp_MaxConsecutiveLosses",
+    "type": "int",
+    "default": "3",
+    "line": 134
+  },
+  {
+    "name": "Inp_MaxTradesDay",
+    "type": "int",
+    "default": "10",
+    "line": 137
+  },
+  {
+    "name": "Inp_CooldownSec",
+    "type": "int",
+    "default": "0",
+    "line": 140
+  },
+  {
+    "name": "Inp_LossCooldownSec",
+    "type": "int",
+    "default": "0",
+    "line": 141
+  },
+  {
+    "name": "Inp_ArmedTimeoutSec",
+    "type": "int",
+    "default": "300",
+    "line": 144
+  },
+  {
+    "name": "Inp_ABSTriggerReference",
+    "type": "ABS_TRIGGER_REFERENCE",
+    "default": "ABS_TRIGGER_SIGNAL_CLOSE",
+    "line": 147
+  },
+  {
+    "name": "Inp_Region_Candles",
+    "type": "int",
+    "default": "2",
+    "line": 150
+  },
+  {
+    "name": "Inp_BreakoutMargin_WIN",
+    "type": "double",
+    "default": "175.0",
+    "line": 151
+  },
+  {
+    "name": "Inp_BreakoutMargin_WDO",
+    "type": "double",
+    "default": "3.5",
+    "line": 152
+  },
+  {
+    "name": "Inp_MaxOvershoot_WIN",
+    "type": "double",
+    "default": "100.0",
+    "line": 153
+  },
+  {
+    "name": "Inp_MaxOvershoot_WDO",
+    "type": "double",
+    "default": "2.5",
+    "line": 154
+  },
+  {
+    "name": "Inp_ABS_Effort",
+    "type": "double",
+    "default": "1.50",
+    "line": 157
+  },
+  {
+    "name": "Inp_CONT_Effort",
+    "type": "double",
+    "default": "1.50",
+    "line": 158
+  },
+  {
+    "name": "Inp_ABS_BreakoutEffort",
+    "type": "double",
+    "default": "1.50",
+    "line": 159
+  },
+  {
+    "name": "Inp_CONT_BreakoutEffort",
+    "type": "double",
+    "default": "1.50",
+    "line": 160
+  },
+  {
+    "name": "Inp_POC_WindowSec",
+    "type": "int",
+    "default": "300",
+    "line": 162
+  },
+  {
+    "name": "Inp_POC_FollowRatio",
+    "type": "double",
+    "default": "0.40",
+    "line": 163
+  },
+  {
+    "name": "Inp_RejectPOCTies",
+    "type": "bool",
+    "default": "false",
+    "line": 164
+  },
+  {
+    "name": "Inp_ABS_MinPriceMovePts_WIN",
+    "type": "double",
+    "default": "60.0",
+    "line": 167
+  },
+  {
+    "name": "Inp_ABS_MaxBodyPts_WIN",
+    "type": "double",
+    "default": "60.0",
+    "line": 168
+  },
+  {
+    "name": "Inp_ABS_MinPriceMovePts_WDO",
+    "type": "double",
+    "default": "2.0",
+    "line": 169
+  },
+  {
+    "name": "Inp_ABS_MaxBodyPts_WDO",
+    "type": "double",
+    "default": "2.0",
+    "line": 170
+  },
+  {
+    "name": "Inp_CONT_MinPriceMovePts_WIN",
+    "type": "double",
+    "default": "50.0",
+    "line": 173
+  },
+  {
+    "name": "Inp_CONT_MinPriceMovePts_WDO",
+    "type": "double",
+    "default": "1.5",
+    "line": 174
+  },
+  {
+    "name": "Inp_Cont_RequireCandleDirection",
+    "type": "bool",
+    "default": "true",
+    "line": 175
+  },
+  {
+    "name": "Inp_BandMultiplier_WIN",
+    "type": "double",
+    "default": "0.80",
+    "line": 178
+  },
+  {
+    "name": "Inp_BandMultiplier_WDO",
+    "type": "double",
+    "default": "1.50",
+    "line": 179
+  },
+  {
+    "name": "Inp_VWAP_Inner_Pct",
+    "type": "double",
+    "default": "0.60",
+    "line": 180
+  },
+  {
+    "name": "Inp_VWAP_Outer_Pct",
+    "type": "double",
+    "default": "1.50",
+    "line": 181
+  },
+  {
+    "name": "Inp_Rule_40_60",
+    "type": "double",
+    "default": "0.40",
+    "line": 184
+  },
+  {
+    "name": "Inp_C2_WIN",
+    "type": "double",
+    "default": "700.0",
+    "line": 185
+  },
+  {
+    "name": "Inp_C3_Min_WIN",
+    "type": "double",
+    "default": "125.0",
+    "line": 186
+  },
+  {
+    "name": "Inp_C3_Max_WIN",
+    "type": "double",
+    "default": "400.0",
+    "line": 187
+  },
+  {
+    "name": "Inp_C2_WDO",
+    "type": "double",
+    "default": "25.0",
+    "line": 188
+  },
+  {
+    "name": "Inp_C3_Min_WDO",
+    "type": "double",
+    "default": "5.0",
+    "line": 189
+  },
+  {
+    "name": "Inp_C3_Max_WDO",
+    "type": "double",
+    "default": "15.0",
+    "line": 190
+  },
+  {
+    "name": "SigmaLookbackDays",
+    "type": "int",
+    "default": "5",
+    "line": 193
+  },
+  {
+    "name": "Inp_SigmaFloor_WIN",
+    "type": "double",
+    "default": "200.0",
+    "line": 194
+  },
+  {
+    "name": "Inp_SigmaFloor_WDO",
+    "type": "double",
+    "default": "7.0",
+    "line": 195
+  },
+  {
+    "name": "Inp_MaxDeviationPts_WIN",
+    "type": "int",
+    "default": "100",
+    "line": 198
+  },
+  {
+    "name": "Inp_MaxDeviationPts_WDO",
+    "type": "int",
+    "default": "2",
+    "line": 199
+  },
+  {
+    "name": "Inp_EnableMacroDirectionGate",
+    "type": "bool",
+    "default": "true",
+    "line": 202
+  },
+  {
+    "name": "Inp_EnableLateDirectionBlock",
+    "type": "bool",
+    "default": "true",
+    "line": 203
+  },
+  {
+    "name": "Inp_EnableAbsorption",
+    "type": "bool",
+    "default": "true",
+    "line": 204
+  },
+  {
+    "name": "Inp_EnableContinuation",
+    "type": "bool",
+    "default": "true",
+    "line": 205
+  },
+  {
+    "name": "Inp_TurboLotsMultiplier",
+    "type": "double",
+    "default": "2.0",
+    "line": 208
+  },
+  {
+    "name": "Inp_ExitMode",
+    "type": "EXIT_MODE",
+    "default": "PROGRESSIVE_NO_TP",
+    "line": 209
+  },
+  {
+    "name": "Inp_MaxProtectedR",
+    "type": "int",
+    "default": "5",
+    "line": 210
+  },
+  {
+    "name": "Inp_AggressionFilterMode",
+    "type": "FAR_MODE",
+    "default": "FAR_APLICAR",
+    "line": 211
+  },
+  {
+    "name": "Inp_AggressionThresholdPct",
+    "type": "double",
+    "default": "60.0",
+    "line": 212
+  }
+]
