@@ -6952,7 +6952,7 @@ bool PersistEconomicMarker(ulong pid)
   if(h==INVALID_HANDLE) return false;
   ResetLastError();
   uint written=FileWriteString(h,"S1995_ECONOMIC_OBLIGATION\r\n");
-  bool ok=(written==25 && GetLastError()==0);
+  bool ok=(written==27 && GetLastError()==0);
   ResetLastError(); FileFlush(h);
   if(GetLastError()!=0) ok=false;
   FileClose(h);
