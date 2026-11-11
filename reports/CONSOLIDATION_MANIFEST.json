@@ -1,0 +1,36 @@
+{
+  "modular_base_commit": "ac0540261d6f0e578e79bddd46ff26ff65f317e8",
+  "native_compilation": "COMPILACAO_NATIVA_NAO_VERIFICADA",
+  "files": {
+    "RemoraScalper1995_Weis1996.mq5": {
+      "bytes": 371814,
+      "lines": 8825,
+      "sha256": "91d47ddc41af969e248fc3ffb585c4b9b433e0bd0e8d2c61cd0ee228dcfad23c"
+    },
+    "include/Weis1996Kernel.mqh": {
+      "bytes": 6552,
+      "lines": 162,
+      "sha256": "8aaef7aebe183a21537f64c2a4031ecaaaf88e5a2d79a075143f1d1a4337470e"
+    },
+    "include/Weis1996Engine.mqh": {
+      "bytes": 14704,
+      "lines": 323,
+      "sha256": "357bfb526d023ec5c43b3358f416400099f183e34e8d584e59803f19986d3f3c"
+    },
+    "include/SignalLifecycle1995.mqh": {
+      "bytes": 10052,
+      "lines": 196,
+      "sha256": "500338661e5f731dbecfd31ecc1194e0cdfd89105afcfd6ea12a318acd097504"
+    },
+    "eu1995": {
+      "bytes": 378497,
+      "lines": 9065,
+      "sha256": "2479ed8e5c9189438d787be1e804abbd95f9e1c06e01042e560251e64ef67fc5"
+    },
+    "RemoraScalper1995_Weis1996_COMPLETA.mq5": {
+      "bytes": 403752,
+      "lines": 9515,
+      "sha256": "22708a7ae145037a31accde3b02279a4e123eb92eba4c6ccfb7a9b4e2074d6ef"
+    }
+  }
+}

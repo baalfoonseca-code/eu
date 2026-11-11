@@ -1,0 +1,15 @@
+PASS: exact, reproducible consolidation of the latest corrected base
+test_77_inputs_exact_names_types_order_defaults (__main__.Consolidation.test_77_inputs_exact_names_types_order_defaults) ... ok
+test_all_function_bodies_and_finance_exact (__main__.Consolidation.test_all_function_bodies_and_finance_exact) ... ok
+test_corrected_epoch_and_marker_retained (__main__.Consolidation.test_corrected_epoch_and_marker_retained) ... ok
+test_each_module_body_is_present_once_without_edits (__main__.Consolidation.test_each_module_body_is_present_once_without_edits) ... ok
+test_exact_pinned_expansion_and_inputs_untouched (__main__.Consolidation.test_exact_pinned_expansion_and_inputs_untouched) ... ok
+test_no_duplicate_functions_types_globals_or_inputs (__main__.Consolidation.test_no_duplicate_functions_types_globals_or_inputs) ... ok
+test_only_official_includes_and_properties_preserved (__main__.Consolidation.test_only_official_includes_and_properties_preserved) ... ok
+test_preprocessed_effective_tokens_identical (__main__.Consolidation.test_preprocessed_effective_tokens_identical) ... ok
+test_project_module_calls_have_definitions (__main__.Consolidation.test_project_module_calls_have_definitions) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.480s
+
+OK
