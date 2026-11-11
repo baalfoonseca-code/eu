@@ -10,6 +10,8 @@ commands = [
     [sys.executable, 'tests/test_lifecycle.py'],
     [sys.executable, 'tests/test_preservation.py'],
     [sys.executable, 'tests/finance/test_economic_marker.py'],
+    [sys.executable, 'tests/test_review_epoch.py'],
+    [sys.executable, 'tests/test_review_max_body.py'],
 ]
 for command in commands:
     print('\nRUN ' + ' '.join(command), flush=True)

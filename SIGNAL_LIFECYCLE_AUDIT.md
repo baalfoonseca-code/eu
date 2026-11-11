@@ -93,3 +93,7 @@ exemplos fictícios de logs como se fossem sinais/fills observados.
 A integração efetiva dos pontos de chamada no EA deve ser conferida no diff
 final e nos demais relatórios. A presença do helper sozinha não comprova
 cobertura completa de todos os motivos terminais.
+
+## Revisão dirigida posterior à entrega-base85be544
+
+`EndRevisedWeisThesis` distingue prova definitivamente revisada de indisponibilidade transitória. Com epoch distinto, registra `THESIS_INVALIDATED` e depois `SIGNAL_ENDED` pelo caminho existente de ResetArmedSignal, preservando o mesmo ID e motivo `FROZEN_WEIS_EVIDENCE_REVISED` antes de limpar a intenção. O encerramento não altera pendências, journals, posições ou a correlação armazenada de requests/fills. OnTick retorna antes de hard-flip ou novo armamento nessa chamada; o timer pode encerrar sem novo tick. Com epoch igual e dados vivos temporariamente ausentes, o comportamento continua de espera e o evento é `THESIS_REVALIDATION`. Filas/falhas de disco mantêm as limitações já descritas.

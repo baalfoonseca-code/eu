@@ -1626,6 +1626,18 @@ void ResetArmedSignal()
     FARClearEvidence();
 }
 
+// An epoch change permanently detaches this intention from its frozen evidence.
+// End only analytical ARMED/FAR state; financial obligations stay authoritative.
+bool EndRevisedWeisThesis()
+{
+   if(!armed.active || armed.weisEpoch==gWWEpoch) return false;
+   armed.entryReason="FROZEN_WEIS_EVIDENCE_REVISED";
+   armed.lifecycleReason="FROZEN_WEIS_EVIDENCE_REVISED";
+   WriteEntryDiagnostic(armed,"THESIS_INVALIDATED");
+   ResetArmedSignal(); // emits SIGNAL_ENDED with the same ID/reason before clearing
+   return true;
+}
+
 void ResetOpenPos()
 {
   gOpenPos.active=false;gOpenPos.positionID=0;gOpenPos.direction=0;
@@ -3379,6 +3391,7 @@ void EvaluateMatrix()
 //=====================================================================
 ENUM_APS ProcessArmedSignal()
 {
+   if(EndRevisedWeisThesis()) return APS_ENDED_FAIL_CLOSED;
    datetime now=TimeTradeServer();
 
 // Timeout por tempo (novo vs. v2.44 que usava barras)
@@ -3466,8 +3479,7 @@ if(overshoot>gMaxOvershoot)
 double curEff,curVol,avgVol; int waveDir;
 if(!LiveWeisForArmed(tk,curEff,curVol,avgVol,waveDir))
 {
-   LLRecord(armed.weisEpoch!=gWWEpoch?"THESIS_INVALIDATED":"THESIS_REVALIDATION",armed,armed.weisEvidence,
-      armed.weisEpoch!=gWWEpoch?"FROZEN_WEIS_EVIDENCE_REVISED":"LIVE_WEIS_UNAVAILABLE_"+gWWReason);
+   LLRecord("THESIS_REVALIDATION",armed,armed.weisEvidence,"LIVE_WEIS_UNAVAILABLE_"+gWWReason);
    return APS_STILL_ARMED;
 }
 LLRecord("THESIS_REVALIDATION",armed,armed.weisEvidence,
@@ -4030,6 +4042,7 @@ void OnTick()
  ProcessEOD(hhmm);
  ManageBreakEven();
  WWService();
+ if(EndRevisedWeisThesis()) return; // no hard-flip or new intent in this callback
  if(hhmm>=Inp_StopEntryHHMM && armed.active) { armed.lifecycleReason="ABORT_SESSION_END"; ResetArmedSignal(); }
  datetime btCtx=iTime(Symbol(),Inp_ContextTF,0);
  datetime btSig=iTime(Symbol(),Inp_SignalTF,0);
@@ -4131,7 +4144,7 @@ void OnTimer()
  if(!d1Ready && TimeTradeServer()>=nextD1Retry) TryCalcD1();
  if(hhmm>=Inp_StopEntryHHMM && armed.active) { armed.lifecycleReason="ABORT_SESSION_END"; ResetArmedSignal(); }
  ProcessEOD(hhmm);
- WWService(); LLFlush();
+ WWService(); EndRevisedWeisThesis(); LLFlush();
  datetime now=TimeTradeServer();
  if(now-gLastFlushTime>=30)
  {

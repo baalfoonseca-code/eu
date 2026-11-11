@@ -1,0 +1,13 @@
+{
+  "review_base_commit": "85be544095be963c40707c8fd282722321d277a7",
+  "scope": [
+    "include integrity/integration",
+    "terminal epoch invalidation",
+    "retired MaxBody semantics"
+  ],
+  "original_sha256": "2479ed8e5c9189438d787be1e804abbd95f9e1c06e01042e560251e64ef67fc5",
+  "candidate_sha256": "91d47ddc41af969e248fc3ffb585c4b9b433e0bd0e8d2c61cd0ee228dcfad23c",
+  "code_diff_sha256": "0450fd9fcf011a8a528c2706b6c9b0eb3df53975f61d58954767c11147ca0e30",
+  "native_compilation": "COMPILACAO_NATIVA_NAO_VERIFICADA",
+  "replay": "REPLAY_NAO_VERIFICADO"
+}

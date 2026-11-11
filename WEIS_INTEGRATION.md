@@ -61,7 +61,7 @@ Se mais de uma evidência real for aprovada entre CONT, ABS ativa e ABS anterior
 
 O motor antigo de candles e seu cache deixam de validar o disparo. `LiveWeisForArmed` usa a onda ativa causal e exige direção reconhecida, baseline suficiente e esforço atual no limiar `armed.breakoutEffortMin` já existente. Para ABS, a tentativa rejeitada de Stage 1 e a reação de Stage 2 são evidências diferentes: não se exige que a reação tenha baixa eficiência.
 
-O gate de Stage 2 continua sendo direção/esforço; não foi acrescentada uma segunda classificação C1 com novos filtros de eficiência/rejeição. Timeout, preço de referência/trigger congelado, margem, overshoot, spread, direção tardia, VWAP/glass, FAR e barreiras financeiras conservam seus papéis. O epoch identifica revisão material da evidência; dados revistos não substituem silenciosamente um snapshot congelado.
+O gate de Stage 2 continua sendo direção/esforço; não foi acrescentada uma segunda classificação C1 com novos filtros de eficiência/rejeição. Timeout, preço de referência/trigger congelado, margem, overshoot, spread, direção tardia, VWAP/glass, FAR e barreiras financeiras conservam seus papéis. O epoch identifica revisão material da evidência; dados revistos não substituem silenciosamente um snapshot congelado. Na revisão dirigida posterior à entrega-base `85be544`, uma divergência de epoch passa a encerrar a intenção por `EndRevisedWeisThesis`, independentemente de tick/rompimento. A indisponibilidade transitória com o mesmo epoch continua aguardando; não foi importada a política completa de invalidação 1.996.
 
 ## Adaptador de negócios e disponibilidade
 

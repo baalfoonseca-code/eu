@@ -1,0 +1,130 @@
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/run_weis_kernel_tests.py --reference references/ObjectiveMatrix.e0bacb9.mqh
+PASS literal_reference_segments Git_blob=e0bacb9fa1e003ddb57c658c9cc8860e208cfbfc
+PASS recognition_is_contemporaneous_not_backdated
+PASS baseline_excludes_active_and_is_frozen_at_start
+PASS closed_wave_ring_is_bounded_to_ten
+PASS reversal_trade_belongs_once_to_new_wave
+PASS same_millisecond_distinct_and_identical_trades_accumulate
+PASS unordered_timestamp_rejected_without_state_change
+PASS invalid_price_volume_clock_and_scales_rejected
+PASS ABS_sell_high_effort_inefficient_then_proved_rejection
+PASS ABS_buy_is_symmetric
+PASS ABS_high_effort_without_rejection_is_not_confirmed
+PASS ABS_cannot_use_peak_or_future_timestamp
+PASS ABS_insufficient_effort_rejected
+PASS ABS_efficient_progress_not_approved_by_volume_alone
+PASS ABS_tick_and_fraction_rejection_thresholds_enforced
+PASS CONT_buy_high_effort_efficient_maintained_progress
+PASS CONT_sell_is_symmetric
+PASS CONT_drawdown_strictly_less_than_event_step
+PASS CONT_minimum_progress_enforced
+PASS insufficient_baseline_neutral_for_both_routes
+PASS high_volume_flat_price_is_neutral
+PASS closed_original_ABS_wave_keeps_frozen_attempt_evidence
+PASS simultaneous_real_cont_and_previous_abs_block_without_priority
+PASS event_sampling_does_not_replace_metric_by_gross_path
+PASS identical_price_fragmentation_keeps_event_path_and_total_volume
+PASS classification_rejects_invalid_clock_and_price
+RESULT 25 tests passed; native MetaEditor and replay not executed
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/run_weis_adapter_tests.py
+PASS before09_trade_collection_not_gated_by_D1_schedule
+PASS after1825_trade_collection_not_capped_by_D1_schedule
+PASS same_ms_distinct_identical_trade_multiplicity
+PASS same_ms_boundary_append_applied_once
+PASS boundary_prefix_revision_fails_closed
+PASS boundary_multiplicity_removal_fails_closed
+PASS history_unavailable_is_retryable_without_cursor_advance
+PASS regressed_broker_clock_unavailable_until_recovered
+PASS boundary_allocation_failure_before_chunk_commit_is_retryable
+PASS boundary_suffix_allocation_failure_leaves_committed_prefix_intact
+PASS mixed_volume_sources_batch_is_atomic_and_fails_closed
+PASS integer_and_real_sources_each_supported_without_mix
+PASS invalid_off_grid_record_is_rejected_atomically
+PASS quote_only_record_never_becomes_executed_trade
+PASS empty_intervals_do_not_fabricate_volume_or_gap_gate
+PASS disconnect_reconnect_catchup_preserves_once_only_volume
+PASS new_day_resets_waves_and_volume_source
+PASS contract_symbol_change_resets_analytical_state
+PASS initial_attach_warmup_cannot_publish_old_close
+PASS new_closed_snapshot_is_causal_before_next_bar_trade
+PASS late_boundary_append_invalidates_already_frozen_close
+PASS oversized_chunk_is_split_then_committed_without_duplicates
+PASS oversized_single_millisecond_is_explicitly_unprovable
+RESULT 23 adapter tests passed; broker API mocked, native MQL5/replay not executed
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/test_lifecycle.py
+lifecycle queue: PASS (memory-only enqueue, bounded drain/drop, UTF-8 byte count, fill identity, write failure)
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.826s
+
+OK
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/test_preservation.py
+test_added_weis_inputs_are_exact_reference_defaults (__main__.PreservationTests.test_added_weis_inputs_are_exact_reference_defaults) ... ok
+test_candidate_balanced_and_matrix_members_declared (__main__.PreservationTests.test_candidate_balanced_and_matrix_members_declared) ... ok
+test_closed_evidence_guards_and_boundary_order (__main__.PreservationTests.test_closed_evidence_guards_and_boundary_order) ... ok
+test_csv_historical_headers_and_row_arity (__main__.PreservationTests.test_csv_historical_headers_and_row_arity) ... ok
+test_far_literal (__main__.PreservationTests.test_far_literal) ... ok
+test_financial_management_precedes_analytical_service (__main__.PreservationTests.test_financial_management_precedes_analytical_service) ... ok
+test_financial_protocol_literal (__main__.PreservationTests.test_financial_protocol_literal) ... ok
+test_matrix_unauthorized_regions_literal (__main__.PreservationTests.test_matrix_unauthorized_regions_literal) ... ok
+test_no_operational_poc_or_candle_weis (__main__.PreservationTests.test_no_operational_poc_or_candle_weis) ... ok
+test_original_files_preserved (__main__.PreservationTests.test_original_files_preserved) ... ok
+test_retained_inputs_exact_type_order_default (__main__.PreservationTests.test_retained_inputs_exact_type_order_default) ... ok
+test_trigger_and_entry_confirmation_literal (__main__.PreservationTests.test_trigger_and_entry_confirmation_literal) ... ok
+test_vwap_sigma_macro_literal (__main__.PreservationTests.test_vwap_sigma_macro_literal) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.264s
+
+OK
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/finance/test_economic_marker.py
+test_candidate_contains_exact_isolated_correction (__main__.EconomicMarkerHarness.test_candidate_contains_exact_isolated_correction) ... ok
+test_failed_open_stays_failure (__main__.EconomicMarkerHarness.test_failed_open_stays_failure) ... ok
+test_first_write_original_refuted_corrected_accepted (__main__.EconomicMarkerHarness.test_first_write_original_refuted_corrected_accepted) ... ok
+test_flush_failure_stays_failure_and_evidence_remains (__main__.EconomicMarkerHarness.test_flush_failure_stays_failure_and_evidence_remains) ... ok
+test_literal_is_27_ascii_bytes (__main__.EconomicMarkerHarness.test_literal_is_27_ascii_bytes) ... ok
+test_restart_presence_remains_unresolved_identity (__main__.EconomicMarkerHarness.test_restart_presence_remains_unresolved_identity) ... ok
+test_sentinel_first_creation_and_retry (__main__.EconomicMarkerHarness.test_sentinel_first_creation_and_retry) ... ok
+test_short_write_stays_failure_and_evidence_remains (__main__.EconomicMarkerHarness.test_short_write_stays_failure_and_evidence_remains) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.701s
+
+OK
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/test_review_epoch.py
+test_callback_order_and_no_same_callback_rearming (__main__.EpochReview.test_callback_order_and_no_same_callback_rearming) ... ok
+test_inactive_helper_has_no_effect (__main__.EpochReview.test_inactive_helper_has_no_effect) ... PASS inactive_noop
+ok
+test_mismatch_precedes_expired_timeout (__main__.EpochReview.test_mismatch_precedes_expired_timeout) ... PASS expired_mismatch
+ok
+test_only_requested_functions_changed_from_delivered_baseline (__main__.EpochReview.test_only_requested_functions_changed_from_delivered_baseline) ... ok
+test_pre_review_process_is_refuted (__main__.EpochReview.test_pre_review_process_is_refuted) ... ok
+test_same_epoch_no_tick_keeps_intention (__main__.EpochReview.test_same_epoch_no_tick_keeps_intention) ... PASS same_epoch_no_tick
+ok
+test_same_epoch_original_timeout_preserved (__main__.EpochReview.test_same_epoch_original_timeout_preserved) ... PASS same_epoch_timeout
+ok
+test_same_epoch_transient_unavailable_waits (__main__.EpochReview.test_same_epoch_transient_unavailable_waits) ... PASS same_epoch_unready
+ok
+test_terminal_routes_without_tick_or_breakout (__main__.EpochReview.test_terminal_routes_without_tick_or_breakout) ... PASS terminal_routes
+ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.922s
+
+OK
+
+RUN /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 tests/test_review_max_body.py
+PASS actual original stall body dependency, non-global original filter, candidate retirement and retained Weis gates
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.326s
+
+OK
+
+ALL EXECUTED LAYERS PASSED. Native MQL5 and real replay remain unverified.

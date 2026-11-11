@@ -345,7 +345,7 @@
      armed.active=false;armed.dir=0;
      armed.regionHigh=0;armed.regionLow=0;
      armed.activeSL_Pts=0;armed.activeTP_Pts=0;
-@@ -1615,6 +1619,7 @@
+@@ -1615,10 +1619,23 @@
      armed.farArmedMsc=0; armed.farSignalSequence=0; armed.farSignalBarMsc=0;
      armed.farContextStartMsc=0; armed.farContextEndExclusiveMsc=0;
      armed.farArmPrice=0; armed.farArmPriceValid=false;
@@ -353,7 +353,23 @@
      ZeroMemory(armed.entry);
      armed.signalID=""; armed.entryReason="";
      armed.dispatchQuoteMsc=0; armed.dispatchAsk=0; armed.dispatchBid=0; armed.requestPrice=0;
-@@ -1720,89 +1725,7 @@
+     FARClearEvidence();
++}
++
++// An epoch change permanently detaches this intention from its frozen evidence.
++// End only analytical ARMED/FAR state; financial obligations stay authoritative.
++bool EndRevisedWeisThesis()
++{
++   if(!armed.active || armed.weisEpoch==gWWEpoch) return false;
++   armed.entryReason="FROZEN_WEIS_EVIDENCE_REVISED";
++   armed.lifecycleReason="FROZEN_WEIS_EVIDENCE_REVISED";
++   WriteEntryDiagnostic(armed,"THESIS_INVALIDATED");
++   ResetArmedSignal(); // emits SIGNAL_ENDED with the same ID/reason before clearing
++   return true;
+ }
+ 
+ void ResetOpenPos()
+@@ -1720,89 +1737,7 @@
  // Preserva o princípio do ComputePOCWindow da 2.44.
  // Tie is telemetry; canonical ascending scan keeps first maximum without a new tie rule.
  //=====================================================================
@@ -444,7 +460,7 @@
  
  //=====================================================================
  // WEIS WAVE M1
-@@ -1811,85 +1734,12 @@
+@@ -1811,85 +1746,12 @@
  // Adicionado: wwCurrentWaveBars e wwWaveStartPrice (telemetria apenas).
  //=====================================================================
  // Timing wrapper only; POC core and requested windows are unchanged.
@@ -536,7 +552,7 @@
  
  //=====================================================================
  // D-1 LITERAL (from v2.44 — idêntico, prefixo SCALPER nos prints)
-@@ -2093,12 +1943,12 @@
+@@ -2093,12 +1955,12 @@
  
  //=====================================================================
  // MATRIX SNAPSHOT M1
@@ -551,7 +567,7 @@
  // - filtro MacroContext ao final
  //=====================================================================
  ENUM_MSS ComputeMatrixSnapshot(MatrixSnapshot &s)
-@@ -2174,120 +2024,18 @@
+@@ -2174,120 +2036,18 @@
  
  s.c4Cont=(s.dirCont==1)?(s.posRange>=1.0-Inp_Rule_40_60):(s.posRange<=Inp_Rule_40_60);
  
@@ -681,7 +697,7 @@
    // BASE / TURBO (idêntico à v2.44)
    s.turboAbs =(s.c1&&s.c23&&s.c4);
    s.baseAbs =(s.c1&&(s.c23||s.c4)&&!s.turboAbs);
-@@ -2657,7 +2405,7 @@
+@@ -2657,7 +2417,7 @@
    CsvAdd(line,BStr(Inp_EnableMacroDirectionGate)); // MACRO_GATE_ENABLED
    CsvAdd(line,BStr(Inp_EnableLateDirectionBlock)); //
  // LATE_DIRECTION_BLOCK_ENABLED
@@ -690,7 +706,7 @@
    CsvAdd(line,Symbol()); // SYMBOL
    CsvAdd(line,IntegerToString(gMagicCore)); // MAGIC
  }
-@@ -2819,12 +2567,6 @@
+@@ -2819,12 +2579,6 @@
           (s.contValid ? (s.turboCont ? "TURBO" : "BASE") : "NONE"));
    int direction = s.absValid && !s.contValid ? s.dir :
            (s.contValid && !s.absValid ? s.dirCont : 0);
@@ -703,7 +719,7 @@
    CsvAdd(line,BStr(available)); // MATRIX_SNAPSHOT_AVAILABLE
    CsvAdd(line,CsvTime(signalBar)); // SIGNAL_BAR
    CsvAdd(line,available ? (EnumToString(s.status)) : ""); // MATRIX_STATUS
-@@ -2869,109 +2611,78 @@
+@@ -2869,109 +2623,78 @@
    CsvAdd(line,available ? (IntegerToString(s.scoreContEff)) : ""); // CONT_SCORE
    CsvAdd(line,available ? (BStr(s.absValid)) : ""); // ABS_VALID
    CsvAdd(line,available ? (BStr(s.contValid)) : ""); // CONT_VALID
@@ -885,7 +901,7 @@
  }
  
  void CsvArmedHeader(string &line)
-@@ -3204,7 +2915,9 @@
+@@ -3204,7 +2927,9 @@
          double price,double posRel,double distD1,double effort,double trigger)
  {
    if(armed.active && armed.signalID!="")
@@ -896,7 +912,7 @@
    if(csvAuditHandle == INVALID_HANDLE) return;
    string line = "";
    CsvAdd(line,CsvTime(TimeTradeServer()));
-@@ -3428,6 +3141,7 @@
+@@ -3428,6 +3153,7 @@
    // Only capture memory here: diagnostic disk/history IO occurs after the
    // original financial completion protocol, never between barrier and send.
    int entryDiagnosticIndex=RememberEntryDispatch();
@@ -904,7 +920,7 @@
    bool
  sent=trade.PositionOpen(Symbol(),type,lots,finalExec,sl,tp,"S1995|"+armed.route+"|"+mode);
    uint ret=trade.ResultRetcode();
-@@ -3436,6 +3150,8 @@
+@@ -3436,6 +3162,8 @@
  
  CompletePendingExec(sent,ret,trade.ResultOrder(),trade.ResultDeal(),executionResult.request_id);
   BindEntryDispatch(entryDiagnosticIndex,executionResult.order,executionResult.deal,executionResult.request_id);
@@ -913,7 +929,7 @@
   bool accepted=sent && (ret==TRADE_RETCODE_DONE ||
  ret==TRADE_RETCODE_PLACED || ret==TRADE_RETCODE_DONE_PARTIAL);
  
-@@ -3462,18 +3178,30 @@
+@@ -3462,18 +3190,30 @@
      gLastTelemetryMatrix=gCachedMicroSnapshot;
      gLastTelemetryMatrixValid=true;
      gLastTelemetrySignalBar=iTime(Symbol(),Inp_SignalTF,1);
@@ -946,7 +962,7 @@
  
  // Gates fail-closed
  if(status==MSS_VWAP_D1_INVALID)
-@@ -3494,16 +3222,11 @@
+@@ -3494,16 +3234,11 @@
  // Atualizar cache de bandas
  UpperBand1=s.upper; LowerBand1=s.lower;
  
@@ -965,7 +981,7 @@
  
  WriteAuditRow("ROUTE_CONFLICT_BLOCK","NONE","NONE",s.price,s.posRel,s.distAbs,s
  .effort,0);
-@@ -3584,7 +3307,7 @@
+@@ -3584,7 +3319,7 @@
         rejected.dir=dirSel; rejected.route=useCont?"CONT":"ABS"; rejected.mode=mode;
         rejected.entry=entry; rejected.entry.signalReferencePrice=s.price;
         rejected.entry.thesisMsc=clockOk?armClock.time_msc:0;
@@ -974,7 +990,7 @@
         WriteEntryDiagnostic(rejected,entryReason);
         PrintFormat("[Scalper 1995][%s] Reference rejected; no alternative price.",entryReason);
         WriteAuditRow(entryReason,DirStr(dirSel),mode,s.price,s.posRel,s.distAbs,s.effort,0);
-@@ -3623,23 +3346,33 @@
+@@ -3623,29 +3358,40 @@
  armed.entryReason=entryReason;
  armed.entry.signalReferencePrice=s.price; // ABS/CONT freeze exactly their signal close
  if(!armed.entry.enabled && clockOk) armed.entry.thesisMsc=armClock.time_msc;
@@ -1012,7 +1028,14 @@
  // STAGE 2 — PROCESS ARMED SIGNAL
  // Preserva toda a lógica da v2.44.
  // Diferenças: timeout por tempo, WW M1, LATE_DIRECTION_BLOCK novo.
-@@ -3729,10 +3462,17 @@
+ //=====================================================================
+ ENUM_APS ProcessArmedSignal()
+ {
++   if(EndRevisedWeisThesis()) return APS_ENDED_FAIL_CLOSED;
+    datetime now=TimeTradeServer();
+ 
+ // Timeout por tempo (novo vs. v2.44 que usava barras)
+@@ -3729,10 +3475,16 @@
      return APS_ENDED_FAIL_CLOSED;
  }
  
@@ -1023,8 +1046,7 @@
 -ComputeLiveWaveO1(curEff,curVol,avgVol,waveDir);
 +if(!LiveWeisForArmed(tk,curEff,curVol,avgVol,waveDir))
 +{
-+   LLRecord(armed.weisEpoch!=gWWEpoch?"THESIS_INVALIDATED":"THESIS_REVALIDATION",armed,armed.weisEvidence,
-+      armed.weisEpoch!=gWWEpoch?"FROZEN_WEIS_EVIDENCE_REVISED":"LIVE_WEIS_UNAVAILABLE_"+gWWReason);
++   LLRecord("THESIS_REVALIDATION",armed,armed.weisEvidence,"LIVE_WEIS_UNAVAILABLE_"+gWWReason);
 +   return APS_STILL_ARMED;
 +}
 +LLRecord("THESIS_REVALIDATION",armed,armed.weisEvidence,
@@ -1033,7 +1055,7 @@
  if(waveDir!=armed.dir) return APS_STILL_ARMED;
  if(curEff<armed.breakoutEffortMin) return APS_STILL_ARMED;
  
-@@ -3814,10 +3554,10 @@
+@@ -3814,10 +3566,10 @@
   }
  
  // Position, pending execution and daily quota remain operational guards.
@@ -1047,7 +1069,7 @@
  APS_TRADE_OR_POSITION; }
  if(dailyRiskBlocked)
  {
-@@ -3845,6 +3585,7 @@
+@@ -3845,6 +3597,7 @@
      bool ok=SendOrder(armed.dir,armed.lots,armed.mode,
        armed.activeSL_Pts,armed.activeTP_Pts,
         armed.posRel,armed.distD1,curEff,trigger);
@@ -1055,7 +1077,7 @@
      ResetArmedSignal();
      return ok?APS_TRADE_OR_POSITION:APS_ENDED_FAIL_CLOSED;
  }
-@@ -3952,8 +3693,9 @@
+@@ -3952,8 +3705,9 @@
  void DailyReset()
  {
     UpperBand1=0; LowerBand1=0;
@@ -1066,7 +1088,7 @@
     VWAP_D1=0; H1=0; L1=0; VWAP_D1_Official=false; SigmaD1=0;
     d1Ready=false; nextD1Retry=0;
     eodDone=false; eodStuckLogged=false; eodNextTry=0;
-@@ -3962,7 +3704,7 @@
+@@ -3962,7 +3716,7 @@
     gLiveDirectionTelemetryValid=false;
     hardFlipsPerDay=0; armedCancelHard=0; oppositeRearmAfterHard=0;
     gLastBreakoutPrice=0; gLateMismatchLogged=false; gSpreadHoldLogged=false;
@@ -1075,7 +1097,7 @@
     gLastPerfLoggedMicroCount=0;
     ResetAccountingDay(); // preserve open lifecycle and pending requests across midnight
     TryCalcD1();
-@@ -4003,7 +3745,7 @@
+@@ -4003,7 +3757,7 @@
     if(!ValidHHMM(Inp_StartHHMM) || !ValidHHMM(Inp_StopEntryHHMM) ||
        !ValidHHMM(Inp_EOD_CloseHHMM) || Inp_StartHHMM>=Inp_StopEntryHHMM ||
        Inp_StopEntryHHMM>=Inp_EOD_CloseHHMM) return false;
@@ -1084,7 +1106,7 @@
        Inp_MaxTradesDay<1 || Inp_MaxTradesDay>MAX_TRADE_RECORDS) return false;
     if(!Positive(Inp_ABS_Effort) || !Positive(Inp_CONT_Effort) ||
        !Positive(Inp_ABS_BreakoutEffort) || !Positive(Inp_CONT_BreakoutEffort)) return false;
-@@ -4019,7 +3761,7 @@
+@@ -4019,7 +3773,7 @@
        !Positive(Inp_VWAP_Outer_Pct) || Inp_VWAP_Outer_Pct<=1 ||
        !MathIsValidNumber(Inp_Rule_40_60) || Inp_Rule_40_60<=0 || Inp_Rule_40_60>=0.5 ||
        !Positive(gC3Min) || !Positive(gC3Max) || !Positive(gC2) ||
@@ -1093,7 +1115,7 @@
     if(SigmaLookbackDays<1 || SigmaLookbackDays>20 || !Positive(Inp_SigmaFloor_WIN) ||
        !Positive(Inp_SigmaFloor_WDO) || Inp_CooldownSec<0 || Inp_LossCooldownSec<0)
  return false;
-@@ -4069,7 +3811,7 @@
+@@ -4069,7 +3823,7 @@
     {
        gVwapOk=UpdateVwapIncremental(signalBar);
        gVwapValue=(gVwapOk && vwapSumVol>0)?vwapSumPV/vwapSumVol:0;
@@ -1102,7 +1124,7 @@
     }
     // Never EvaluateMatrix here, even if every cache is ready.
  }
-@@ -4137,7 +3879,7 @@
+@@ -4137,7 +3891,7 @@
     if(!Positive(gTickSize))
     { Print("[Scalper 1995][CONFIG] SYMBOL_TRADE_TICK_SIZE unavailable"); return INIT_PARAMETERS_INCORRECT; }
    if(!Positive(Inp_BandMultiplier_WIN) || !Positive(Inp_BandMultiplier_WDO) ||
@@ -1111,7 +1133,7 @@
    { Print("[SCALPER][FATAL] Invalid Scalper 1995 parameters; no silent correction."); return
  INIT_PARAMETERS_INCORRECT; }
    if(!IsFokSupported())
-@@ -4158,7 +3900,7 @@
+@@ -4158,7 +3912,7 @@
    gDayKey=now.year*1000+now.day_of_year;
    ResetMacroContext(gMacro); ResetArmedSignal(); ResetVwapCache(); ResetOpenPos();
    InitializeAccounting();
@@ -1120,7 +1142,7 @@
   lastContextBarTime=0; lastSignalBarTime=0; gLastMatrixEvalBar=0;
   gCachedMicroReady=false; gCachedMicroBar=0;
   gLastTelemetryMatrixValid=false; gLastTelemetrySignalBar=0;
-@@ -4167,7 +3909,7 @@
+@@ -4167,7 +3921,7 @@
   hardFlipsPerDay=0; armedCancelHard=0; oppositeRearmAfterHard=0;
   d1Ready=false; nextD1Retry=0;
   eodDone=false; eodStuckLogged=false; eodNextTry=0;
@@ -1129,7 +1151,7 @@
   gLastPerfLoggedMicroCount=0; gLastFlushTime=0;
   RestoreDailyPersistence();
   TryCalcD1();
-@@ -4177,7 +3919,7 @@
+@@ -4177,7 +3931,7 @@
  if(CSVFileName!="Scalper1995" && CSVFileName!="") prefix+=CSVFileName+"_";
  string suffix=Symbol()+"_"+IntegerToString(gMagicCore);
  gTradeCsvFileName=prefix+suffix+"_Trades.csv";
@@ -1138,7 +1160,7 @@
  
  csvAuditHandle=FileOpen(prefix+suffix+"_Audit.csv",FILE_READ|FILE_WRITE|FILE_TXT|FILE_ANSI);
   if(csvAuditHandle!=INVALID_HANDLE)
-@@ -4209,15 +3951,15 @@
+@@ -4209,15 +3963,15 @@
    }
    int timerSec=(MQLInfoInteger(MQL_TESTER)!=0)?60:1;
    if(!EventSetTimer(timerSec)) return INIT_FAILED;
@@ -1158,7 +1180,7 @@
    PrintFormat("[Scalper 1995][ENTRY_EFFECTIVE] ABS=%s CONT=SIGNAL_CLOSE margin=%.8f timeoutSec=%d FAR=%s (filter only)",
       EnumToString(Inp_ABSTriggerReference),gBreakoutMargin,Inp_ArmedTimeoutSec,
       EnumToString(Inp_AggressionFilterMode));
-@@ -4230,6 +3972,8 @@
+@@ -4230,6 +3984,8 @@
  void OnDeinit(const int reason)
  {
     EventKillTimer();
@@ -1167,7 +1189,7 @@
     EntryDiagnosticsClose();
     if(gInstanceLock!=INVALID_HANDLE) { FileClose(gInstanceLock); gInstanceLock=INVALID_HANDLE; }
     if(csvAuditHandle !=INVALID_HANDLE){ FileFlush(csvAuditHandle);
-@@ -4258,7 +4002,7 @@
+@@ -4258,7 +4014,7 @@
       TimeTradeServer()-lastCloseConfirmedTime<Inp_CooldownSec) return;
    if(Inp_LossCooldownSec>0 && lastTradeWasLoss && lastCloseConfirmedTime>0 &&
       TimeTradeServer()-lastCloseConfirmedTime<Inp_LossCooldownSec) return;
@@ -1176,17 +1198,18 @@
    if(Inp_EnableMacroDirectionGate && gMacro.status!=MACRO_OK) return;
    if(iTime(Symbol(),Inp_SignalTF,0)!=signalBar) return;
    gLastReadOnlyMatrixBar=signalBar; // One bounded attempt, including invalid snapshots.
-@@ -4285,7 +4029,8 @@
+@@ -4285,7 +4041,9 @@
   int hhmm=day.hour*100+day.min;
   ProcessEOD(hhmm);
   ManageBreakEven();
 - if(hhmm>=Inp_StopEntryHHMM && armed.active) ResetArmedSignal();
 + WWService();
++ if(EndRevisedWeisThesis()) return; // no hard-flip or new intent in this callback
 + if(hhmm>=Inp_StopEntryHHMM && armed.active) { armed.lifecycleReason="ABORT_SESSION_END"; ResetArmedSignal(); }
   datetime btCtx=iTime(Symbol(),Inp_ContextTF,0);
   datetime btSig=iTime(Symbol(),Inp_SignalTF,0);
   if(btCtx<=0 || btSig<=0) return;
-@@ -4315,13 +4060,13 @@
+@@ -4315,13 +4073,13 @@
     gVwapOk=UpdateVwapIncremental(btSig);
     gVwapValue=(gVwapOk && vwapSumVol>0)?vwapSumPV/vwapSumVol:0;
     if(gVwapValue<=0) gVwapOk=false;
@@ -1202,7 +1225,7 @@
        (!Inp_EnableMacroDirectionGate || gMacro.status==MACRO_OK))
     {
        MatrixSnapshot snapshot;
-@@ -4340,7 +4085,8 @@
+@@ -4340,7 +4098,8 @@
     {
        ulong begin=GetMicrosecondCount();
        ENUM_APS outcome=ProcessArmedSignal();
@@ -1212,7 +1235,7 @@
        if(outcome!=APS_ENDED_REEVAL_ALLOWED || !newSig) return;
     }
    }
-@@ -4356,8 +4102,10 @@
+@@ -4356,8 +4115,10 @@
         TimeTradeServer()-lastCloseConfirmedTime<Inp_CooldownSec) return;
      if(Inp_LossCooldownSec>0 && lastTradeWasLoss && lastCloseConfirmedTime>0 &&
         TimeTradeServer()-lastCloseConfirmedTime<Inp_LossCooldownSec) return;
@@ -1225,14 +1248,14 @@
      if(gLastMatrixEvalBar==btSig) return;
      gLastMatrixEvalBar=btSig;
      EvaluateMatrix(); // reuses exact hard-contradiction snapshot if already computed
-@@ -4381,12 +4129,14 @@
+@@ -4381,12 +4142,14 @@
   SyncAccountingState(true);
   ReconcileBreakEvenProofs(); // Proof/persistence only; never dispatches a stop modification.
   if(!d1Ready && TimeTradeServer()>=nextD1Retry) TryCalcD1();
 - if(hhmm>=Inp_StopEntryHHMM && armed.active) ResetArmedSignal();
 + if(hhmm>=Inp_StopEntryHHMM && armed.active) { armed.lifecycleReason="ABORT_SESSION_END"; ResetArmedSignal(); }
   ProcessEOD(hhmm);
-+ WWService(); LLFlush();
++ WWService(); EndRevisedWeisThesis(); LLFlush();
   datetime now=TimeTradeServer();
   if(now-gLastFlushTime>=30)
   {
@@ -1241,7 +1264,7 @@
      if(gEntryDiagnosticHandle!=INVALID_HANDLE) FileFlush(gEntryDiagnosticHandle);
      if(csvAuditHandle!=INVALID_HANDLE) FileFlush(csvAuditHandle);
      if(csvShadowHandle!=INVALID_HANDLE) FileFlush(csvShadowHandle);
-@@ -4403,9 +4153,6 @@
+@@ -4403,9 +4166,6 @@
  perfMicro.count,perfMicro.count>0?perfMicro.sumUs/perfMicro.count:0,perfMicro.maxUs,
  
  perfStage2.count,perfStage2.count>0?perfStage2.sumUs/perfStage2.count:0,perfStage2.maxUs);
@@ -1251,7 +1274,7 @@
      gLastPerfLoggedMicroCount=perfMicro.count;
    }
  }
-@@ -7205,7 +6952,7 @@
+@@ -7205,7 +6965,7 @@
    if(h==INVALID_HANDLE) return false;
    ResetLastError();
    uint written=FileWriteString(h,"S1995_ECONOMIC_OBLIGATION\r\n");

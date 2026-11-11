@@ -38,3 +38,7 @@ Preservados e conferidos: VWAP vigente/viva/D‑1, sigma, bandas/multiplicadores
 - Controle de lotes/CPU é posterior à chamada; broker pode alocar/demorar antes de retornar. Catchup desde meia-noite pode atrasar prontidão inicial.
 - Fragmentação no extremo pode alterar peakVolume ABS por propriedade da referência, preservada em vez de inventar outro motor.
 - Telemetria pode perder eventos em crash/overflow/falha de disco; perdas conhecidas são explícitas e não substituem autoridade financeira.
+
+## Revisão dirigida da entrega-base85be544
+
+A única correção operacional adicional é o encerramento definitivo por epoch alterado: novo helper `EndRevisedWeisThesis` e chamadas no início de ProcessArmedSignal e após o serviço Weis no tick/timer. A espera transitória conserva o mesmo epoch. Não há alteração em includes, inputs, C1, VWAP, sigma, macro, sizing, execução, journals, BE, EOD ou FAR. O helper usa o reset ARMED/FAR já existente, sem limpar obrigações financeiras. O diff contra a entrega-base está em `reports/SCALPER1995_REVIEW.diff`. MaxBody recebeu documentação e teste da perda funcional, sem novo filtro.

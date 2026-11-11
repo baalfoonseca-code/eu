@@ -3,3 +3,6 @@ A Scalper1.995 usa POC e ondas de candles em C1. Esta candidata separada remove 
 A correção preexistente do marcador econômico (25→27 bytes) está isolada no commit3d2cd5d. O diff cirúrgico integral e hashes estão em reports/. Auditoria identificou e corrigiu um limite de sessão indevidamente copiado do cálculoD1.
 
 Validação:71 verificações locais aprovadas:25 núcleo,23 ingestão,2 telemetria,13 preservação estática e8 marcador. Logs em reports/validation.log. COMPILACAO_NATIVA_NAO_VERIFICADA e REPLAY_NAO_VERIFICADO: falta MetaEditor/MT5 e dados reais; não é entrega homologada nem pronta para produção. Revisão deve incluir os cenários financeiros reais pendentes em TEST_RESULTS.md. Não realizar merge automático.
+
+
+Revisão dirigida posterior: três includes confirmados sem mudança; epoch revisado agora encerra definitivamente a intenção antes de tick/rompimento, sem rearme no callback ou limpeza financeira; perda funcional MaxBody restrita ao antigo stall POC documentada, sem filtro adicional. Validação atual:82 verificações locais aprovadas; reports/review_validation.log e reports/SCALPER1995_REVIEW.diff. Compilação nativa, replay e homologação continuam não verificados.

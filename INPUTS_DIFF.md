@@ -99,3 +99,7 @@ Resultado: os **70 inputs retidos conservam nome, tipo, default e ordem relativa
 Os valores novos são hipóteses de engenharia da referência; não foram otimizados nem validados financeiramente. `Inp_ABS_MaxBodyPts_*` não foi transformado em AND geral de ABS, pois isso acrescentaria regra nova: seu único consumidor decisório original era `absStallStrict` dentro do contexto POC eliminado. Valores de POC não são reinterpretados como parâmetros Weis.
 
 O default original de esforço ABS/CONT já é 1.50. Timeout permanece 300 s; margem WIN 175.0/WDO 3.5; late direction continua ligado. VWAP, sigma, M5/M1 e todos os defaults financeiros foram conservados. Fixtures completas do baseline: `tests/fixtures/inputs_original.json`.
+
+## Verificação dirigida de MaxBody
+
+A revisão posterior à entrega-base85be544 demonstrou a perda funcional com predicados extraídos dos dois fontes: variar MaxBody positivo altera o antigo subtipo stall, mas não altera C1 Weis com a mesma prova. O gate de configuração positivo permanece, portanto o input não é totalmente sem efeito no programa. A preservação de nome/default não é preservação de funcionalidade. Ver `reports/REVIEW_MAX_BODY.md` e `tests/test_review_max_body.py`. Nenhum filtro substituto foi acrescentado.

@@ -1,8 +1,12 @@
 # Testes e limites de aceite
 
-Comando reproduzível: `python3 tests/run_all.py`, na raiz. O runner interrompe e preserva o exit status do primeiro comando que falhar. Saída integral da execução final: `reports/validation.log`.
+Comando reproduzível atual: `python3 tests/run_all.py`, na raiz. O runner interrompe e preserva o exit status do primeiro comando que falhar.
 
-**71 verificações locais aprovadas, zero falhas, zero skips**: 25 casos do kernel numérico, 23 do adaptador de negócios, 2 métodos da telemetria, 13 métodos de preservação estática e 8 métodos do marcador econômico. A identidade literal do kernel contra a referência também foi conferida. Uma verificação pode conter várias asserções; este total não é uma contagem de operações, sinais reais ou cenários MT5 executados.
+**Revisão dirigida posterior à entrega-base85be544: 82 verificações aprovadas, zero falhas e zero skips.** São as71 verificações anteriores, mais9 métodos de epoch e2 de MaxBody. Saída consolidada atual: `reports/review_validation.log`. Inclui um controle negativo que refuta o processo anterior: uma falha esperada desse processo é verificada como prova do defeito, não ocultada. O kernel/engine/lifecycle continuam com os mesmos bytes; somente o encerramento por epoch alterado foi corrigido no EA. Ver `reports/REVIEW_DELIVERY.md`, `reports/REVIEW_EPOCH.md` e `reports/REVIEW_MAX_BODY.md`.
+
+O registro abaixo descreve a entrega-base e sua execução histórica, preservada em `reports/validation.log`; não substitui o log atual.
+
+**Entrega-base: 71 verificações locais aprovadas, zero falhas, zero skips**: 25 casos do kernel numérico, 23 do adaptador de negócios, 2 métodos da telemetria, 13 métodos de preservação estática e 8 métodos do marcador econômico. A identidade literal do kernel contra a referência também foi conferida. Uma verificação pode conter várias asserções; este total não é uma contagem de operações, sinais reais ou cenários MT5 executados.
 
 | Camada | Evidência executada | Limite |
 |---|---|---|
@@ -37,7 +41,7 @@ Comando reproduzível: `python3 tests/run_all.py`, na raiz. O runner interrompe 
 - **Marcador original:** escrita completa de 27 bytes e flush retornavam falso pela comparação com25. Reproduzido; candidata corrigida exclusivamente para27 no commit financeiro separado. O original foi preservado.
 - **Sessão indevida no adaptador:** a auditoria encontrou uso dos horários D1 como origem/limite da Weis. Corrigido para calendário diário já usado pelo EA, sem gate de entrada novo. Controles negativos em cópias temporárias com origem09 e cap18:25 fizeram os novos casos antes09/depois18:25 falharem. Adaptador final passou23 casos.
 - **Fixture incoerente:** primeira execução de teste de fechamento falhou porque SymbolInfoTick simulado dizia volume1 e o histórico dizia volume13 para o mesmo negócio. A checagem de identidade rejeitou corretamente. Fixture corrigida para o registro real do histórico; guard e asserções foram mantidos.
-- **Diagnósticos macro/epoch:** revisão encontrou nome de bloqueio com macro desligado e motivo genérico para evidência congelada revisada. Corrigidos apenas registros; gatilhos, tempo e decisão financeira não foram flexibilizados.
+- **Diagnósticos macro/epoch da entrega-base:** a primeira revisão corrigiu apenas os registros. A revisão dirigida posterior demonstrou que epoch diferente era terminal, embora continuasse armado. O código agora encerra essa intenção antes de tick/rompimento/rearme; com o mesmo epoch, timeout e espera transitória continuam originais. Nenhum protocolo financeiro foi flexibilizado.
 
 ## Comparação controlada ainda sem amostra operacional
 
