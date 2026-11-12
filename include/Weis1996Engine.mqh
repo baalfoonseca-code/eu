@@ -12,6 +12,9 @@ input int Inp_PathEventTicks=2;
 input double Inp_CONT_MinPathEfficiency=0.60;
 input double Inp_ABS_MaxPathEfficiency=0.30;
 input double Inp_ABS_MinRejectionFraction=0.35;
+// 1.995 CONT drawdown only; independent of trajectory sampling.
+input int Inp_CONT_MaxRecuoTicks_WIN=2;
+input int Inp_CONT_MaxRecuoTicks_WDO=2;
 
 // Collector work limits are the reference defaults, not strategic thresholds.
 const int WW_CHUNK_MSC=10000;
@@ -38,6 +41,7 @@ OMConfig WWConfiguration()
    c.tick=gTickSize;
    c.reversal=gIsIndexFamily?Inp_WaveReversalPts_WIN:Inp_WaveReversalPts_WDO;
    c.eventStep=Inp_PathEventTicks*gTickSize; c.absEffort=Inp_ABS_Effort;
+   c.contMaxRecuo=(gIsIndexFamily?Inp_CONT_MaxRecuoTicks_WIN:Inp_CONT_MaxRecuoTicks_WDO)*gTickSize;
    c.contEffort=Inp_CONT_Effort; c.minCont=gCONT_MinDisplPts; c.minAbs=gABS_MinDisplPts;
    c.contEfficiency=Inp_CONT_MinPathEfficiency; c.absEfficiency=Inp_ABS_MaxPathEfficiency;
    c.minRejection=Inp_ABS_MinRejectionFraction; c.minWaves=Inp_WaveBaselineMin;
@@ -50,6 +54,10 @@ bool WWValidateInputs()
       Inp_WaveBaselineMin<=10 && OMNumber(c.reversal) && c.reversal>=c.tick &&
       MathAbs(c.reversal/c.tick-MathRound(c.reversal/c.tick))<=1e-6 &&
       Inp_PathEventTicks>=1 && c.reversal>=c.eventStep &&
+      Inp_CONT_MaxRecuoTicks_WIN>0 && Inp_CONT_MaxRecuoTicks_WDO>0 &&
+      OMNumber(Inp_CONT_MaxRecuoTicks_WIN*c.tick) &&
+      OMNumber(Inp_CONT_MaxRecuoTicks_WDO*c.tick) &&
+      OMNumber(c.contMaxRecuo) && c.contMaxRecuo>0 &&
       OMNumber(c.contEfficiency) && c.contEfficiency>0 && c.contEfficiency<=1 &&
       OMNumber(c.absEfficiency) && c.absEfficiency>=0 && c.absEfficiency<c.contEfficiency &&
       OMNumber(c.minRejection) && c.minRejection>0 && c.minRejection<=1 &&

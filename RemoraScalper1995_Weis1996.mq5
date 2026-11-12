@@ -2036,7 +2036,7 @@ s.c4
 
 s.c4Cont=(s.dirCont==1)?(s.posRange>=1.0-Inp_Rule_40_60):(s.posRange<=Inp_Rule_40_60);
 
-// C1 uses the exact verified numeric classifier (including drawdown<eventStep).
+// C1 uses the verified wave classifier with an independent CONT drawdown limit.
 // No bands, location, sigma or session rules from 1.996 are imported.
 s.wwok=WWGetClosed(iTime(Symbol(),Inp_SignalTF,1),s.weis);
 s.effort=s.weis.effort; s.waveDir=s.weis.dir;

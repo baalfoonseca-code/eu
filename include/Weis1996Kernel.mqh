@@ -1,4 +1,5 @@
-// Extracted literally from baalfoonseca-code/Bf ObjectiveMatrix.mqh.
+// Derived from the verified baalfoonseca-code/Bf ObjectiveMatrix.mqh kernel.
+// 1.995-only adaptation: CONT drawdown has its own tick-based tolerance.
 // Verified Git blob: e0bacb9fa1e003ddb57c658c9cc8860e208cfbfc.
 // OMBands is an inert compatibility payload in OMWave; no bands calculation
 // or location/session/sigma/financial policy from 1.996 is imported here.
@@ -95,6 +96,7 @@ struct OMConfig
 {
    double tick,reversal,eventStep,absEffort,contEffort,minCont,minAbs;
    double contEfficiency,absEfficiency,minRejection;
+   double contMaxRecuo;
    int minWaves;
 };
 struct OMDecision
@@ -141,7 +143,7 @@ void OMClassify(const OMWaveBook &b,double close,long msc,const OMConfig &c,OMDe
       double efficiency=eventNet/w.eventPath;
       double drawdown=w.dir==1?w.high-close:close-w.low;
       if(net>=c.minCont && eventNet>0 && efficiency>=c.contEfficiency &&
-         w.volume/w.baseline>=c.contEffort && drawdown<c.eventStep)
+         w.volume/w.baseline>=c.contEffort && drawdown<c.contMaxRecuo)
       {
          cont.classification=w.dir==1?1:2; cont.dir=w.dir; cont.waveID=w.id;
          cont.effort=w.volume/w.baseline; cont.netProgress=net;
