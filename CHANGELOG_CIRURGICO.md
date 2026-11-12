@@ -42,3 +42,7 @@ Preservados e conferidos: VWAP vigente/viva/D‑1, sigma, bandas/multiplicadores
 ## Revisão dirigida da entrega-base85be544
 
 A única correção operacional adicional é o encerramento definitivo por epoch alterado: novo helper `EndRevisedWeisThesis` e chamadas no início de ProcessArmedSignal e após o serviço Weis no tick/timer. A espera transitória conserva o mesmo epoch. Não há alteração em includes, inputs, C1, VWAP, sigma, macro, sizing, execução, journals, BE, EOD ou FAR. O helper usa o reset ARMED/FAR já existente, sem limpar obrigações financeiras. O diff contra a entrega-base está em `reports/SCALPER1995_REVIEW.diff`. MaxBody recebeu documentação e teste da perda funcional, sem novo filtro.
+
+## Recuo CONT desacoplado — base anterior e98b9bb
+
+Commit de origem `0ecac27`: campo contMaxRecuo, dois inputs WIN/WDO2 ticks, resolução pelo tick real e validação positiva/finita sem teto arbitrário; somente o predicado de recuo CONT troca eventStep por esse campo. O EA recebe apenas atualização de comentário. Ondas/ABS, Stage2 e financeiro não mudam. O build foi repinado para os fontes desse commit e regenerou COMPLETA com79 inputs. Diff e provas em `CONT_RECUO_REPORT.md`; a referência1.996 continua imutável.

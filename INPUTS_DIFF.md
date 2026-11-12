@@ -1,6 +1,6 @@
 # Inputs — comparação efetiva da reconstrução
 
-Comparação estática executada sobre `eu1995`, `RemoraScalper1995_Weis1996.mq5` e `include/Weis1996Engine.mqh`. Baseline: **73** inputs. Candidata: **77** inputs efetivos (70 originais preservados + 7 da referência). As inclusões não duplicam inputs. Nenhum arquivo `.set` foi fornecido.
+Comparação estática executada sobre `eu1995`, `RemoraScalper1995_Weis1996.mq5` e `include/Weis1996Engine.mqh`. Baseline: **73** inputs. Candidata atual: **79** inputs efetivos (70 originais preservados + 7 da referência + 2 de recuo CONT independente). As inclusões não duplicam inputs. Nenhum arquivo `.set` foi fornecido.
 
 Resultado: os **70 inputs retidos conservam nome, tipo, default e ordem relativa**; nenhuma alteração de default foi detectada. Os sete defaults novos coincidem com `references/ObjectiveMatrix.e0bacb9.mqh`. Isto é evidência estática de declarações, não equivalência de sinais nem prova de execução MT5.
 
@@ -93,6 +93,8 @@ Resultado: os **70 inputs retidos conservam nome, tipo, default e ordem relativa
 | `Inp_CONT_MinPathEfficiency` | `double` | `0.60` | Eficiência mínima por eventPath para CONT. Default literal da referência verificada. |
 | `Inp_ABS_MaxPathEfficiency` | `double` | `0.30` | Eficiência máxima congelada no extremo para ABS. Default literal da referência verificada. |
 | `Inp_ABS_MinRejectionFraction` | `double` | `0.35` | Rejeição posterior mínima proporcional ao progresso original. Default literal da referência verificada. |
+| `Inp_CONT_MaxRecuoTicks_WIN` | `int` | `2` | Novo: limite estrito de recuo CONT em ticks reais, família WIN/IND; independente de PathEventTicks. |
+| `Inp_CONT_MaxRecuoTicks_WDO` | `int` | `2` | Novo: limite estrito de recuo CONT em ticks reais, família WDO/DOL; independente de PathEventTicks. |
 
 ## Limites e semântica
 
@@ -103,3 +105,7 @@ O default original de esforço ABS/CONT já é 1.50. Timeout permanece 300 s; ma
 ## Verificação dirigida de MaxBody
 
 A revisão posterior à entrega-base85be544 demonstrou a perda funcional com predicados extraídos dos dois fontes: variar MaxBody positivo altera o antigo subtipo stall, mas não altera C1 Weis com a mesma prova. O gate de configuração positivo permanece, portanto o input não é totalmente sem efeito no programa. A preservação de nome/default não é preservação de funcionalidade. Ver `reports/REVIEW_MAX_BODY.md` e `tests/test_review_max_body.py`. Nenhum filtro substituto foi acrescentado.
+
+## Correção autorizada do recuo CONT
+
+A correção posterior à consolidação e98b9bb acrescenta somente os dois inputs acima, depois dos sete inputs Weis anteriores. Todos os77 inputs anteriores conservam tipo, default e ordem relativa; total atual79. Ambos os novos valores devem ser positivos, com conversão finita para preço, sem teto estratégico ou dependência com Path/reversão. Equivalência com o classificador anterior nos defaults (Path2 e recuo2) foi testada. Presets com Path diferente de2 deixam de configurar o recuo implicitamente. Relatório: `CONT_RECUO_REPORT.md`.

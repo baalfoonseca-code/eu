@@ -25,7 +25,7 @@ static void require(bool condition, const char *message) {
 static bool near(double a, double b) { return std::abs(a-b) <= 1e-10; }
 static OMConfig config() {
     OMConfig c{};
-    c.tick=1; c.reversal=10; c.eventStep=2;
+    c.tick=1; c.reversal=10; c.eventStep=2; c.contMaxRecuo=2;
     c.absEffort=1.5; c.contEffort=1.5; c.minCont=10; c.minAbs=10;
     c.contEfficiency=.60; c.absEfficiency=.30; c.minRejection=.35; c.minWaves=3;
     return c;
@@ -151,11 +151,11 @@ int main() {
             OMWaveBook b=efficient(-1); OMDecision d{}; OMClassify(b,88,1100,config(),d);
             require(d.classification==2 && d.dir==-1,"CONT sell missing");
         });
-        run("CONT_drawdown_strictly_less_than_event_step", [] {
+        run("CONT_drawdown_strictly_less_than_dedicated_tolerance", [] {
             OMWaveBook b=efficient(); push(b,111,10,1200); OMDecision d{};
-            OMClassify(b,111,1200,config(),d); require(d.classification==1,"sub-step drawdown rejected");
+            OMClassify(b,111,1200,config(),d); require(d.classification==1,"sub-limit drawdown rejected");
             push(b,110,10,1300); OMClassify(b,110,1300,config(),d);
-            require(d.classification==0,"drawdown equal eventStep accepted");
+            require(d.classification==0,"drawdown equal CONT tolerance accepted");
         });
         run("CONT_minimum_progress_enforced", [] {
             OMWaveBook b=efficient(); OMConfig c=config(); c.minCont=13; OMDecision d{};

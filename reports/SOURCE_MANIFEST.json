@@ -13,7 +13,7 @@
   "RemoraScalper1995_Weis1996.mq5": {
     "path": "/workspace/eu/RemoraScalper1995_Weis1996.mq5",
     "bytes": 371814,
-    "sha256": "91d47ddc41af969e248fc3ffb585c4b9b433e0bd0e8d2c61cd0ee228dcfad23c"
+    "sha256": "5406da06a82ef0887e582fc3f858f2ebfcaeb2b2d5b49297a2357ab3a2c3d821"
   },
   "references/ObjectiveMatrix.e0bacb9.mqh": {
     "path": "/workspace/eu/references/ObjectiveMatrix.e0bacb9.mqh",
@@ -28,12 +28,12 @@
   },
   "include/Weis1996Engine.mqh": {
     "path": "/workspace/eu/include/Weis1996Engine.mqh",
-    "bytes": 14704,
-    "sha256": "357bfb526d023ec5c43b3358f416400099f183e34e8d584e59803f19986d3f3c"
+    "bytes": 15179,
+    "sha256": "19fcf723254e56efb68a45fe1f986d780e1220f2b14d604e1ed306fcfd0b390e"
   },
   "include/Weis1996Kernel.mqh": {
     "path": "/workspace/eu/include/Weis1996Kernel.mqh",
-    "bytes": 6552,
-    "sha256": "8aaef7aebe183a21537f64c2a4031ecaaaf88e5a2d79a075143f1d1a4337470e"
+    "bytes": 6661,
+    "sha256": "0154730988557de1aefe1765dfe74dd0b559d526223a1f0d0d66e045f00fac16"
   }
 }

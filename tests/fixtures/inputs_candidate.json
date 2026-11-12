@@ -383,5 +383,15 @@
     "name": "Inp_ABS_MinRejectionFraction",
     "type": "double",
     "default": "0.35"
+  },
+  {
+    "name": "Inp_CONT_MaxRecuoTicks_WIN",
+    "type": "int",
+    "default": "2"
+  },
+  {
+    "name": "Inp_CONT_MaxRecuoTicks_WDO",
+    "type": "int",
+    "default": "2"
   }
 ]

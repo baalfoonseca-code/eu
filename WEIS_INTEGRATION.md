@@ -6,7 +6,7 @@ O fonte original é `eu1995`, Git blob `a764baec7f716ad893ee82ae807d91e2c45f3986
 
 A referência efetivamente consultada é `baalfoonseca-code/Bf`, branch `codex/remora-matriz-objetiva`, `include/ObjectiveMatrix.mqh`, blob Git **`e0bacb9fa1e003ddb57c658c9cc8860e208cfbfc`**. A cópia auditável está em `references/ObjectiveMatrix.e0bacb9.mqh`; o blob Git identifica os bytes, não se confunde com SHA-256.
 
-`include/Weis1996Kernel.mqh` extrai literalmente `OMBands` (somente payload estrutural), `OMNumber`, `OMWave`, `OMWaveBook`, `OMWaveReset`, `OMBaseline`, `OMStartWave`, `OMWavePush`, `OMConfig`, `OMDecision`, `OMAbsEvidence` e `OMClassify`. O harness confere os trechos contra a referência. `OMBands` fica zerada no adaptador; não há uso decisório de `attemptBands`. Não foram importados `OMWeighted`, `OMBuildBands`, `OMLocationEligible`, `OMInsideB3`, a política completa de `OMRevalidate`, gates de sigma, warmup de bandas, gap de 30 segundos ou seleção de sessão broker da 1.996.
+`include/Weis1996Kernel.mqh` deriva dos trechos verificados de `OMBands` (somente payload estrutural), `OMNumber`, `OMWave`, `OMWaveBook`, `OMWaveReset`, `OMBaseline`, `OMStartWave`, `OMWavePush`, `OMConfig`, `OMDecision`, `OMAbsEvidence` e `OMClassify`. O harness confere os trechos contra a referência imutável, permitindo somente a adaptação 1.995 do campo `contMaxRecuo` e do predicado CONT. A referência 1.996 não é editada. `OMBands` fica zerada no adaptador; não há uso decisório de `attemptBands`. Não foram importados `OMWeighted`, `OMBuildBands`, `OMLocationEligible`, `OMInsideB3`, a política completa de `OMRevalidate`, gates de sigma, warmup de bandas, gap de 30 segundos ou seleção de sessão broker da 1.996.
 
 ## Comparação com a Weis original
 
@@ -51,7 +51,7 @@ O kernel examina tentativa ativa e a tentativa anterior fechada, conservando seu
 
 ## C1 CONT e conflito
 
-CONT exige direção reconhecida e baseline suficiente, `eventPath > 0`, `net >= minCont`, `eventNet > 0`, `eventNet/eventPath >= contEfficiency`, `volume/baseline >= contEffort` e **`drawdown < eventStep`**. O drawdown é `high-close` na alta e `close-low` na baixa; igualdade bloqueia. Essa condição está presente no blob consultado e não foi omitida.
+CONT exige direção reconhecida e baseline suficiente, `eventPath > 0`, `net >= minCont`, `eventNet > 0`, `eventNet/eventPath >= contEfficiency`, `volume/baseline >= contEffort` e **`drawdown < contMaxRecuo`**. O drawdown é `high-close` na alta e `close-low` na baixa; igualdade bloqueia. A referência1.996 usa eventStep nessa condição; a correção autorizada da 1.995 separa o limite em `Inp_CONT_MaxRecuoTicks_WIN/WDO * gTickSize`, ambos com default2. PathEventTicks continua exclusivamente na amostragem. Ver `CONT_RECUO_REPORT.md`.
 
 Defaults: esforço 1.50 e eficiência mínima 0.60. Os deslocamentos originais CONT continuam WIN 50.0/WDO 1.5, com a nova semântica de progresso de onda. A direção da candidata deve concordar com a onda. O requisito original configurável de direção do candle CONT continua na matriz 1.995.
 

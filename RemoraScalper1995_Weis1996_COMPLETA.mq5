@@ -1,5 +1,5 @@
 // Complete single-file structural consolidation; modular inputs preserved.
-// Exact corrected modular base: ac0540261d6f0e578e79bddd46ff26ff65f317e8
+// Exact corrected modular base: 0ecac27d81f8ebbf887d936305543af78122a019
 // Only official MetaTrader standard-library includes remain.
 // COMPILACAO_NATIVA_NAO_VERIFICADA
 // RECONSTRUCAO 1995 + Weis 1996; experimental, native compilation/replay pending.
@@ -33,7 +33,8 @@
 #include <Trade\Trade.mqh>
 #include <Trade\PositionInfo.mqh>
 // BEGIN INCORPORATED MODULE: include/Weis1996Kernel.mqh
-// Extracted literally from baalfoonseca-code/Bf ObjectiveMatrix.mqh.
+// Derived from the verified baalfoonseca-code/Bf ObjectiveMatrix.mqh kernel.
+// 1.995-only adaptation: CONT drawdown has its own tick-based tolerance.
 // Verified Git blob: e0bacb9fa1e003ddb57c658c9cc8860e208cfbfc.
 // OMBands is an inert compatibility payload in OMWave; no bands calculation
 // or location/session/sigma/financial policy from 1.996 is imported here.
@@ -130,6 +131,7 @@ struct OMConfig
 {
    double tick,reversal,eventStep,absEffort,contEffort,minCont,minAbs;
    double contEfficiency,absEfficiency,minRejection;
+   double contMaxRecuo;
    int minWaves;
 };
 struct OMDecision
@@ -176,7 +178,7 @@ void OMClassify(const OMWaveBook &b,double close,long msc,const OMConfig &c,OMDe
       double efficiency=eventNet/w.eventPath;
       double drawdown=w.dir==1?w.high-close:close-w.low;
       if(net>=c.minCont && eventNet>0 && efficiency>=c.contEfficiency &&
-         w.volume/w.baseline>=c.contEffort && drawdown<c.eventStep)
+         w.volume/w.baseline>=c.contEffort && drawdown<c.contMaxRecuo)
       {
          cont.classification=w.dir==1?1:2; cont.dir=w.dir; cont.waveID=w.id;
          cont.effort=w.volume/w.baseline; cont.netProgress=net;
@@ -1137,6 +1139,9 @@ input int Inp_PathEventTicks=2;
 input double Inp_CONT_MinPathEfficiency=0.60;
 input double Inp_ABS_MaxPathEfficiency=0.30;
 input double Inp_ABS_MinRejectionFraction=0.35;
+// 1.995 CONT drawdown only; independent of trajectory sampling.
+input int Inp_CONT_MaxRecuoTicks_WIN=2;
+input int Inp_CONT_MaxRecuoTicks_WDO=2;
 
 // Collector work limits are the reference defaults, not strategic thresholds.
 const int WW_CHUNK_MSC=10000;
@@ -1163,6 +1168,7 @@ OMConfig WWConfiguration()
    c.tick=gTickSize;
    c.reversal=gIsIndexFamily?Inp_WaveReversalPts_WIN:Inp_WaveReversalPts_WDO;
    c.eventStep=Inp_PathEventTicks*gTickSize; c.absEffort=Inp_ABS_Effort;
+   c.contMaxRecuo=(gIsIndexFamily?Inp_CONT_MaxRecuoTicks_WIN:Inp_CONT_MaxRecuoTicks_WDO)*gTickSize;
    c.contEffort=Inp_CONT_Effort; c.minCont=gCONT_MinDisplPts; c.minAbs=gABS_MinDisplPts;
    c.contEfficiency=Inp_CONT_MinPathEfficiency; c.absEfficiency=Inp_ABS_MaxPathEfficiency;
    c.minRejection=Inp_ABS_MinRejectionFraction; c.minWaves=Inp_WaveBaselineMin;
@@ -1175,6 +1181,10 @@ bool WWValidateInputs()
       Inp_WaveBaselineMin<=10 && OMNumber(c.reversal) && c.reversal>=c.tick &&
       MathAbs(c.reversal/c.tick-MathRound(c.reversal/c.tick))<=1e-6 &&
       Inp_PathEventTicks>=1 && c.reversal>=c.eventStep &&
+      Inp_CONT_MaxRecuoTicks_WIN>0 && Inp_CONT_MaxRecuoTicks_WDO>0 &&
+      OMNumber(Inp_CONT_MaxRecuoTicks_WIN*c.tick) &&
+      OMNumber(Inp_CONT_MaxRecuoTicks_WDO*c.tick) &&
+      OMNumber(c.contMaxRecuo) && c.contMaxRecuo>0 &&
       OMNumber(c.contEfficiency) && c.contEfficiency>0 && c.contEfficiency<=1 &&
       OMNumber(c.absEfficiency) && c.absEfficiency>=0 && c.absEfficiency<c.contEfficiency &&
       OMNumber(c.minRejection) && c.minRejection>0 && c.minRejection<=1 &&
@@ -2726,7 +2736,7 @@ s.c4
 
 s.c4Cont=(s.dirCont==1)?(s.posRange>=1.0-Inp_Rule_40_60):(s.posRange<=Inp_Rule_40_60);
 
-// C1 uses the exact verified numeric classifier (including drawdown<eventStep).
+// C1 uses the verified wave classifier with an independent CONT drawdown limit.
 // No bands, location, sigma or session rules from 1.996 are imported.
 s.wwok=WWGetClosed(iTime(Symbol(),Inp_SignalTF,1),s.weis);
 s.effort=s.weis.effort; s.waveDir=s.weis.dir;

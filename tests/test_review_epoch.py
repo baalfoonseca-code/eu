@@ -225,11 +225,23 @@ class EpochReview(unittest.TestCase):
     def test_only_requested_functions_changed_from_delivered_baseline(self):
         current=functions(self.source)
         previous=self.baseline['function_sha256']
+        # The only EA edit in the later CONT-decoupling task is this comment.
+        current['ComputeMatrixSnapshot']=current['ComputeMatrixSnapshot'].replace(
+            '// C1 uses the verified wave classifier with an independent CONT drawdown limit.',
+            '// C1 uses the exact verified numeric classifier (including drawdown<eventStep).')
         self.assertEqual(set(current)-set(previous),{'EndRevisedWeisThesis'})
         self.assertEqual(set(previous)-set(current),set())
         changed={n for n,h in previous.items() if hashlib.sha256(current[n].encode()).hexdigest()!=h}
         self.assertEqual(changed,{'ProcessArmedSignal','OnTick','OnTimer'})
+        # The local kernel/engine now have the separately authorized CONT delta.
+        # Keep the old lifecycle lock and verify changed modules against build pins;
+        # test_cont_recuo and the reference runner bound that delta independently.
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('consolidate_pins',ROOT/'tools/consolidate_scalper1995.py')
+        build=importlib.util.module_from_spec(spec);spec.loader.exec_module(build)
         for name,digest in self.baseline['include_sha256'].items():
+            if name in ('Weis1996Kernel.mqh','Weis1996Engine.mqh'):
+                digest=build.PINNED['include/'+name]
             self.assertEqual(hashlib.sha256((ROOT/'include'/name).read_bytes()).hexdigest(),digest,name)
 
     def test_callback_order_and_no_same_callback_rearming(self):

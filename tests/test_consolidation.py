@@ -123,9 +123,9 @@ class Consolidation(unittest.TestCase):
         self.assertEqual(tokens(self.modular),tokens(self.complete))
         self.assertEqual(self.modular,self.complete)
 
-    def test_77_inputs_exact_names_types_order_defaults(self):
+    def test_79_inputs_exact_names_types_order_defaults(self):
         self.assertEqual(inputs(self.modular),inputs(self.complete))
-        self.assertEqual(77,len(inputs(self.complete)))
+        self.assertEqual(79,len(inputs(self.complete)))
 
     def test_no_duplicate_functions_types_globals_or_inputs(self):
         masked=code_mask(self.complete)

@@ -10,13 +10,13 @@ import hashlib
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_COMMIT = 'ac0540261d6f0e578e79bddd46ff26ff65f317e8'
+BASE_COMMIT = '0ecac27d81f8ebbf887d936305543af78122a019'
 MAIN = 'RemoraScalper1995_Weis1996.mq5'
 OUTPUT = 'RemoraScalper1995_Weis1996_COMPLETA.mq5'
 PINNED = {
-    MAIN: '91d47ddc41af969e248fc3ffb585c4b9b433e0bd0e8d2c61cd0ee228dcfad23c',
-    'include/Weis1996Kernel.mqh': '8aaef7aebe183a21537f64c2a4031ecaaaf88e5a2d79a075143f1d1a4337470e',
-    'include/Weis1996Engine.mqh': '357bfb526d023ec5c43b3358f416400099f183e34e8d584e59803f19986d3f3c',
+    MAIN: '5406da06a82ef0887e582fc3f858f2ebfcaeb2b2d5b49297a2357ab3a2c3d821',
+    'include/Weis1996Kernel.mqh': '0154730988557de1aefe1765dfe74dd0b559d526223a1f0d0d66e045f00fac16',
+    'include/Weis1996Engine.mqh': '19fcf723254e56efb68a45fe1f986d780e1220f2b14d604e1ed306fcfd0b390e',
     'include/SignalLifecycle1995.mqh': '500338661e5f731dbecfd31ecc1194e0cdfd89105afcfd6ea12a318acd097504',
 }
 OFFICIAL = {'Trade\\Trade.mqh', 'Trade\\PositionInfo.mqh'}
@@ -68,7 +68,11 @@ def build(root=ROOT):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='compare without writing')
+    parser.add_argument('--replace-generated', metavar='SHA256',
+                        help='replace a generated output only if its current hash matches')
     args = parser.parse_args()
+    if args.check and args.replace_generated:
+        parser.error('--check cannot be combined with --replace-generated')
     payload = build()
     destination = ROOT / OUTPUT
     if args.check:
@@ -77,7 +81,10 @@ def main():
         print('PASS: exact, reproducible consolidation of the latest corrected base')
     else:
         if destination.exists() and destination.read_bytes() != payload:
-            raise SystemExit('Refusing to overwrite a different existing consolidated file')
+            previous = hashlib.sha256(destination.read_bytes()).hexdigest()
+            if not args.replace_generated or args.replace_generated != previous:
+                raise SystemExit('Refusing to overwrite a different existing consolidated file; '
+                                 'use --replace-generated with its verified SHA256')
         destination.write_bytes(payload)
         print(f'{OUTPUT}: {len(payload)} bytes; SHA256={hashlib.sha256(payload).hexdigest()}')
 

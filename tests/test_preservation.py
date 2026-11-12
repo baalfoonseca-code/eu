@@ -66,7 +66,7 @@ class PreservationTests(unittest.TestCase):
         self.assertEqual(73, len(inputs(self.original)))
         self.assertEqual(70, len(expected))
 
-    def test_added_weis_inputs_are_exact_reference_defaults(self):
+    def test_weis_inputs_and_authorized_CONT_defaults(self):
         engine = (ROOT / 'include/Weis1996Engine.mqh').read_text()
         expected = [
             ('int', 'Inp_WaveBaselineMin', '3'),
@@ -76,9 +76,11 @@ class PreservationTests(unittest.TestCase):
             ('double', 'Inp_CONT_MinPathEfficiency', '0.60'),
             ('double', 'Inp_ABS_MaxPathEfficiency', '0.30'),
             ('double', 'Inp_ABS_MinRejectionFraction', '0.35'),
+            ('int', 'Inp_CONT_MaxRecuoTicks_WIN', '2'),
+            ('int', 'Inp_CONT_MaxRecuoTicks_WDO', '2'),
         ]
         self.assertEqual(expected, inputs(engine))
-        self.assertEqual(77, len(inputs(self.candidate)) + len(inputs(engine)))
+        self.assertEqual(79, len(inputs(self.candidate)) + len(inputs(engine)))
         forbidden = ('OMBuildBands', 'OMWeightedAdd', 'OMLocationEligible',
                      'OMInsideB3', 'OMResolveSession', 'OMRevalidate',
                      'Inp_BandsWarmupSec', 'Inp_FeedMaxGapSec')

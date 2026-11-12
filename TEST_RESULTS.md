@@ -1,5 +1,7 @@
 # Testes e limites de aceite
 
+**Execução atual após desacoplamento CONT:101 verificações aprovadas, zero falhas e zero skips.** Log `reports/cont_recuo_validation.log`; detalhes em `CONT_RECUO_REPORT.md`. São as82 verificações da revisão dirigida, mais10 do recuo independente e9 de consolidação (que agora faz parte do runner). Os registros anteriores abaixo permanecem como histórico da versão então testada.
+
 Comando reproduzível atual: `python3 tests/run_all.py`, na raiz. O runner interrompe e preserva o exit status do primeiro comando que falhar.
 
 **Revisão dirigida posterior à entrega-base85be544: 82 verificações aprovadas, zero falhas e zero skips.** São as71 verificações anteriores, mais9 métodos de epoch e2 de MaxBody. Saída consolidada atual: `reports/review_validation.log`. Inclui um controle negativo que refuta o processo anterior: uma falha esperada desse processo é verificada como prova do defeito, não ocultada. O kernel/engine/lifecycle continuam com os mesmos bytes; somente o encerramento por epoch alterado foi corrigido no EA. Ver `reports/REVIEW_DELIVERY.md`, `reports/REVIEW_EPOCH.md` e `reports/REVIEW_MAX_BODY.md`.

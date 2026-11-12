@@ -2,7 +2,7 @@
 """Compile the actual extracted MQL5 numeric header with a minimal C++ shim.
 
 No MetaTrader service, order path, feed collector, financial recovery or replay
-is emulated by this runner. Pass --reference for a literal provenance check.
+is emulated by this runner. Pass --reference to verify the exact authorized delta against provenance.
 """
 from __future__ import annotations
 
@@ -27,11 +27,20 @@ def verify_reference(path: Path) -> None:
     number = ref[number_start:ref.index("\n", number_start) + 1]
     waves = ref[ref.index("struct OMWave\n"):ref.index("bool OMLocationEligible(")]
     expected = bands + number + waves
+    # Only this 1.995 adaptation is permitted over the immutable 1.996 source.
+    for old, new in (
+        ('   double contEfficiency,absEfficiency,minRejection;\n',
+         '   double contEfficiency,absEfficiency,minRejection;\n   double contMaxRecuo;\n'),
+        ('drawdown<c.eventStep', 'drawdown<c.contMaxRecuo'),
+    ):
+        if expected.count(old) != 1:
+            raise RuntimeError('reference delta no longer applies exactly once')
+        expected = expected.replace(old, new)
     header = (ROOT / "include/Weis1996Kernel.mqh").read_text()
     actual = header[header.index("struct OMBands\n"):header.index("\n#endif")]
     if actual.rstrip("\n") != expected.rstrip("\n"):
-        raise RuntimeError("kernel differs from literal verified reference segments")
-    print(f"PASS literal_reference_segments Git_blob={blob}", flush=True)
+        raise RuntimeError("kernel differs beyond the exact authorized 1.995 CONT adaptation")
+    print(f"PASS reference_plus_exact_1995_CONT_delta Git_blob={blob}", flush=True)
 
 
 def main() -> None:
